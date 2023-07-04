@@ -1,0 +1,19 @@
+.carousel-item{
+  height: 100%;
+}
+.carousel-indicators{
+  position: absolute;
+
+    top:100px;
+    left: 10px;
+    z-index: 2;
+
+    padding: 0;
+    margin: 0;
+}
+.vertical-indicators button {
+  display: block;
+  width: 7px;
+  height: 40px;
+  margin: 0.5rem;
+}
