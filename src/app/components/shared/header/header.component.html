@@ -1,1 +1,225 @@
-<p>header works!</p>
+<header id="header-container" class="fullwidth">
+  <div id="header">
+    <div class="container">
+      <!-- Left Side Content -->
+      <div class="left-side">
+        <!-- Logo -->
+        <div id="logo">
+          <a class="disabled-link-hover"
+            ><img src="assets/pnc.png" alt="logo picture"
+          /></a>
+        </div>
+
+        <nav id="navigation">
+          <ul id="responsive">
+            <li><a routerLink="/home" class="current">Home</a></li>
+
+
+            <li *ngIf="role == 'USER'">
+              <a routerLink="messages">Messages</a>
+            </li>
+            <li *ngIf="role == 'SELLER'"> <a routerLink="/seller-dashboard"> Dashboard</a> </li>
+            <li *ngIf="isAdmin == true">
+              <a href="/admin-dashboard">Dashboard</a>
+            </li>
+            <!-- <li *ngIf="role == 'SELLER'">
+              <a routerLink="/home/job-list">My Jobs</a>
+            </li> -->
+            <li *ngIf="role == 'USER'">
+              <a routerLink="/home/order">Orders</a>
+            </li>
+            <!-- <li *ngIf="role == 'USER'">
+              <a routerLink="/home/files">Files</a>
+            </li> -->
+            <ng-container *ngIf="check == undefined; else other">
+
+              <li >
+
+                <a class="dropdown">
+                  <i class="fa-solid fa-utensils"></i> Restaurants <i class="fa-solid fa-caret-down"></i>
+                  <div class="dropdown-content">
+                  <a href="#"> Fast Food</a>
+                  <a href="#">Chinese</a>
+                  <a href="#">Home-Made Food</a>
+                  <a href="#">Sea Food</a>
+
+                  </div>
+                </a>
+              </li>
+              <li >
+
+                <a class="dropdown">
+                  <i class="fa-solid fa-house-circle-check"></i>Home Services <i class="fa-solid fa-caret-down"></i>
+                  <div class="dropdown-content">
+                  <a href="#">Electricians</a>
+                  <a href="#">Plumbers</a>
+                  <a href="#"> Home Cleaners</a>
+                  <a href="#">Movers</a>
+
+                  </div>
+                </a>
+              </li>
+              <li >
+
+                <a class="dropdown">
+                  <i class="fa-solid fa-car"></i>Auto Services <i class="fa-solid fa-caret-down"></i>
+                  <div class="dropdown-content">
+                  <a href="#"> Auto Repair</a>
+                  <a href="#"> Auto Detailing</a>
+                  <a href="#"> Oil Change</a>
+                  <a href="#">Car Dealers</a>
+
+                  </div>
+                </a>
+              </li>
+              <li >
+
+                <a class="dropdown">
+                  More <i class="fa-solid fa-caret-down"></i>
+                  <div class="dropdown-content">
+                  <a href="#"> Dry Cleaning</a>
+                  <a href="#"> Hair Salons</a>
+                  <a href="#"> Gym</a>
+                  <a href="#">Shoping</a>
+
+                  </div>
+                </a>
+              </li>
+              <li> <a routerLink="/login"> Login </a></li>
+            </ng-container>
+
+            <ng-template #other>
+              <li *ngIf="role == 'USER'">
+                <a routerLink="/home/seller-request"> Become Seller </a>
+              </li>
+            </ng-template>
+          </ul>
+        </nav>
+        <div class="clearfix"></div>
+      </div>
+      <div class="right-side d-sm-block d-md-none">
+        <button class="side-bar" (click)="showSideBar()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <div *ngIf="check != undefined" class="right-side">
+        <!-- User Menu -->
+        <div class="header-widget">
+          <div class="header-notifications user-menu">
+            <div class="header-notifications-trigger">
+              <a class="disabled-link-hover"
+                ><div class="user-avatar status-online">
+                  <img
+                    src="data:image/jpeg; base64, {{
+                      userResponse?.profilePicture
+                    }}"
+                    alt="profile picture"
+                  /></div
+              ></a>
+            </div>
+
+            <div class="header-notifications-dropdown">
+              <div class="user-status">
+                <div class="user-details">
+                  <div class="user-avatar status-online">
+                    <img
+                      width="50"
+                      height="50"
+                      src="data:image/jpeg; base64, {{
+                        userResponse.profilePicture
+                      }}"
+                      alt="profile image"
+                    />
+                  </div>
+                  <div class="user-name">{{ userResponse?.userName }}</div>
+                </div>
+              </div>
+
+              <ul class="user-menu-small-nav">
+                <li>
+                  <a routerLink="/home/edit-profile"
+                    ><i class="fas fa-user"></i>Edit Profiles</a
+                  >
+                </li>
+
+                <li>
+                  <a (click)="logOut()" style="color:#000;">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <span class="mmenu-trigger">
+          <button
+            class="hamburger hamburger--collapse"
+            type="button"
+            (click)="showSideBar()"
+          >
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- Header / End -->
+  <!-- <p-sidebar
+  class="col-md-2 d-sm-block d-md-none mt-md-2"
+  [(visible)]="sidebarVisible"
+  position="left"
+  [blockScroll]="false"
+>
+  <nav id="navigation-sidebar">
+    <ul>
+      <h1>Navigation</h1>
+      <li>
+        <a routerLink="/home" class="current"
+          ><i class="fas fa-home"></i> Home</a
+        >
+      </li>
+      <li *ngIf="role == 'SELLER'">
+        <a routerLink="/seller-dashboard"
+          ><i class="fas fa-briefcase"></i> For Employers</a
+        >
+      </li>
+      <li *ngIf="role == 'USER'">
+        <a routerLink="messages"><i class="fas fa-envelope"></i> Messages</a>
+      </li>
+      <li *ngIf="isAdmin == true">
+        <a href="/admin-dashboard"
+          ><i class="fas fa-tachometer-alt"></i> Dashboard</a
+        >
+      </li>
+      <li *ngIf="role == 'SELLER'">
+        <a routerLink="/home/job-list"
+          ><i class="fas fa-briefcase"></i> My Jobs</a
+        >
+      </li>
+      <li *ngIf="role == 'USER'">
+        <a routerLink="/home/order"
+          ><i class="fas fa-shopping-cart"></i> Orders</a
+        >
+      </li>
+      <li *ngIf="role == 'USER'">
+        <a routerLink="/home/files"><i class="fas fa-file-alt"></i> Files</a>
+      </li>
+      <li *ngIf="check == undefined; else other">
+        <a routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login </a>
+      </li>
+      <ng-template #other>
+        <li *ngIf="role == 'USER'">
+          <a routerLink="/home/seller-request"
+            ><i class="fas fa-user-plus"></i> Become Seller
+          </a>
+        </li>
+      </ng-template>
+    </ul>
+  </nav>
+</p-sidebar> -->
+
+</header>

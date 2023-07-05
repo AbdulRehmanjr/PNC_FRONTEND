@@ -4,11 +4,12 @@ import { HeaderComponent } from '../../components/shared/header/header.component
 
 @NgModule({
   declarations: [
-  
+
     HeaderComponent
   ],
   imports: [
     CommonModule
   ]
+  ,exports:[HeaderComponent]
 })
 export class SharedModule { }
