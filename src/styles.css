@@ -27,6 +27,10 @@ body {
     padding-left: 0;
   }
 }
+.row{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
 .height-full{
   height: 100vh;
 }

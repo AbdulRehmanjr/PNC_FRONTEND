@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module'
 
 import { GeneralComponent } from './general.component';
 import { IntroComponent } from '../../components/general/intro/intro.component';
+import { CategoryComponent } from '../../components/general/category/category.component';
 
 
 
@@ -16,7 +17,8 @@ const routes:Route[] = [
 @NgModule({
   declarations: [
     GeneralComponent,
-    IntroComponent
+    IntroComponent,
+    CategoryComponent
   ],
   imports: [
     SharedModule,
