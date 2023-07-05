@@ -34,6 +34,10 @@ body {
 .height-full{
   height: 100vh;
 }
+.heading{
+  font-weight: 700;
+}
+
 .p-datatable{
   box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
 }.p-datatable .p-datatable-header{

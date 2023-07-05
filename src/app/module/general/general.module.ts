@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module'
 import { GeneralComponent } from './general.component';
 import { IntroComponent } from '../../components/general/intro/intro.component';
 import { CategoryComponent } from '../../components/general/category/category.component';
+import { RecentactivityComponent } from 'src/app/components/general/recentactivity/recentactivity.component';
 
 
 
@@ -18,7 +19,8 @@ const routes:Route[] = [
   declarations: [
     GeneralComponent,
     IntroComponent,
-    CategoryComponent
+    CategoryComponent,
+    RecentactivityComponent
   ],
   imports: [
     SharedModule,

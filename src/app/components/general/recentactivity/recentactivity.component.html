@@ -1,0 +1,47 @@
+<section id="recent-activity" class="m-5">
+  <div class="row mb-4">
+    <div class="text-center">
+      <h1 class="heading">Recent Activities</h1>
+    </div>
+    <div class="album py-5 ">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <ng-container *ngFor="let num of array">
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="row">
+                  <div class="d-flex flex-row text-start mt-2">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none "
+                      >
+                      <img src="https://github.com/mdo.png" alt="mdo" width="50" height="50" class="rounded-circle">
+
+                    </a>
+                    <h5 class="m-2">spydev</h5>
+                  </div>
+                </div>
+                <img class="bd-placeholder-img card-img-top" src="assets/pnc.png" alt="post image" width="200"
+                  height="200">
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                    additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    </div>
+                    <div class="like-container">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                          class="fa-regular fa-thumbs-up"></i></button>
+                      <small class="text-body-primary">100</small>
+                    </div>
+
+                    <small class="text-body-secondary">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
