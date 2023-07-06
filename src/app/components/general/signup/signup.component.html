@@ -1,0 +1,50 @@
+<section id="signup">
+  <form class="form m-auto mt-5" [formGroup]="signupForm"  (ngSubmit)="onSubmit()">
+    <p class="title">Register </p>
+    <p class="message">Signup now and get full access to our app. </p>
+    <div class="flex">
+      <label>
+        <input type="text" class="input" formControlName="firstName">
+        <span>Firstname</span>
+        <div *ngIf="signupForm.get('firstName').invalid && signupForm.get('firstName').touched">
+          <small class="text-danger">First name is required.</small>
+        </div>
+      </label>
+
+      <label>
+        <input type="text" class="input" formControlName="lastName">
+        <span>Lastname</span>
+        <div *ngIf="signupForm.get('lastName').invalid && signupForm.get('lastName').touched">
+          <small class="text-danger">Last name is required.</small>
+        </div>
+      </label>
+    </div>
+
+
+    <label>
+      <input type="email" class="input" formControlName="email">
+      <span>Email</span>
+      <div *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
+        <small class="text-danger">Please enter a valid email address.</small>
+      </div>
+    </label>
+
+    <label>
+      <input type="password" class="input" formControlName="password">
+      <span>Password</span>
+      <div *ngIf="signupForm.get('password').invalid && signupForm.get('password').touched">
+        <small class="text-danger">Password is required and must be at least 8 characters long.</small>
+      </div>
+    </label>
+
+    <label>
+      <input type="password" class="input" formControlName="confirmPassword">
+      <span>Confirm password</span>
+      <div *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
+        <small class="text-danger">Please confirm your password.</small>
+      </div>
+    </label>
+    <button class="submit">Submit</button>
+    <p class="signin">Already have an acount ? <a routerLink="signin">Signin</a> </p>
+  </form>
+</section>

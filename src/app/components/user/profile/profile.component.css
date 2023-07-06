@@ -1,0 +1,15 @@
+.user_name{
+  font-weight: 900;
+  font-size: 30px;
+}
+.container-info{
+height: 189px;
+  position: relative;
+}
+.user_avatar{
+  position: absolute;
+  bottom: -70px;
+  left:20px;
+  width: 217px;
+  height: 217px;
+}
