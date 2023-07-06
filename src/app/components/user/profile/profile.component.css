@@ -1,15 +1,41 @@
-.user_name{
+.user_name {
   font-weight: 900;
   font-size: 30px;
 }
-.container-info{
-height: 189px;
+
+.container-info {
+  height: 160px;
   position: relative;
 }
-.user_avatar{
+
+.user_avatar {
   position: absolute;
-  bottom: -70px;
-  left:20px;
+  bottom: -50px;
+  left: 20px;
   width: 217px;
   height: 217px;
+}
+
+.users i{
+  color:#D32323;
+}
+.reviews i{
+  color: #D4AF37;
+}
+.posts i{
+  color: #333;
+}
+li{
+  margin: 1px;
+}
+.nav-link{
+  color: #000;
+}
+.nav-link:active,.nav-link.active{
+  background-color: #D32323;
+}
+
+.nav-link:hover{
+  background-color: #D32323;
+  color: #fff;
 }

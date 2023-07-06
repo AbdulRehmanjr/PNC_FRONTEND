@@ -11,14 +11,13 @@ import { CategoryComponent } from '../../components/general/category/category.co
 import { RecentactivityComponent } from 'src/app/components/general/recentactivity/recentactivity.component';
 import { LoginComponent } from '../../components/general/login/login.component';
 import { SignupComponent } from '../../components/general/signup/signup.component';
-import { ProfileComponent } from 'src/app/components/user/profile/profile.component';
+
 
 
 
 
 const routes:Route[] = [
   {path:'',component:GeneralComponent,},
-  {path:'userprofile',component:ProfileComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent}
 ]

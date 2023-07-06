@@ -2,7 +2,7 @@
     <div class="row bg-light">
       <div class="col d-flex justify-content-evenly container-info">
         <img class="img-fluid user_avatar" src="assets/pnc.png" alt="user profile"  loading="lazy">
-        <div class="container-details mt-5">
+        <div class="container-details mt-4">
           <h1 class="user_name">Spy dev</h1>
           <p>From Ghakar Mandi,Pakistan</p>
           <div class="social-list d-flex">
@@ -21,7 +21,7 @@
             </div>
           </div>
         </div>
-        <div class="additional mt-5">
+        <div class="additional mt-4">
           <ul>
             <li>Add Friends</li>
             <li>Compliments</li>
@@ -32,7 +32,65 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col-md-2 mt-3">
+        <div class="d-flex flex-column flex-shrink-0 p-3  height sticky">
+          <a href="/!" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none">
+            <span class="fs-5 fw-bold px-2">Spy's profile</span>
+          </a>
+
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-circle-user"></i>
+              Profile
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile/friends" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-users"></i>
+              Friends
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-camera-rotate"></i>
+              Posts
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-star"></i>
+              Reviews
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-medal"></i>
+              Compliments
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-lightbulb"></i>
+              Tips
+            </a>
+          </li>
+          <li>
+            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
+              <i class="fa-solid fa-star"></i>
+              Followings
+            </a>
+          </li>
+        </ul>
+        <hr>
+        </div>
+      </div>
+      <div class="col-md-8 mt-3">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-md-2">
+        some other data here
 
       </div>
     </div>
