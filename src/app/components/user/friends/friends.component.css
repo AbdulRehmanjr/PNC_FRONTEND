@@ -5,6 +5,14 @@
   outline: none;
   border-radius: 10px;
 }
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+a:hover{
+  box-shadow: 0 0 10px 0 #00000026;
+}
 .friend_avatar{
   width: 69px;
   height: 71px;

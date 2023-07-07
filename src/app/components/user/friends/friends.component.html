@@ -2,10 +2,10 @@
   <div class="row">
     <ng-container *ngFor="let friend of friends">
       <div class="col-md-4">
-        <div class="friend_container d-flex shadow-sm">
+        <a class="friend_container d-flex" routerLink="/userprofile">
           <img class="friend_avatar" src="assets/pnc.png" alt="friend image">
           <div class="friend_detail">
-            <a class="name" routerLink="/userprofile">Spy d.</a>
+            <h6 class="name" >Spy d.</h6>
             <p class="location">Pakistan</p>
             <div class="friend_social d-flex">
               <div class="users mx-1">
@@ -19,7 +19,7 @@
             </div>
 
           </div>
-        </div>
+        </a>
       </div>
     </ng-container>
   </div>

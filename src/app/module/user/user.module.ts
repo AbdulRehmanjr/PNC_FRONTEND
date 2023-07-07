@@ -5,19 +5,22 @@ import { Route, RouterModule } from '@angular/router';
 
 import { ProfileComponent } from '../../components/user/profile/profile.component';
 import { FriendsComponent } from '../../components/user/friends/friends.component';
+import { PostsComponent } from '../../components/user/posts/posts.component';
 
 
 const routes: Route[] = [
   {
     path: 'userprofile', component: ProfileComponent, children: [
-      { path: '', component: FriendsComponent }
+      { path: 'friends', component: FriendsComponent },
+      {path:'',component:PostsComponent}
     ]
   }
 ]
 @NgModule({
   declarations: [
     ProfileComponent,
-    FriendsComponent
+    FriendsComponent,
+    PostsComponent
   ],
   imports: [
     RouterModule.forChild(routes),

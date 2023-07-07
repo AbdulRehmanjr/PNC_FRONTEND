@@ -1,3 +1,9 @@
+.sticky_top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .user_name {
   font-weight: 900;
   font-size: 30px;
@@ -8,34 +14,44 @@
   position: relative;
 }
 
-.user_avatar {
-  position: absolute;
-  bottom: -50px;
-  left: 20px;
-  width: 217px;
-  height: 217px;
+.user_avatar_mobile {
+  width: 163px;
+  height: 146px;
 }
 
-.users i{
-  color:#D32323;
+.user_avatar {
+  position: relative;
+  bottom: -30px;
+  width: 163px;
+  height: 146px;
 }
-.reviews i{
+
+.users i {
+  color: #D32323;
+}
+
+.reviews i {
   color: #D4AF37;
 }
-.posts i{
+
+.posts i {
   color: #333;
 }
-li{
+
+li {
   margin: 1px;
 }
-.nav-link{
+
+.nav-link {
   color: #000;
 }
-.nav-link:active,.nav-link.active{
+
+.nav-link:active,
+.nav-link.active {
   background-color: #D32323;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   background-color: #D32323;
   color: #fff;
 }

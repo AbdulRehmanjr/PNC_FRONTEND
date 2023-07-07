@@ -1,4 +1,12 @@
 img{
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
+  margin: auto;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  box-shadow: 0 0 10px 0 #00000026;
+
 }
