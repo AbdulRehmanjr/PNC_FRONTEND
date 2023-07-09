@@ -1,74 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&family=Nunito:wght@200&display=swap');
-html{
+
+html {
   scroll-behavior: smooth;
 }
-*{
-  font-family: 'Nunito', sans-serif ;
+
+* {
+  font-family: 'Nunito', sans-serif;
 }
+
 body {
   margin: 0;
   padding: 0;
-  width:100%;
+  width: 100%;
   font-family: 'Nunito', sans-serif;
   color: #666;
   background: #E6F0EB;
 }
-.margin-top{
+
+.margin-top {
   margin-top: 4.3%;
 }
+
 .no-gutters {
   margin-right: 0;
   margin-left: 0;
 
-  > .col,
-  > [class*="col-"]{
+  >.col,
+  >[class*="col-"] {
     padding-right: 0;
     padding-left: 0;
   }
 }
-.row{
+
+.row {
   margin-right: 0 !important;
   margin-left: 0 !important;
 }
-.height-full{
+
+.height-full {
   height: 100vh;
 }
-.heading{
+
+.heading {
   font-weight: 700;
 }
-.p-datatable{
+
+
+/** ng prime componets style overriding */
+.p-chip {
+  height: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+.p-datatable {
   box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
-}.p-datatable .p-datatable-header{
+}
+
+.p-datatable .p-datatable-header {
   background: #007437;
   color: #fff;
 }
 
-.p-datatable .p-datatable-thead > tr > th{
+.p-datatable .p-datatable-thead>tr>th {
   background-color: #EAF3EE;
 }
 
-.p-button{
+.p-button {
   background: #007437;
   border: #007437;
 }
-.p-button:enabled:hover{
+
+.p-button:enabled:hover {
   background: #007437;
   border: #007437;
 
 }
-.p-dialog{
+
+.p-dialog {
   position: fixed;
-  top:8%;
-  left:0;
+  top: 8%;
+  left: 0;
 }
-.p-picklist .p-picklist-list .p-picklist-item.p-highlight{
+
+.p-picklist .p-picklist-list .p-picklist-item.p-highlight {
   color: #007437;
 }
-.p-picklist .p-picklist-header{
- background-color:  #007437;
- color:#fff;
+
+.p-picklist .p-picklist-header {
+  background-color: #007437;
+  color: #fff;
 
 }
-.p-datatable .p-datatable-thead > tr > th{
+
+.p-datatable .p-datatable-thead>tr>th {
   background-color: #EAF3EE;
 }

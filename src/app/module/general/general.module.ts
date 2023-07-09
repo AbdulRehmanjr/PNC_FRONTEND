@@ -3,6 +3,18 @@ import { CommonModule } from '@angular/common';
 import { Route,RouterModule } from '@angular/router';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
+
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from '@abacritt/angularx-social-login';
+
+
+//ng prime
+import { AvatarModule } from 'primeng/avatar';
+import { ChipModule } from 'primeng/chip';
+import { TagModule } from 'primeng/tag';
+
 import { SharedModule } from '../shared/shared.module'
 
 import { GeneralComponent } from './general.component';
@@ -11,13 +23,30 @@ import { CategoryComponent } from '../../components/general/category/category.co
 import { RecentactivityComponent } from 'src/app/components/general/recentactivity/recentactivity.component';
 import { LoginComponent } from '../../components/general/login/login.component';
 import { SignupComponent } from '../../components/general/signup/signup.component';
+import { CategoryDetailComponent } from '../../components/general/category-detail/category-detail.component';
 
-
+const LOGINPROVIDER = {
+  provide: 'SocialAuthServiceConfig',
+  useValue: {
+    autoLogin: true,
+    providers: [
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider(
+          '656258918400-iurtdgagb9ncghbua23c5m85c3fvcb7v.apps.googleusercontent.com'
+        )
+      },
+    ],
+    onError: (err) => {
+      console.error(err);
+    }
+  } as SocialAuthServiceConfig,
+}
 
 
 
 const routes:Route[] = [
-  {path:'',component:GeneralComponent,},
+  {path:'',component:GeneralComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent}
 ]
@@ -29,14 +58,22 @@ const routes:Route[] = [
     CategoryComponent,
     RecentactivityComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    CategoryDetailComponent
   ],
   imports: [
+    SocialLoginModule,
+    TagModule,
+    ChipModule,
+    AvatarModule,
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
     CommonModule,
     RouterModule.forChild(routes)
+  ],
+  providers:[
+    LOGINPROVIDER
   ],
   exports:[
     RouterModule
