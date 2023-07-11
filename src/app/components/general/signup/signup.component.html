@@ -53,7 +53,7 @@
       <div *ngIf="signupForm.get('confirmPassword').invalid && signupForm.get('confirmPassword').touched">
         <small class="text-danger">Please confirm your password.</small>
       </div>
-      <div *ngIf="signupForm.get('confirmPassword').value !=
+      <div *ngIf="signupForm.get('confirmPassword').touched &&  signupForm.get('confirmPassword').value !=
       signupForm.get('password').value">
         <small class="text-danger">Please confirm your password.</small>
       </div>

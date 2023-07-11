@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   fetchFromStorage(){
 
-    this.user = localStorage.getItem('user')
+    this.user = JSON.parse(localStorage.getItem('user'))
 
     if(this.user!=null || this.user!=undefined)
       this.isLogged =true
