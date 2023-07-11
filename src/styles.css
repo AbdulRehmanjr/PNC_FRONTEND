@@ -47,6 +47,9 @@ body {
 
 
 /** ng prime componets style overriding */
+.p-password,.p-inputtext{
+  width: 100%;
+}
 .p-chip {
   height: 20px;
   font-family: 'Times New Roman', Times, serif;

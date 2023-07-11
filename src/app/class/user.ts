@@ -6,6 +6,6 @@ export class User {
   lastName:string
   userPassword:string
   userEmail:string
-  userPicture:string
+  photoUri:string
   role:Role
 }

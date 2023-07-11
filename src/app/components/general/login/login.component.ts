@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup ,FormBuilder, FormControl, Validators} from '@angular/forms';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Login } from 'src/app/class/login';
+import { Token } from 'src/app/class/token';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,25 +14,102 @@ import { FormGroup ,FormBuilder, FormControl, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  signupForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: SocialAuthService,
+    private loginService: LoginService, private messageService: MessageService,
+    private router:Router) {
 
   }
+
   ngOnInit(): void {
     this.createForm()
+    this.googleSignIn()
   }
 
-  createForm(){
-    this.signupForm =   this.fb.group({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+  googleSignIn() {
+    this.authService.authState
+    .subscribe({
+      next: (response: SocialUser) => {
+        let token = new Token()
+        token.token = response.idToken
+        token.provider = response.provider
+        this.loginService.setToken(token)
+        this.loginService.setSocialUser(response)
+        this.router.navigate(['/home'])
+      },
+      error: (_error: any) => this.messageService.add({
+        severity:'error',
+        summary:'Login Failed'
+      }),
+      complete: () => {}
+    })
+  }
+
+  createForm() {
+    this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
     });
   }
-  onSubmit(){
 
+  onSubmit() {
+
+    if (this.loginForm.invalid) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please Provide Credentials' })
+      return
+    }
+
+    let login = new Login();
+
+    login.email = this.loginForm.controls['email'].value;
+    login.password = this.loginForm.controls['password'].value;
+
+
+    this.loginService.generateToken(login).subscribe({
+      next: (data: any) => {
+
+        this.loginService.setToken(data.token)
+
+        this.loginService.currentUser(login).subscribe(
+          {
+            next: (data: any) => {
+              this.loginService.setUser(data)
+            }
+            , error(err: Error) {
+              this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Network Error' })
+            },
+            complete: () => {
+              this.redirection()
+            },
+          }
+
+        )
+      },
+      error: (err) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Network Error' })
+
+      },
+      complete: () => {
+
+      }
+    })
+
+
+  }
+
+  private redirection(): void {
+    const role = this.loginService.getAuthority()
+    switch (role) {
+      case "ADMIN":
+        this.router.navigate(['/home'])
+        break
+      case "USER":
+        this.router.navigate(['/home'])
+        break
+      default:
+        this.router.navigate(['/login'])
+        break
+    }
   }
 }

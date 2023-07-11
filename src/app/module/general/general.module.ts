@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route,RouterModule } from '@angular/router';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
-
-import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider,
 } from '@abacritt/angularx-social-login';
@@ -14,8 +14,13 @@ import {
 import { AvatarModule } from 'primeng/avatar';
 import { ChipModule } from 'primeng/chip';
 import { TagModule } from 'primeng/tag';
+import {ToastModule} from 'primeng/toast';
+import { PasswordModule } from 'primeng/password';
+
+import { MessageService } from 'primeng/api';
 
 import { SharedModule } from '../shared/shared.module'
+
 
 import { GeneralComponent } from './general.component';
 import { IntroComponent } from '../../components/general/intro/intro.component';
@@ -28,7 +33,7 @@ import { CategoryDetailComponent } from '../../components/general/category-detai
 const LOGINPROVIDER = {
   provide: 'SocialAuthServiceConfig',
   useValue: {
-    autoLogin: true,
+    autoLogin: false,
     providers: [
       {
         id: GoogleLoginProvider.PROVIDER_ID,
@@ -46,9 +51,10 @@ const LOGINPROVIDER = {
 
 
 const routes:Route[] = [
-  {path:'',component:GeneralComponent},
+  {path:'home',component:GeneralComponent},
   {path:'login',component:LoginComponent},
-  {path:'signup',component:SignupComponent}
+  {path:'signup',component:SignupComponent},
+  {path:'',redirectTo:'home',pathMatch:'full'}
 ]
 
 @NgModule({
@@ -62,7 +68,10 @@ const routes:Route[] = [
     CategoryDetailComponent
   ],
   imports: [
+    PasswordModule,
+    GoogleSigninButtonModule,
     SocialLoginModule,
+    ToastModule,
     TagModule,
     ChipModule,
     AvatarModule,
@@ -70,13 +79,16 @@ const routes:Route[] = [
     FormsModule,
     SharedModule,
     CommonModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ],
   providers:[
-    LOGINPROVIDER
+    LOGINPROVIDER,
+    MessageService
   ],
   exports:[
-    RouterModule
+    RouterModule,
+
   ]
 })
 export class GeneralModule { }

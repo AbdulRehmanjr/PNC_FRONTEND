@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Login } from 'src/app/class/login';
 import { User } from 'src/app/class/user';
 import { Role } from '../class/role';
+import { Token } from '../class/token';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +29,12 @@ export class LoginService {
   }
   generateToken(login: Login) {
     return this.http.post(`${this.url}` + '/generate-token', login, {
-      responseType: 'json',
+      observe:'body'
     })
 
   }
 
-  setToken(token: any) {
+  setToken(token: Token) {
     if (token != null) {
       localStorage.setItem('token', JSON.stringify(token));
     }
@@ -46,6 +48,25 @@ export class LoginService {
     return JSON.parse(localStorage.getItem('user'))['role']['authority']
   }
 
+  setSocialUser(data: SocialUser) {
+
+    let current_user = new User()
+    let role = new Role()
+
+    current_user.userId = +data.id
+    current_user.firstName = data.firstName
+    current_user.lastName = data.lastName
+    current_user.userEmail = data.email
+    current_user.photoUri = data.photoUrl
+
+    role.roleName = "USER"
+    role.authority = "USER"
+
+    current_user.role = role
+
+    localStorage.setItem('user', JSON.stringify(current_user));
+  }
+
   setUser(data: User) {
 
     let current_user = new User()
@@ -55,7 +76,7 @@ export class LoginService {
     current_user.firstName = data.firstName
     current_user.lastName = data.lastName
     current_user.userEmail = data.userEmail
-    current_user.userPicture = data.userPicture
+    current_user.photoUri = data.photoUri
 
     role.roleName = data.role.roleName
     role.authority = data.role.authority
@@ -64,7 +85,6 @@ export class LoginService {
 
     localStorage.setItem('user', JSON.stringify(current_user));
   }
-
   currentUser(loginInfo: Login) {
     return this.http.post(`${this.url}/current-user`, loginInfo);
   }

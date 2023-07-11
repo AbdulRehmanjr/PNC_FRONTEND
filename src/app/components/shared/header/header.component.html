@@ -1,42 +1,70 @@
-<header>
-  <nav class="py-1  border-bottom">
-    <div class="container-fluid d-flex justify-content-between">
-      <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+<header class="bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-0" aria-label="Offcanvas navbar large">
+    <div class="container-fluid">
+      <a href="/!" class="navbar-brand align-items-center link-body-emphasis text-decoration-none">
         <img  src="assets/pnc.png" alt="logo image" width="50" height="50">
       </a>
-      <ul class="nav d-none d-md-flex">
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
-      </ul>
-      <form class="mt-2" role="search">
-        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-      </form>
-      <div class="nav d-none d-md-block">
-        <button class="btn btn-outline-danger m-1">Start Your Business</button>
-        <button class="btn btn-outline-danger m-1" routerLink="/login">Login</button>
-        <button class="btn btn-outline-danger m-1" routerLink="/signup">Sign up</button>
-      </div>
-      <div class="d-flex flex-row gap-2 mt-2">
-        <div class="notifications mt-1">
-          <i class="fa-regular fa-bell"></i>
-        </div>
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+        <div class="offcanvas-header">
+          <a href="/!" class="navbar-brand align-items-center link-body-emphasis text-decoration-none">
+            <img  src="assets/pnc.png" alt="logo image" width="50" height="50">
           </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav me-auto pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
           </ul>
+          <form class="d-flex me-auto mt-1 mt-lg-0" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <ng-container *ngIf="!isLogged">
+            <button class="btn btn-outline-danger m-1" routerLink="/login">Login</button>
+            <button class="btn btn-outline-danger m-1" routerLink="/signup">Sign up</button>
+          </ng-container>
+          <ng-container *ngIf="isLogged">
+            <div class="d-flex flex-end gap-2 mt-2">
+              <div class="notifications mt-1">
+                <i class="fa-regular fa-bell"></i>
+              </div>
+              <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img [src]="user.photoUri" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" style="left: unset;right: 0;">
+                  <li><a class="dropdown-item" href="#">New project...</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+              </div>
+            </div>
+          </ng-container>
         </div>
       </div>
-
     </div>
   </nav>
 </header>
