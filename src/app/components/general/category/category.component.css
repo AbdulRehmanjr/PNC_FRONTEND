@@ -1,3 +1,10 @@
+
+.title{
+  font-family: 'Times New Roman', Times, serif;
+  font-size:30px;
+  font-weight: 500;
+  color: #000000;
+}
 img{
   width: 70px;
   height: 70px;

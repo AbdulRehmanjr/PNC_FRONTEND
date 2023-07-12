@@ -1,0 +1,30 @@
+.form_img {
+  width: 500px;
+  aspect-ratio: 16/9;
+}
+.card_img {
+  width: 100px;
+}
+/* .map_img{
+  width: 300px;
+  aspect-ratio: 16/9;
+} */
+.position {
+  position: relative;
+  top: -70px;
+  left:150px;
+}
+/* .map_position{
+  position: relative;
+  left: -350px;
+} */
+p{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+.business_name{
+  font-size:20px;
+}
+.more_details{
+  font-size:15px;
+}

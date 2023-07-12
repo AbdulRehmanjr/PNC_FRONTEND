@@ -3,3 +3,15 @@
   height: 150px;
   aspect-ratio: 16/9;
 }
+.user_name{
+  font-size: 23px;
+  text-transform: capitalize;
+}
+.card-text{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}

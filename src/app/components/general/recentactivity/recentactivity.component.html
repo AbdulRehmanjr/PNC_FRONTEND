@@ -11,28 +11,24 @@
               <div class="card shadow-sm">
                 <div class="row">
                   <div class="d-flex flex-row text-start mt-2">
-                    <a routerLink="/userprofile" class="d-block link-body-emphasis text-decoration-none ">
-                      <p-avatar image="https://github.com/mdo.png"
+                    <a routerLink="/userprofile" class="d-block link-body-emphasis text-decoration-none">
+                      <p-avatar [image]="user['photoUri']"
                         styleClass="mr-2" size="large" shape="circle"></p-avatar>
                     </a>
-                    <h5 class="m-2">spydev</h5>
+                    <h5 class="user_name m-2">spydev</h5>
                   </div>
                 </div>
                 <img class="bd-placeholder-img card-img-top activity-img mx-auto" src="assets/pnc.png" alt="post image">
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
                     additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    </div>
+                  <div class="d-flex justify-content-evenly align-items-center">
                     <div class="like-container">
-                      <button type="button" class="btn btn-sm btn-outline-secondary"><i
+                      <button type="button" class="btn btn-sm btn-outline-success"><i
                           class="fa-regular fa-thumbs-up"></i></button>
                       <small class="text-body-primary">100</small>
                     </div>
-
-                    <small class="text-body-secondary">9 mins</small>
+                      <button type="button" class="btn btn-sm btn-outline-success">View</button>
                   </div>
                 </div>
               </div>

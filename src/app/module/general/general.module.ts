@@ -29,6 +29,7 @@ import { RecentactivityComponent } from 'src/app/components/general/recentactivi
 import { LoginComponent } from '../../components/general/login/login.component';
 import { SignupComponent } from '../../components/general/signup/signup.component';
 import { CategoryDetailComponent } from '../../components/general/category-detail/category-detail.component';
+import { BecomesellerComponent } from '../../components/general/seller/becomeseller/becomeseller.component';
 
 const LOGINPROVIDER = {
   provide: 'SocialAuthServiceConfig',
@@ -52,6 +53,7 @@ const LOGINPROVIDER = {
 
 const routes:Route[] = [
   {path:'home',component:GeneralComponent},
+  {path:'become-seller',component:BecomesellerComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'',redirectTo:'home',pathMatch:'full'}
@@ -65,7 +67,8 @@ const routes:Route[] = [
     RecentactivityComponent,
     LoginComponent,
     SignupComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    BecomesellerComponent
   ],
   imports: [
     PasswordModule,
