@@ -1,25 +1,133 @@
-<div class="container-fluid">
+<section class="container-fluid">
   <div class="row">
-    <div class="col-md-6">
-      <form action="">
-
+    <div class="col-sm-12 col-md-6">
+      <h1 class="heading">Hello ! Lets start your Business</h1>
+      <p>We’ll use this information to help you claim your PNC Business page. Your business will come up automatically
+        if it is already listed.</p>
+      <form [formGroup]="businessForm">
+        <p-tabView [(activeIndex)]="activeIndex" >
+          <p-tabPanel header="Business Info">
+            <div class="inputGroup">
+              <input type="text" required="" autocomplete="off" formControlName="businessName">
+              <label for="name">Enter Business Name</label>
+              <ng-container
+                *ngIf="businessForm.get('businessName').touched && businessForm.get('businessName').invalid">
+                <small class="text-danger">Please provide business name.</small>
+              </ng-container>
+            </div>
+            <div class="inputGroup">
+              <div class="inputGroup">
+                <select class="custom-select" formControlName="category" >
+                  <!-- <option value=""></option> -->
+                  <option value="option1">Option 1</option>
+                  <option value="option2">Option 2</option>
+                </select>
+                <label>Select an option</label>
+              </div>
+             <ng-container *ngIf="businessForm.get('category').touched && businessForm.get('category').invalid">
+                <small class="text-danger">Please provide business category.</small>
+              </ng-container>
+            </div>
+            <div class="inputGroup">
+              <input type="text" required="" autocomplete="off" formControlName="address">
+              <label for="address">Enter Business Address</label>
+              <ng-container *ngIf="businessForm.get('address').touched && businessForm.get('address').invalid">
+                <small class="text-danger">Please provide business address.</small>
+              </ng-container>
+            </div>
+            <button class="btn btn-success" (click)="changeTab()">Next</button>
+          </p-tabPanel>
+          <p-tabPanel header="Personal Info">
+            <div class="inputGroup">
+              <input type="text" required="" autocomplete="off" formControlName="firstName">
+              <label for="name">Enter First Name</label>
+              <ng-container
+                *ngIf="businessForm.get('firstName').touched && businessForm.get('firstName').invalid">
+                <small class="text-danger">Please provide first name.</small>
+              </ng-container>
+            </div>
+            <div class="inputGroup">
+              <input type="text" required="" autocomplete="off" formControlName="lastName">
+              <label for="name">Enter Last Name</label>
+              <ng-container
+                *ngIf="businessForm.get('lastName').touched && businessForm.get('lastName').invalid">
+                <small class="text-danger">Please provide last name.</small>
+              </ng-container>
+            </div>
+            <div class="inputGroup">
+              <input type="email" required="" autocomplete="off" formControlName="email">
+              <label for="name">Enter Business Email</label>
+              <ng-container
+                *ngIf="businessForm.get('email').touched && businessForm.get('email').invalid">
+                <small class="text-danger">Please provide business email.</small>
+              </ng-container>
+            </div>
+            <button class="btn btn-success" (click)="changeTab()">Next</button>
+          </p-tabPanel>
+          <p-tabPanel header="Header III">
+            <p>
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+              atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
+              sunt in culpa
+              qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
+              expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
+              minus.
+            </p>
+            <button class="btn btn-success" (click)="changeTab()">Next</button>
+          </p-tabPanel>
+        </p-tabView>
       </form>
     </div>
-    <div class="col-md-6">
-      <div class="row">
-        <img class="form_img" src="assets/seller/business_name.png" alt="busines_name">
-        <div class="card rounded-3 w-50 bg-white d-flex flex-row position">
-          <img class="card_img" src="assets/seller/card_business.png" alt="card_img">
-          <div class="container_detail">
-            <p class="business_name m-0">Your Business</p>
-            <p class="more_detail m-0">Category</p>
-            <p class="more_detail m-0">address</p>
+    <div class="d-none d-md-block col-md-6">
+      <aside class="row">
+        <ng-container *ngIf="activeIndex == 0">
+          <img src="assets/seller/city.png" alt="city image" class="form_img">
+          <div class="card rounded-3 bg-white d-flex flex-row position">
+            <img class="card_img" src="assets/seller/card_business.png" alt="card_img">
+            <div class="container_detail">
+              <p class="business_name m-0">{{businessForm.get('businessName').value ?
+                businessForm.get('businessName').value: 'Business Name'}}</p>
+              <p class="more_detail m-0">{{businessForm.get('category').value ?
+                businessForm.get('category').value: 'Business Category'}}</p>
+              <p class="more_detail address m-0">{{businessForm.get('address').value ?
+                businessForm.get('address').value: 'Business Address'}}</p>
+            </div>
           </div>
-
-        </div>
-        <!-- <img class="map_img map_position" src="assets/seller/map.png" alt="person with map"> -->
-      </div>
-
+          <img src="assets/seller/map.svg" class="map_img map_position" alt="map_serach">
+        </ng-container>
+        <ng-container *ngIf="activeIndex == 1">
+          <img src="assets/seller/city.png" alt="city image" class="form_img">
+              <div class="card_info d-flex flex-row position">
+                <!-- <label class="avatar"></label> -->
+                <img class="card_img" src="assets/seller/user_info.png" alt="card_img">
+                <div class="container_detail mt-3">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ng-container *ngIf="!businessForm.get('firstName').value else FirstName">
+                        <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                      </ng-container>
+                      <ng-template #FirstName>
+                        <p class="more_detail m-0 fs-5">
+                          {{businessForm.get('firstName').value }}
+                        </p>
+                      </ng-template>
+                    </div>
+                    <div class="col-md-6">
+                      <ng-container *ngIf="!businessForm.get('lastName').value else LastName">
+                        <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
+                      </ng-container>
+                      <ng-template #LastName>
+                        <p class="more_detail m-0 fs-5">
+                          {{businessForm.get('lastName').value }}
+                        </p>
+                      </ng-template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <img src="assets/seller/map.svg" class="map_img map_position" alt="map_serach">
+        </ng-container>
+      </aside>
     </div>
   </div>
-</div>
+</section>

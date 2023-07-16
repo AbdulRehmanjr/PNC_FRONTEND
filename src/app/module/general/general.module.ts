@@ -16,8 +16,11 @@ import { ChipModule } from 'primeng/chip';
 import { TagModule } from 'primeng/tag';
 import {ToastModule} from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
-
+import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';
+import { TabViewModule } from 'primeng/tabview';
+import { SkeletonModule } from 'primeng/skeleton';
+
 
 import { SharedModule } from '../shared/shared.module'
 
@@ -71,6 +74,9 @@ const routes:Route[] = [
     BecomesellerComponent
   ],
   imports: [
+    SkeletonModule,
+    TabViewModule,
+    DropdownModule,
     PasswordModule,
     GoogleSigninButtonModule,
     SocialLoginModule,

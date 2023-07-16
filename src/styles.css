@@ -13,7 +13,7 @@ body {
   padding: 0;
   width: 100%;
   font-family: 'Nunito', sans-serif;
-  color: #666;
+  color: #000;
   background: #E6F0EB;
 }
 
@@ -47,6 +47,26 @@ body {
 }
 
 /** ng prime componets style overriding */
+.p-tabview .p-tabview-nav,
+.p-tabview .p-tabview-nav li .p-tabview-nav-link,
+.p-tabview .p-tabview-panels,
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+  background: transparent;
+  color:#000;
+  border-color: #000;
+}
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+  background:red;
+}
+.p-dropdown:not(.p-disabled):hover{
+  border: 2px solid rgb(200, 200, 200);
+}
+.p-dropdown {
+  background-color: transparent !important;
+}
+.p-steps .p-steps-item .p-menuitem-link {
+  background: transparent !important;
+}
 .p-password,.p-inputtext{
   width: 100%;
 }
