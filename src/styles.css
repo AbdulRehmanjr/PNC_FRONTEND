@@ -16,10 +16,7 @@ body {
   color: #000;
   background: #E6F0EB;
 }
-:is(a,.nav-link):hover{
-  background-color: blue;
-  color:#fff;
-}
+
 a,.nav-link{
   color:#000;
   text-decoration: none;
@@ -54,7 +51,7 @@ a,.nav-link{
   font-weight: 700;
 }
 .sidebar-height{
-  height: 90.3vh;
+  height: 88.4vh;
 }
 
 /** ng prime componets style overriding */

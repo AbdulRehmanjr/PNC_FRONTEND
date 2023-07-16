@@ -4,7 +4,10 @@
   font-size: 20px;
 }
 .active{
-  background-color: rgb(0, 26, 255);
-  color: #fff;
-
+  background-color: #d5eaff;
+  color: #000;
+}
+:is(a,.nav-link):hover{
+  background-color: #c7e3ff;
+  color: #000;
 }
