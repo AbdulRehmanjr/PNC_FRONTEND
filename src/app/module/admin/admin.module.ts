@@ -2,15 +2,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+
+
+import { TableModule } from 'primeng/table';
+
+
 import { AdminComponent } from './admin.component';
 import { AdminHeaderComponent } from '../../components/admin/admin-header/admin-header.component';
 import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminDashboardComponent } from '../../components/admin/admin-dashboard/admin-dashboard.component';
+import { SellerrequestsComponent } from '../../components/admin/sellerrequests/sellerrequests.component';
+import { TagModule } from 'primeng/tag';
 
 
 const routes:Routes = [
   {path:'admin-dashboard',component:AdminComponent,children:[
-    {path:'',component:AdminDashboardComponent}
+    {path:'',component:AdminDashboardComponent},
+    {path:'requests',component:SellerrequestsComponent}
   ]}
 ]
 @NgModule({
@@ -18,9 +26,12 @@ const routes:Routes = [
     AdminComponent,
     AdminHeaderComponent,
     AdminSidebarComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    SellerrequestsComponent
   ],
   imports: [
+    TagModule,
+    TableModule,
     RouterModule.forChild(routes),
     HttpClientModule,
     CommonModule
