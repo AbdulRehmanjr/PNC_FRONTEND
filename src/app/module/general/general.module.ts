@@ -59,7 +59,7 @@ const routes:Route[] = [
   {path:'become-seller',component:BecomesellerComponent},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
-  {path:'',redirectTo:'home',pathMatch:'full'}
+ // {path:'',redirectTo:'home',pathMatch:'full'}
 ]
 
 @NgModule({

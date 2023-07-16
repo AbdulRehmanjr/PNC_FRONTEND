@@ -32,10 +32,10 @@ export class BecomesellerComponent implements OnInit {
       address: new FormControl('',[Validators.required]),
       firstName : new FormControl('',[Validators.required]),
       lastName: new FormControl('',[Validators.required]),
-      email:new FormControl('',[Validators.required])
+      email:new FormControl('',[Validators.required,Validators.email])
     })
   }
-  changeTab(){
-    this.activeIndex++
+  changeTab(index:number){
+    this.activeIndex = this.activeIndex + index
   }
 }

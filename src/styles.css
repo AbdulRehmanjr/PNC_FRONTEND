@@ -5,16 +5,24 @@ html {
 }
 
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: 'Nunito', sans-serif;
+  font-family:'Times New Roman', Times, serif;
   color: #000;
   background: #E6F0EB;
+}
+:is(a,.nav-link):hover{
+  background-color: blue;
+  color:#fff;
+}
+a,.nav-link{
+  color:#000;
+  text-decoration: none;
 }
 
 .margin-top {
@@ -45,8 +53,17 @@ body {
   color: black;
   font-weight: 700;
 }
+.sidebar-height{
+  height: 90.3vh;
+}
 
 /** ng prime componets style overriding */
+p-tabview-title{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 700;
+  text-transform: capitalize;
+
+}
 .p-tabview .p-tabview-nav,
 .p-tabview .p-tabview-nav li .p-tabview-nav-link,
 .p-tabview .p-tabview-panels,
@@ -56,6 +73,7 @@ body {
   border-color: #000;
 }
 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link{
+  color: #fff;
   background:red;
 }
 .p-dropdown:not(.p-disabled):hover{

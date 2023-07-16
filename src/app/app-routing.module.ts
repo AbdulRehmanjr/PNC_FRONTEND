@@ -7,14 +7,19 @@ import { UserModule } from './module/user/user.module';
 
 
 import { CategoryDetailComponent } from './components/general/category-detail/category-detail.component';
+import { AdminModule } from './module/admin/admin.module';
+import { AdminComponent } from './module/admin/admin.component';
 
 
 const routes:Route[] =[
-  {path:'category-detail',component:CategoryDetailComponent}
+  {path:'admin-dashboard',component:AdminComponent},
+  {path:'category-detail',component:CategoryDetailComponent},
+  {path:'',redirectTo:'admin-dashboard',pathMatch:'full'}
 ]
 @NgModule({
   declarations: [],
   imports: [
+    AdminModule,
     UserModule,
     GeneralModule,
     RouterModule.forRoot(routes),

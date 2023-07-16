@@ -35,12 +35,12 @@
                 <small class="text-danger">Please provide business address.</small>
               </ng-container>
             </div>
-            <button class="btn btn-success" (click)="changeTab()">Next</button>
+            <button class="btn btn-danger" (click)="changeTab(+1)">Next</button>
           </p-tabPanel>
           <p-tabPanel header="Personal Info">
             <div class="inputGroup">
               <input type="text" required="" autocomplete="off" formControlName="firstName">
-              <label for="name">Enter First Name</label>
+              <label for="fistName">Enter First Name</label>
               <ng-container
                 *ngIf="businessForm.get('firstName').touched && businessForm.get('firstName').invalid">
                 <small class="text-danger">Please provide first name.</small>
@@ -48,21 +48,25 @@
             </div>
             <div class="inputGroup">
               <input type="text" required="" autocomplete="off" formControlName="lastName">
-              <label for="name">Enter Last Name</label>
+              <label for="lastName">Enter Last Name</label>
               <ng-container
                 *ngIf="businessForm.get('lastName').touched && businessForm.get('lastName').invalid">
                 <small class="text-danger">Please provide last name.</small>
               </ng-container>
             </div>
             <div class="inputGroup">
-              <input type="email" required="" autocomplete="off" formControlName="email">
-              <label for="name">Enter Business Email</label>
+              <input type="text" required="" autocomplete="off" formControlName="email">
+              <label for="email">Enter Business Email</label>
               <ng-container
                 *ngIf="businessForm.get('email').touched && businessForm.get('email').invalid">
                 <small class="text-danger">Please provide business email.</small>
               </ng-container>
             </div>
-            <button class="btn btn-success" (click)="changeTab()">Next</button>
+            <div class="button_group">
+              <button class="btn btn-danger" (click)="changeTab(-1)">previous</button>
+              <button class="btn btn-danger" (click)="changeTab(+1)">Next</button>
+            </div>
+
           </p-tabPanel>
           <p-tabPanel header="Header III">
             <p>
@@ -73,7 +77,11 @@
               expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
               minus.
             </p>
-            <button class="btn btn-success" (click)="changeTab()">Next</button>
+            <div class="button_group">
+              <button class="btn btn-danger" (click)="changeTab(-1)">Previous</button>
+              <button class="btn btn-danger" type="submit">Submit</button>
+            </div>
+
           </p-tabPanel>
         </p-tabView>
       </form>
@@ -85,11 +93,11 @@
           <div class="card rounded-3 bg-white d-flex flex-row position">
             <img class="card_img" src="assets/seller/card_business.png" alt="card_img">
             <div class="container_detail">
-              <p class="business_name m-0">{{businessForm.get('businessName').value ?
+              <p class="business_name m-0"> <i class="fa-solid fa-suitcase"></i> {{businessForm.get('businessName').value ?
                 businessForm.get('businessName').value: 'Business Name'}}</p>
-              <p class="more_detail m-0">{{businessForm.get('category').value ?
+              <p class="more_detail m-0"><i class="fa-solid fa-list-check"></i> {{businessForm.get('category').value ?
                 businessForm.get('category').value: 'Business Category'}}</p>
-              <p class="more_detail address m-0">{{businessForm.get('address').value ?
+              <p class="more_detail address m-0"><i class="fa-solid fa-location-dot"></i> {{businessForm.get('address').value ?
                 businessForm.get('address').value: 'Business Address'}}</p>
             </div>
           </div>
@@ -101,31 +109,19 @@
                 <!-- <label class="avatar"></label> -->
                 <img class="card_img" src="assets/seller/user_info.png" alt="card_img">
                 <div class="container_detail mt-3">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <ng-container *ngIf="!businessForm.get('firstName').value else FirstName">
-                        <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
-                      </ng-container>
-                      <ng-template #FirstName>
-                        <p class="more_detail m-0 fs-5">
-                          {{businessForm.get('firstName').value }}
-                        </p>
-                      </ng-template>
-                    </div>
-                    <div class="col-md-6">
-                      <ng-container *ngIf="!businessForm.get('lastName').value else LastName">
-                        <p-skeleton width="5rem" styleClass="mb-2"></p-skeleton>
-                      </ng-container>
-                      <ng-template #LastName>
-                        <p class="more_detail m-0 fs-5">
-                          {{businessForm.get('lastName').value }}
-                        </p>
-                      </ng-template>
-                    </div>
-                  </div>
+                  <p class="more_detail">
+                    <i class="fa-solid fa-user"></i> {{businessForm.get('firstName').value ?
+                    businessForm.get('firstName').value: 'First Name'}}  {{businessForm.get('lastName').value ?
+                    businessForm.get('lastName').value: 'Last Name'}}
+                  </p>
+                  <p class="more_detail">
+                    <i class="fa-solid fa-envelope"></i> {{businessForm.get('email').value ?
+                    businessForm.get('email').value: 'example@gmail.com'}}
+                  </p>
+
                 </div>
               </div>
-          <img src="assets/seller/map.svg" class="map_img map_position" alt="map_serach">
+          <img src="assets/seller/info_card.svg" class="map_img map_position" alt="map_serach">
         </ng-container>
       </aside>
     </div>
