@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
-
+//* ng modules
+import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
 
-
+//* compoenents
 import { AdminComponent } from './admin.component';
 import { AdminHeaderComponent } from '../../components/admin/admin-header/admin-header.component';
 import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminDashboardComponent } from '../../components/admin/admin-dashboard/admin-dashboard.component';
 import { SellerrequestsComponent } from '../../components/admin/sellerrequests/sellerrequests.component';
-import { TagModule } from 'primeng/tag';
+
 
 
 const routes:Routes = [
@@ -30,6 +32,7 @@ const routes:Routes = [
     SellerrequestsComponent
   ],
   imports: [
+    DialogModule,
     TagModule,
     TableModule,
     RouterModule.forChild(routes),
