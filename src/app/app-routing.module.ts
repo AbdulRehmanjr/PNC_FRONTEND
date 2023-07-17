@@ -12,9 +12,9 @@ import { AdminComponent } from './module/admin/admin.component';
 
 
 const routes:Route[] =[
-  {path:'admin-dashboard',component:AdminComponent},
+  {path:'home',component:AdminComponent},
   {path:'category-detail',component:CategoryDetailComponent},
-  {path:'',redirectTo:'admin-dashboard',pathMatch:'full'}
+  {path:'',redirectTo:'home',pathMatch:'full'}
 ]
 @NgModule({
   declarations: [],

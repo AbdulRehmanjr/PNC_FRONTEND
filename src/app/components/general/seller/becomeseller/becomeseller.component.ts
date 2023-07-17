@@ -11,8 +11,9 @@ export class BecomesellerComponent implements OnInit {
   businessForm: FormGroup
   activeIndex:number = 1
   cities:any
-  selectedOption: string;
-  showOptions = false;
+  selectedOption: string
+  showOptions:boolean = false
+  isRequested:boolean = true
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.cities = [

@@ -115,5 +115,8 @@ p{
   margin-top: 33px;
   width: 85px;
 }
-
-
+.requested-img{
+  margin: 20% 0 0 0;
+  height: 350px;
+  aspect-ratio: 16/9;
+}

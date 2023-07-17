@@ -30,7 +30,7 @@
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="name" style="width: 5rem">
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-row">
             Name
             <p-sortIcon field="name"></p-sortIcon>
             <p-columnFilter
@@ -42,12 +42,12 @@
           </div>
         </th>
         <th style="width: 6rem">
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-row">
             Picture
           </div>
         </th>
         <th pSortableColumn="requestedDate" style="width: 5rem">
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-row">
             Date Requested
             <p-sortIcon field="requestedDate"></p-sortIcon>
             <p-columnFilter
@@ -59,7 +59,7 @@
           </div>
         </th>
         <th pSortableColumn="status" style="width: 2rem">
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex flex-row">
             Status
             <p-sortIcon field="status"></p-sortIcon>
             <p-columnFilter
@@ -118,10 +118,10 @@
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <img
-          class="request-img rounded-5"
-          src="{{ selectedSeller?.picture }}"
-          alt="seller picture"
-        />
+            class="request-img rounded-5"
+            src="{{ selectedSeller?.picture }}"
+            alt="seller picture"
+          />
         </div>
         <div class="col-md-6">
           <label for="fistName">First Name</label>
@@ -133,25 +133,64 @@
         </div>
         <div class="col-md-6">
           <label for="date">Date Requested</label>
-          {{selectedSeller?.requestedDate}}
+          {{ selectedSeller?.requestedDate }}
         </div>
         <div class="col-md-6">
           <label for="status">Status of Request</label>
           <p-tag
-          [value]="getValue(selectedSeller.status)"
-          [severity]="getSeverity(selectedSeller.status)"
-        ></p-tag>
+            [value]="getValue(selectedSeller.status)"
+            [severity]="getSeverity(selectedSeller.status)"
+          ></p-tag>
         </div>
         <div class="col-sm-6 offset-sm-4">
-          <button class="btn btn-outline-success mx-2" (click)="showActionDialog(isAccepted = true)">
+          <button
+            class="btn btn-outline-success mx-2"
+            (click)="requestAction()"
+          >
             <i class="fas fa-circle-check"></i>
             Accept
           </button>
-          <button class="btn btn-outline-danger mx-2" (click)="showActionDialog(isAccepted =false)">
+          <button
+            class="btn btn-outline-danger mx-2"
+            (click)="showActionDialog((isAccepted = false))"
+          >
             <i class="fa-solid fa-circle-xmark"></i>
             Reject
           </button>
         </div>
+      </div>
+    </ng-template>
+  </p-dialog>
+  <p-dialog
+    header="Rejection Detail"
+    [modal]="true"
+    [(visible)]="actionDialog"
+    styleClass="w-50"
+  >
+    <ng-template pTemplate="body">
+      <div class="mb-3">
+        <form [formGroup]="rejectionForm" (ngSubmit)="requestAction()">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Enter the Reason of Rejection</label
+          >
+          <textarea
+            formControlName="rejection"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+          <ng-container
+            *ngIf="
+              rejectionForm.get('rejection').invalid &&
+              rejectionForm.get('rejection').touched
+            "
+          >
+            <div class="text-danger">Please provide Reason</div>
+          </ng-container>
+          <button class="btn btn-outline-success m-2" type="submit" [disabled]="rejectionForm.invalid">
+            Submit
+          </button>
+        </form>
       </div>
     </ng-template>
   </p-dialog>

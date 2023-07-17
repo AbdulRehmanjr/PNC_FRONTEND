@@ -14,6 +14,7 @@ import { AdminHeaderComponent } from '../../components/admin/admin-header/admin-
 import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminDashboardComponent } from '../../components/admin/admin-dashboard/admin-dashboard.component';
 import { SellerrequestsComponent } from '../../components/admin/sellerrequests/sellerrequests.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,6 +33,7 @@ const routes:Routes = [
     SellerrequestsComponent
   ],
   imports: [
+    ReactiveFormsModule,
     DialogModule,
     TagModule,
     TableModule,

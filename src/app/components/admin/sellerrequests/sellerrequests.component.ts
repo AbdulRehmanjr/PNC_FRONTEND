@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sellerrequests',
   templateUrl: './sellerrequests.component.html',
   styleUrls: ['./sellerrequests.component.css'],
 })
-export class SellerrequestsComponent {
+export class SellerrequestsComponent implements OnInit{
 
+  rejectionForm:FormGroup
   isAccepted:boolean
   requestDialog: boolean = false
   actionDialog:boolean = false
@@ -86,6 +88,18 @@ export class SellerrequestsComponent {
     },
   ];
 
+  constructor(private fb:FormBuilder){}
+
+  ngOnInit(){
+    this.createForm()
+  }
+
+  createForm(){
+    this.rejectionForm = this.fb.group({
+      rejection : new FormControl('',[Validators.required])
+    })
+  }
+
   getValue(value: boolean) {
     switch (value) {
       case true:
@@ -114,6 +128,10 @@ export class SellerrequestsComponent {
   }
 
   showActionDialog(status:boolean){
+    this.actionDialog = true
+  }
+
+  requestAction(){
 
   }
 }

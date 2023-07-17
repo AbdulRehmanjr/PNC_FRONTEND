@@ -13,7 +13,19 @@ aside{
   background-color: #d5eaff;
   color: #000;
 }
-:is(a,.nav-link):hover{
+a{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+:is(a,.nav-link):hover,.nav-pills .nav-link.active{
   background-color: #c7e3ff;
   color: #000;
+}
+.nav-item{
+  margin:10px;
+}
+.icon{
+  margin:1px 2px;
+  width: 24px;
+  height: 24px;
 }

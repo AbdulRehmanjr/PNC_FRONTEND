@@ -102,6 +102,7 @@ p-tabview-title{
 
 .p-datatable .p-datatable-thead>tr>th {
   background-color: #EAF3EE;
+  padding: 0;
 }
 
 .p-button {
