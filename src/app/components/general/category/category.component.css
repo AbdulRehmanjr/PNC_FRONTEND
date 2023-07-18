@@ -1,14 +1,15 @@
 
 .title{
-  font-family: 'Times New Roman', Times, serif;
-  font-size:30px;
+  font-family: 'Lora', serif;
+  font-size:22px;
   font-weight: 500;
   color: #000000;
 }
 img{
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   margin: auto;
+  ;
 }
 a{
   text-decoration: none;
@@ -16,4 +17,70 @@ a{
 a:hover{
   box-shadow: 0 0 10px 0 #00000026;
 
+}
+
+/* CARD  */
+.card {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 14px;
+  z-index: 1111;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  ;
+}
+
+.bg {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  width: 190px;
+  height: 190px;
+  z-index: 2;
+  background: rgba(255, 255, 255, .95);
+  backdrop-filter: blur(24px);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid white;
+}
+
+.blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  opacity: 1;
+  filter: blur(12px);
+  animation: blob-bounce 5s infinite ease;
+}
+
+@keyframes blob-bounce {
+  0% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
+
+  25% {
+    transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+  }
+
+  50% {
+    transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+  }
+
+  75% {
+    transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+  }
+
+  100% {
+    transform: translate(-100%, -100%) translate3d(0, 0, 0);
+  }
 }

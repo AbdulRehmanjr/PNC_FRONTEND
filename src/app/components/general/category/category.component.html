@@ -5,16 +5,21 @@
     </div>
   </div>
   <div class="row">
-    <ng-container *ngFor="let num of categories">
+    <ng-container *ngFor="let category of categories">
       <div class="col-md-3 my-2">
-        <a
-          class="card card-cover h-100 overflow-hidden rounded-5" routerLink="/category-detail"
-        >
-          <div class="text-center d-flex flex-column m-auto p-3">
-            <img src="assets/intro/house.jpg" alt="class icon"  style="border:none; border-radius: 50%;">
-            <p class="title">Category-1</p>
+        
+        <a class="card">
+          <div class="bg">
+            <div class="text-center d-flex flex-column m-auto p-3">
+              <img src="{{category.picture}}" alt="class icon"  style="border:none; border-radius: 50%;">
+             <br> <p class="title">{{category.categoryName}}</p>
+            </div>
+            
           </div>
+          <div class="blob"></div>
         </a>
+        
+       
       </div>
     </ng-container>
 

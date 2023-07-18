@@ -13,7 +13,7 @@ export class BecomesellerComponent implements OnInit {
   cities:any
   selectedOption: string
   showOptions:boolean = false
-  isRequested:boolean = true
+  isRequested:boolean = false
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.cities = [

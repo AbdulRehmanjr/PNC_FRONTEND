@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BusinessCategory } from 'src/app/class/business-category';
 
 @Component({
   selector: 'general-category',
@@ -7,5 +8,21 @@ import { Component } from '@angular/core';
 })
 export class CategoryComponent {
 
-  categories:number[] = [1,2,3,4,5,6,7,8,9]
+  categories:BusinessCategory[] = [
+    {
+      categoryId:1,
+      categoryName:'Resturant',
+      picture:'assets/category/Restaurant.png'
+    },
+    {
+      categoryId:2,
+      categoryName:'Home Services',
+      picture:'assets/category/HomeServices.png'
+    },
+    {
+      categoryId:3,
+      categoryName:'Automobile',
+      picture:'assets/category/Automobile.png'
+    },
+  ]
 }
