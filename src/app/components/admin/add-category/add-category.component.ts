@@ -55,7 +55,10 @@ export class AddCategoryComponent {
       {
         next:(response:any) => {},
         error:(err:any) => console.log(err),
-        complete:() => this.showDialog = false
+        complete:() => {
+          this.fetchCategories()
+          this.showDialog = false
+        }
       }
     )
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BusinessCategory } from 'src/app/class/business-category';
+import { Category } from 'src/app/class/category';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'general-category',
@@ -8,21 +9,21 @@ import { BusinessCategory } from 'src/app/class/business-category';
 })
 export class CategoryComponent {
 
-  categories:BusinessCategory[] = [
-    {
-      categoryId:1,
-      categoryName:'Resturant',
-      picture:'assets/category/Restaurant.png'
-    },
-    {
-      categoryId:2,
-      categoryName:'Home Services',
-      picture:'assets/category/HomeServices.png'
-    },
-    {
-      categoryId:3,
-      categoryName:'Automobile',
-      picture:'assets/category/Automobile.png'
-    },
-  ]
+  categories:Category[]
+
+  constructor(private categoryService:CategoryService){}
+
+  ngOnInit(){
+    this.fetchCategories()
+  }
+
+  fetchCategories(){
+    this.categoryService.getAllCategories().subscribe({
+      next: (response: Category[]) => this.categories = response,
+      error: (err: any) => console.log(err),
+      complete: () => {
+
+      }
+    })
+  }
 }

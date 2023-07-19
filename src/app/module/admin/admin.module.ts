@@ -8,6 +8,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToolbarModule } from 'primeng/toolbar';
+import { BadgeModule } from 'primeng/badge';
 
 //* compoenents
 import { AdminComponent } from './admin.component';
@@ -37,6 +38,7 @@ const routes:Routes = [
     AddCategoryComponent
   ],
   imports: [
+    BadgeModule,
     ToolbarModule,
     ReactiveFormsModule,
     DialogModule,
