@@ -1,0 +1,115 @@
+<section id="add-categories" class="mx-auto w-50">
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <button (click)="displayDialog()">Add New</button>
+    </ng-template>
+  </p-toolbar>
+  <p-table
+    #dt
+    [value]="categories"
+    dataKey="categoryId"
+    [responsive]="true"
+    [rowHover]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="['categoryName']"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        List of Categories
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            (input)="dt.filterGlobal($event.target['value'], 'contains')"
+            placeholder="Global Search"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="categoryId" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Id
+            <p-sortIcon field="categoryId"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="categoryId"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="cateoryName" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Name
+            <p-sortIcon field="categoryName"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="categoryName"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th style="width: 6rem">
+          <div class="d-flex flex-row">Picture</div>
+        </th>
+        <th style="width: 1rem">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-category>
+      <tr class="p-selectable-row">
+        <td>
+          {{ category.categoryId }}
+        </td>
+        <td>
+          {{ category.categoryName }}
+        </td>
+        <td>
+          <img class="picture" src="{{ category.picture }}" />
+        </td>
+        <td style="text-align: center">
+          <button type="button" class="btn btn-outline-success">
+            <i class="fa-solid fa-circle-check" style="color: #00ff11"></i>
+            Edit
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No category found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <p-dialog header="Add Category" [(visible)]="showDialog" [style]="{width: '50vw'}">
+    <ng-template pTemplate="body">
+      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+        <div class="inputGroup">
+          <input type="text" required="" autocomplete="off" formControlName="name">
+          <label for="name">Enter Category Name</label>
+          <ng-container
+            *ngIf="categoryForm.get('name').touched && categoryForm.get('name').invalid">
+            <small class="text-danger">Please provide category name.</small>
+          </ng-container>
+        </div>
+        <div class="inputGroup">
+          <input type="file" required="" autocomplete="off" formControlName="picture" (change)="selectFile($event)">
+          <ng-container
+            *ngIf="categoryForm.get('picture').touched && categoryForm.get('picture').invalid">
+            <small class="text-danger">Please provide picture.</small>
+          </ng-container>
+        </div>
+        <button class="btn btn-outline-danger" [disabled]="categoryForm.invalid">
+          Submit
+        </button>
+      </form>
+    </ng-template>
+  </p-dialog>
+</section>

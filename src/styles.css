@@ -96,7 +96,7 @@ p-tabview-title{
 }
 
 .p-datatable .p-datatable-header {
-  background: #007437;
+  background: #F30D14;
   color: #fff;
 }
 
@@ -106,13 +106,13 @@ p-tabview-title{
 }
 
 .p-button {
-  background: #007437;
-  border: #007437;
+  background: #F30D14;
+  border: #F30D14;
 }
 
 .p-button:enabled:hover {
-  background: #007437;
-  border: #007437;
+  background: #F30D14;
+  border: #F30D14;
 
 }
 
@@ -123,11 +123,11 @@ p-tabview-title{
 }
 
 .p-picklist .p-picklist-list .p-picklist-item.p-highlight {
-  color: #007437;
+  color: #F30D14;
 }
 
 .p-picklist .p-picklist-header {
-  background-color: #007437;
+  background-color: #F30D14;
   color: #fff;
 
 }

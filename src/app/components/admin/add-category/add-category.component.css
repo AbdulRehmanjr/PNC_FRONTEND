@@ -1,0 +1,47 @@
+.inputGroup {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 1em 0 1em 0;
+  position: relative;
+}
+
+.inputGroup input, .inputGroup select {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.inputGroup :is(input:focus, input:valid,select:focus,select:focus)~label {
+  transform: translateY(-50%) scale(.9);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: #fff;
+}
+
+.inputGroup :is(input:focus, input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+.inputGroup :is(input:focus, input:valid),
+.inputGroup :is(select:focus, select:valid) {
+  border-color: rgb(150, 150, 200);
+}
+
+.picture{
+  width: 50px;
+  height: 50px;
+}

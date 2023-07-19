@@ -6,3 +6,6 @@
 .notifications i{
   font-size:20px;
 }
+.dropdown-toggle::after{
+  content: none;
+}

@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
+import { ToolbarModule } from 'primeng/toolbar';
 
 //* compoenents
 import { AdminComponent } from './admin.component';
@@ -15,13 +16,15 @@ import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admi
 import { AdminDashboardComponent } from '../../components/admin/admin-dashboard/admin-dashboard.component';
 import { SellerrequestsComponent } from '../../components/admin/sellerrequests/sellerrequests.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddCategoryComponent } from '../../components/admin/add-category/add-category.component';
 
 
 
 const routes:Routes = [
   {path:'admin-dashboard',component:AdminComponent,children:[
     {path:'',component:AdminDashboardComponent},
-    {path:'requests',component:SellerrequestsComponent}
+    {path:'requests',component:SellerrequestsComponent},
+    {path:'category',component:AddCategoryComponent}
   ]}
 ]
 @NgModule({
@@ -30,9 +33,11 @@ const routes:Routes = [
     AdminHeaderComponent,
     AdminSidebarComponent,
     AdminDashboardComponent,
-    SellerrequestsComponent
+    SellerrequestsComponent,
+    AddCategoryComponent
   ],
   imports: [
+    ToolbarModule,
     ReactiveFormsModule,
     DialogModule,
     TagModule,
