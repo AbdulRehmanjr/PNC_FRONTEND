@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Category } from 'src/app/class/category';
+import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-becomeseller',
@@ -9,34 +11,41 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class BecomesellerComponent implements OnInit {
 
   businessForm: FormGroup
-  activeIndex:number = 1
+  activeIndex:number = 0
   cities:any
   selectedOption: string
   showOptions:boolean = false
   isRequested:boolean = false
-  constructor(private fb: FormBuilder) { }
+  categories:Category[]
+
+  constructor(private fb: FormBuilder,private categoryService:CategoryService) { }
+
   ngOnInit(): void {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' }
-  ];
+    this.fetchCategories()
     this.createForm()
   }
 
   createForm() {
     this.businessForm = this.fb.group({
       businessName: new FormControl('', [Validators.required]),
-      category: new FormControl('',[Validators.required]),
+      category: new FormControl(0,[Validators.required]),
       address: new FormControl('',[Validators.required]),
       firstName : new FormControl('',[Validators.required]),
       lastName: new FormControl('',[Validators.required]),
       email:new FormControl('',[Validators.required,Validators.email])
     })
   }
+
+  fetchCategories(){
+    this.categoryService.getAllCategories().subscribe({
+      next: (response: Category[]) => this.categories = response,
+      error: (err: any) => console.log(err),
+      complete: () => {}
+    })
+  }
+
   changeTab(index:number){
     this.activeIndex = this.activeIndex + index
   }
+
 }

@@ -31,14 +31,14 @@
                 </ng-container>
               </div>
               <div class="inputGroup">
-                <div class="inputGroup">
-                  <select class="custom-select" formControlName="category" >
-                    <!-- <option value=""></option> -->
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
+
+                  <select class="custom-select" formControlName="category" required="" >
+                    <ng-container *ngFor="let category of categories">
+                      <option value="{{category.categoryId}}">{{category.categoryName}}</option>
+                    </ng-container>
                   </select>
-                  <label>Select an option</label>
-                </div>
+                  <label>Select a Category</label>
+
                <ng-container *ngIf="businessForm.get('category').touched && businessForm.get('category').invalid">
                   <small class="text-danger">Please provide business category.</small>
                 </ng-container>
