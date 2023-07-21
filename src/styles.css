@@ -115,7 +115,11 @@ p-tabview-title{
   border: #F30D14;
 
 }
-
+.p-fileupload-choose:not(.p-disabled):active {
+  background: #F30D14;
+  color: #ffffff;
+  border-color: #F30D14;
+}
 .p-dialog {
   position: fixed;
   top: 8%;
@@ -134,4 +138,9 @@ p-tabview-title{
 
 .p-datatable .p-datatable-thead>tr>th {
   background-color: #EAF3EE;
+}
+
+.p-avatar.p-avatar-xl{
+  width: 6rem;
+  height: 6rem;
 }

@@ -1,126 +1,32 @@
-<section>
-    <div class="row bg-light">
-      <div class="col d-none d-md-flex justify-content-evenly container-info">
-        <img class="img-fluid user_avatar rounded-4" src="assets/intro/house.jpg" alt="user profile"  loading="lazy">
-        <div class="container-details mt-4">
-          <h1 class="user_name">Spy dev</h1>
-          <p>From Ghakar Mandi,Pakistan</p>
-          <div class="social-list d-flex">
-            <div class="users mx-2">
-              <i class="fa-solid fa-user"></i>
-              1000+ Friends
-            </div>
-            <div class="reviews mx-2">
-              <i class="fa-solid fa-star"></i>
-              32 reviews
-            </div>
-            <div class="posts mx-2">
-              <i class="fa-solid fa-camera"></i>
-              12
-              Posts
-            </div>
-          </div>
-        </div>
-        <div class="additional mt-4">
-          <ul>
-            <li>Add Friends</li>
-            <li>Compliments</li>
-            <li>Send Message</li>
-            <li>Follow</li>
-          </ul>
-        </div>
+<div class="row">
+  <div class="col-md-3 m-3">
+    <div class="card rounded-4 bg-danger">
+      <div class="avatar">
+        <p-avatar [image]="user['photoUri']"
+      styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
       </div>
-      <div class="col d-sm-block d-md-none mt-5 text-center">
-        <img class="img-fluid user_avatar_mobile rounded-4" src="assets/intro/house.jpg" alt="user profile"  loading="lazy">
-        <div class="container-details mt-4">
-          <h1 class="user_name">Spy dev</h1>
-          <p>From Ghakar Mandi,Pakistan</p>
-          <div class="social-list d-flex">
-            <div class="users mx-2">
-              <i class="fa-solid fa-user"></i>
-              1000+ Friends
-            </div>
-            <div class="reviews mx-2">
-              <i class="fa-solid fa-star"></i>
-              32 reviews
-            </div>
-            <div class="posts mx-2">
-              <i class="fa-solid fa-camera"></i>
-              12
-              Posts
-            </div>
+      <div class="card rounded-4 bg-white text-center p-4">
+        <h1 class="m-0">spy dev</h1>
+        <h4 class="m-0">address</h4>
+        <div class="profile_info d-flex justify-content-center">
+          <div class="users mx-2">
+            <i class="fa-solid fa-user"></i>
+            1000+
+          </div>
+          <div class="reviews mx-2">
+            <i class="fa-solid fa-star"></i>
+            32
+          </div>
+          <div class="posts mx-2">
+            <i class="fa-solid fa-camera"></i>
+            12
           </div>
         </div>
-        <div class="additional mt-4">
-          <ul>
-            <li>Add Friends</li>
-            <li>Compliments</li>
-            <li>Send Message</li>
-            <li>Follow</li>
-          </ul>
+        <div class="buttons d-flex justify-content-center">
+          threeicons
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2 sticky_top">
-        <div class="d-flex flex-column flex-shrink-0 p-3">
-          <a href="/!" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none">
-            <span class="fs-5 fw-bold px-2">Spy's profile</span>
-          </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-circle-user"></i>
-              Profile
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile/friends" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-users"></i>
-              Friends
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-camera-rotate"></i>
-              Posts
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-star"></i>
-              Reviews
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-medal"></i>
-              Compliments
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-lightbulb"></i>
-              Tips
-            </a>
-          </li>
-          <li>
-            <a routerLink="/userprofile" routerLinkActive="active" class="nav-link link ">
-              <i class="fa-solid fa-star"></i>
-              Followings
-            </a>
-          </li>
-        </ul>
-        <hr>
-        </div>
-      </div>
-      <div class="col-md-8 mt-3">
-        <router-outlet></router-outlet>
-      </div>
-      <div class="col-md-2">
-        some other data here
-
-      </div>
-    </div>
-</section>
+  </div>
+  <div class="col-md-5 m-3"></div>
+</div>
