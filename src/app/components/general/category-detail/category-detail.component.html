@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-2 bg-white rounded-3 mt-2 mx-2">
+  <aside class="col-md-2 bg-white rounded-3 mt-2 mx-2">
     <div class="section_filter">
       <p class="heading_filter">Filters</p>
       <div class="btn-group">
@@ -119,12 +119,12 @@
       </div>
 
     </div>
-  </div>
-  <div class="col-md-9 rounded-4 mt-2 mx-5">
+  </aside>
+  <section class="col-md-9 rounded-4 mt-2 mx-5">
     <h1 class="fw-bold">Category Heading</h1>
 
     <ng-container *ngFor="let category of categories">
-      <div class="card card-cover rounded-5  my-3">
+      <a href="!#" class="card rounded-5  my-3">
         <div class="row my-2">
           <div class="col-4">
             <img src="assets/intro/house.jpg" class="img-fluid rounded-4 item_image" alt="category detail image">
@@ -149,7 +149,7 @@
 
           </div>
         </div>
-      </div>
+      </a>
     </ng-container>
-  </div>
+  </section>
 </div>

@@ -4,3 +4,8 @@
   top:40px;
   z-index: 10000;
 }
+
+.card-i-sm{
+  width: 20px;
+  height: 20px;
+}

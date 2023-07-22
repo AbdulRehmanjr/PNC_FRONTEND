@@ -8,7 +8,7 @@
     <ng-container *ngFor="let category of categories">
       <div class="col-md-3 my-2">
 
-        <a class="card">
+        <a class="card" routerLink="/home/category-detail">
           <div class="bg">
             <div class="text-center d-flex flex-column m-auto p-3">
               <img src="{{category.picture}}" alt="icon"  style="border:none; border-radius: 50%;">

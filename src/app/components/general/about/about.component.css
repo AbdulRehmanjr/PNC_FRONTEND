@@ -1,0 +1,38 @@
+.sec-title{
+  text-transform: uppercase;
+  font-size:1.8rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #E00707;
+}
+
+.pri-title{
+  text-transform: uppercase;
+  font-size:2.3rem;
+  font-style: normal;
+  font-weight: bold;
+  color:#000;
+}
+.brief-para{
+  font-size: 1.5rem;
+  color: #000;
+}
+.btn-about{
+  width: 200px;
+  height: 50px;
+  color:#fff;
+  font-size:1.4rem;
+  font-weight: 700;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  box-shadow: 10px 10px 5px rgba(224, 7, 7, 0.5);
+}
+.btn-about:hover{
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
+}
+.about-img{
+  width: 100%;
+}

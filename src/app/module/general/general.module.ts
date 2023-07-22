@@ -33,6 +33,10 @@ import { LoginComponent } from '../../components/general/login/login.component';
 import { SignupComponent } from '../../components/general/signup/signup.component';
 import { CategoryDetailComponent } from '../../components/general/category-detail/category-detail.component';
 import { BecomesellerComponent } from '../../components/general/seller/becomeseller/becomeseller.component';
+import { DashboardComponent } from '../../components/general/dashboard/dashboard.component';
+import { AboutComponent } from 'src/app/components/general/about/about.component';
+import { TeamComponent } from '../../components/general/team/team.component';
+import { PlatformComponent } from '../../components/general/platform/platform.component';
 
 const LOGINPROVIDER = {
   provide: 'SocialAuthServiceConfig',
@@ -53,7 +57,10 @@ const LOGINPROVIDER = {
 };
 
 const routes: Route[] = [
-  { path: 'home', component: GeneralComponent },
+  { path: 'home', component: GeneralComponent,children:[
+    {path:'',component:DashboardComponent},
+    {path:'category-detail',component:CategoryDetailComponent}
+  ] },
   { path: 'become-seller', component: BecomesellerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -70,6 +77,10 @@ const routes: Route[] = [
     SignupComponent,
     CategoryDetailComponent,
     BecomesellerComponent,
+    DashboardComponent,
+    AboutComponent,
+    TeamComponent,
+    PlatformComponent,
   ],
   imports: [
     FileUploadModule,
