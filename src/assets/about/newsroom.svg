@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="160" viewBox="0 0 350 160">
+  <title></title><defs>
+    <clipPath id="clip-path">
+      <path d="m239.38 131.53-7.16-60.33a9.48 9.48 0 0 1 9.46-9.45h53.86a15.22 15.22 0 0 1 15.18 15.18l7.15 54.6Z" class="cls-1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path d="M239.5 131.53h63.26l-22.08-59.04h-40.87l-.31 59.04z" class="cls-1"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <path d="M95 25h2.8a13.52 13.52 0 0 1 13.54 13.55l-.1 20.27a11.61 11.61 0 0 1-11.65 11.49H81.28l.14-31.88A13.52 13.52 0 0 1 95 25Z" class="cls-1"/>
+    </clipPath>
+    <style>
+      .cls-1,.cls-10,.cls-14,.cls-3{fill:none}.cls-2{fill:#b07156}.cls-14,.cls-3{stroke:#000;stroke-linecap:round}.cls-10,.cls-14,.cls-3{stroke-width:1.5px}.cls-8{fill:#f43939}.cls-10{stroke:#f88888}.cls-10,.cls-14{stroke-miterlimit:10}.cls-16{fill:#a3a1aa}.cls-17{fill:#c9c8cd}.cls-18{fill:#dbdbde}.cls-22{fill:#f4c38e}
+    </style>
+  </defs>
+  <ellipse cx="271.98" cy="21.43" rx="5.3" ry="5.29"/>
+  <ellipse cx="269.77" cy="38.18" rx="5.3" ry="5.29"/>
+  <ellipse cx="276.31" cy="32.61" rx="8.83" ry="8.81"/>
+  <path d="M254.67 4.4h-3.17a15 15 0 0 0-15 15.05l.07 22.55a12.9 12.9 0 0 0 12.94 12.75h20.34l-.15-35.42A15 15 0 0 0 254.67 4.4Z" class="cls-2"/>
+  <path d="M269.88 61.63h-20.34V37.6h20.27l.07 24.03z" class="cls-2"/>
+  <circle cx="251.16" cy="30.69" r="1.25"/>
+  <circle cx="240.12" cy="30.69" r="1.25"/>
+  <path d="M243.7 33.73a23.46 23.46 0 0 1-2.51 4.48 1.15 1.15 0 0 0-.2 1.1 1.17 1.17 0 0 0 .82.78 17 17 0 0 0 3.56.19M241.74 25.63c-1.48-.58-3 0-4.53.18M253.81 25.81c-1.51-.06-3.26-.7-4.91 0" class="cls-3"/>
+  <path d="M237.35 14.39a15 15 0 0 1 14.15-10h3.57c10.7 0 15.95 6 15.39 15.73-.52 9-.7 13.67-.7 13.67h-3.57c-3.05-1-2.49-3.56-2.49-5.33s-.93-3-2.52-4.32-2.59-2.09-2.59-5.44a4.87 4.87 0 0 0-3.31-4.64c-5.42-1.8-13.47-1.9-17.93.33Z"/>
+  <ellipse cx="269.77" cy="32.9" class="cls-2" rx="6.12" ry="6.1"/>
+  <path d="m267 33.33 4.7-3.87" class="cls-3"/>
+  <path fill="none" stroke="#b07156" stroke-linecap="round" stroke-width="1.5" d="M248.93 6.77a11.44 11.44 0 0 0-5.66 8.23"/>
+  <path d="M246.1 46.88s6-.12 8.24-3.41" class="cls-3"/>
+  <path fill="none" stroke="#f9a2a2" stroke-linecap="round" stroke-linejoin="round" stroke-width="30" d="m229.99 76.88-19.88 41.14"/>
+  <path fill="#f9a2a2" d="m227.32 131.53-7.16-60.33a9.48 9.48 0 0 1 9.46-9.45h65.92a15.22 15.22 0 0 1 15.18 15.18l7.15 54.6Z"/>
+  <g clip-path="url(#clip-path)">
+    <path d="M239.74 61.1v33.28h3v-33.6c-1 .09-2 .22-3 .32Z" class="cls-8"/>
+    <path d="M239.81 81.41H284l18.63 50.12H239.5l.31-50.12z" class="cls-8"/>
+    <g clip-path="url(#clip-path-2)">
+      <path d="M294.82 86.13h-60.53M294.82 92.02h-60.53M294.82 97.91h-60.53M294.82 97.91h-60.53M294.82 103.8h-60.53M294.82 109.69h-60.53M294.82 115.58h-60.53M294.82 121.46h-60.53M294.82 127.35h-60.53" class="cls-10"/>
+    </g>
+    <path fill="none" stroke="#f43939" stroke-miterlimit="10" stroke-width="3.5" d="m299.97 130.16-24.92-69.83"/>
+  </g>
+  <path fill="none" stroke="#f9a2a2" stroke-linecap="round" stroke-linejoin="round" stroke-width="27" d="m297.32 75.72 24.84 42.3h-43.53"/>
+  <path fill="none" stroke="#b07156" stroke-linejoin="round" stroke-width="27" d="M301.23 118.02h-36.51"/>
+  <path d="M261.09 104.48h5v27.05h-31.51V131a26.51 26.51 0 0 1 26.51-26.51Z" class="cls-2"/>
+  <path d="M255.23 131.27s-.51-5.16 3.72-6.75" class="cls-14"/>
+  <path d="M256.4 126.88s-.58 3.89 4.45 3.89M242.78 118.51a23.37 23.37 0 0 0-3.59 12.49M248.09 118.51a23.29 23.29 0 0 0-3.6 12.48M253.61 118.51A23.29 23.29 0 0 0 250 131" class="cls-14"/>
+  <path fill="#f9cdcd" d="M286.14 101.81h14.33a1 1 0 0 1 1 1v28.72h-16.33v-28.72a1 1 0 0 1 1-1Z"/>
+  <g id="Layer_15" data-name="Layer 15">
+    <path d="M145.25 91.84h27.63v15.45h-27.63z" class="cls-16"/>
+    <path d="M137.55 95.02h45.96v37.21h-45.96z" class="cls-17"/>
+    <path d="M192.16 95h-8.67v37.24h40.45v-9.68l-15.89-7.2a9.65 9.65 0 0 1-5.53-7.21l-.84-5.09a9.63 9.63 0 0 0-9.52-8.06Z" class="cls-18"/>
+    <rect width="37.97" height="14.35" x="140.08" y="78.17" class="cls-18" rx="2.67"/>
+    <rect width="28.8" height="14.35" x="140.08" y="78.17" class="cls-17" rx="2.67"/>
+    <path fill="#eeeeef" d="M142.49 80.96h23.98v8.77h-23.98z"/>
+  </g>
+  <g id="Layer_16" data-name="Layer 16">
+    <path fill="#fff" d="M18.08 132.23h311.33v16.91H18.08z"/>
+    <path fill="none" stroke="#b6b5bc" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5" d="M18.07 132.23h311.34"/>
+  </g>
+  <path d="M95 25h2.8a13.52 13.52 0 0 1 13.54 13.55l-.1 20.27a11.61 11.61 0 0 1-11.65 11.49H81.28l.14-31.88A13.52 13.52 0 0 1 95 25Z" class="cls-22"/>
+  <path d="M81.26 76.52h18.3V54.89H81.32l-.06 21.63z" class="cls-22"/>
+  <circle cx="100.69" cy="50.62" r="5.5" class="cls-22"/>
+  <path d="m67.79 63.56 4.63-24.21a14.81 14.81 0 0 0 .21-1.88 16.26 16.26 0 0 1 16.2-15.16h9a16.17 16.17 0 0 1 11.5 4.76 16.35 16.35 0 0 1 4.67 11.5h-11.8c0 20.62 9.64 35.38-2.62 34.48l-23.85.15a8.08 8.08 0 0 1-7.94-9.64Z" class="cls-2"/>
+  <path d="M110.65 48a21 21 0 0 0 2.26 4 1.07 1.07 0 0 1-.56 1.7 15.64 15.64 0 0 1-3.21.17Z" class="cls-22"/>
+  <g clip-path="url(#clip-path-3)">
+    <circle cx="110.86" cy="46.22" r="1.13"/>
+    <path fill="none" stroke="#b07156" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5" d="M111.88 43c-1.11-1.11-2.93-.63-4.43 0"/>
+    <path d="M111.24 58.83a2.44 2.44 0 0 1-2.6-1.37" class="cls-14"/>
+  </g>
+  <rect width="34.83" height="6.36" x="72.6" y="75.9" class="cls-16" rx="3.18"/>
+  <path d="M127.72 153H52.54c-.49 0-.9-.61-.9-1.36l4.57-51.39c0-10 5.39-18.11 12-18.11h43.88c6.59 0 12 8.15 12 18.11l4.57 51.39c-.04.79-.44 1.36-.94 1.36Z" class="cls-16"/>
+  <path d="M131.9 91.23a22.28 22.28 0 1 0-14.74 35.37 22.28 22.28 0 1 0 22.57-31 11 11 0 0 1-7.83-4.37Z" class="cls-16"/>
+  <path d="M90.29 107.34a21.44 21.44 0 0 0-38.77-15.82 9.8 9.8 0 0 1-7.52 4.1 21.44 21.44 0 1 0 21.1 29.13 21.44 21.44 0 0 0 25.19-17.41Z" class="cls-16"/>
+  <path d="m52.32 136.58 3.38-30.93" class="cls-3"/>
+</svg>

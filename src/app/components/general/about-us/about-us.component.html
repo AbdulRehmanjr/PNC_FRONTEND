@@ -1,0 +1,21 @@
+<section id="about-us">
+  <div class="row bg">
+    <div class="col-7 offset-3 d-flex justify-content-center align-items-center">
+      <p class="title">PNC CONNECT PEOPLE WITH LOCAL BUSINESS</p>
+    </div>
+  </div>
+  <div class="row m-5 p-5">
+    <ng-container *ngFor="let card of cards">
+      <div class="col-md-3">
+        <a href="/home/about-us" class="card">
+          <img class="card-img img-fluid" [src]="card.image" alt="{{card.name}}">
+          <p class="card-title text-center">{{card.name}}</p>
+          <p class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia qui eveniet porro odio.</p>
+        </a>
+      </div>
+    </ng-container>
+
+  </div>
+
+</section>
+
