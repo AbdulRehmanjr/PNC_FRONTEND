@@ -1,8 +1,8 @@
 <section id="tables">
   <p-table
     #dt
-    [value]="sellers"
-    dataKey="id"
+    [value]="requests"
+    dataKey="requestId"
     [responsive]="true"
     [rowHover]="true"
     [rows]="5"
@@ -11,7 +11,15 @@
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
-    [globalFilterFields]="['name', 'status']"
+    [globalFilterFields]="[
+      'firstName',
+      'lastName',
+      'email',
+      'number',
+      'address',
+      'businessName',
+      'category'
+    ]"
   >
     <ng-template pTemplate="caption">
       <div class="table-header">
@@ -29,21 +37,104 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="name" style="width: 5rem">
+        <th pSortableColumn="requestId" style="width: 5rem">
           <div class="d-flex flex-row">
-            Name
-            <p-sortIcon field="name"></p-sortIcon>
+            Id
+            <p-sortIcon field="requestId"></p-sortIcon>
             <p-columnFilter
               type="text"
-              field="name"
+              field="requestId"
               display="menu"
               class="ml-auto"
             ></p-columnFilter>
           </div>
         </th>
         <th style="width: 6rem">
+          <div class="d-flex flex-row">Picture</div>
+        </th>
+        <th pSortableColumn="firstName" style="width: 5rem">
           <div class="d-flex flex-row">
-            Picture
+            First Name
+            <p-sortIcon field="firstName"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="firstName"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="lastName" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Last Name
+            <p-sortIcon field="lastName"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="lastName"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="businessName" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Business Name
+            <p-sortIcon field="businessName"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="businessName"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="category" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Category
+            <p-sortIcon field="category"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="category"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="number" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Mobile Number
+            <p-sortIcon field="number"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="number"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="email" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Email
+            <p-sortIcon field="email"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="email"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="address" style="width: 5rem">
+          <div class="d-flex flex-row">
+            Address
+            <p-sortIcon field="address"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="address"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
           </div>
         </th>
         <th pSortableColumn="requestedDate" style="width: 5rem">
@@ -58,37 +149,45 @@
             ></p-columnFilter>
           </div>
         </th>
-        <th pSortableColumn="status" style="width: 2rem">
+        <th pSortableColumn="isAccepted" style="width: 2rem">
           <div class="d-flex flex-row">
             Status
-            <p-sortIcon field="status"></p-sortIcon>
+            <p-sortIcon field="isAccepted"></p-sortIcon>
             <p-columnFilter
               type="text"
-              field="status"
+              field="isAccepted"
               display="menu"
               class="ml-auto"
             ></p-columnFilter>
           </div>
         </th>
-        <th style="width: 1rem">Accept</th>
+        <th style="width: 2rem">Document</th>
+        <th style="width: 1rem">Action</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-seller>
       <tr class="p-selectable-row">
-        <td>
-          <span class="p-column-title">Name</span>
-          {{ seller.name }}
-        </td>
-        <td>
-          <img class="picture" src="{{ seller.picture }}" />
-        </td>
+        <td>{{ seller.requestId }}</td>
+        <td><img class="picture" src="{{ seller.picture }}" /></td>
+        <td>{{ seller.firstName | uppercase }}</td>
+        <td>{{ seller.lastName | uppercase }}</td>
+        <td>{{ seller.businessName }}</td>
+        <td>{{ seller.category }}</td>
+        <td>{{ seller.number }}</td>
+        <td>{{ seller.email }}</td>
+        <td>{{ seller.address }}</td>
         <td>{{ seller.requestedDate | date : "MM/dd/yyyy" }}</td>
         <td>
-          <span class="p-column-title">Status</span>
-          <p-tag
-            [value]="getValue(seller.status)"
-            [severity]="getSeverity(seller.status)"
+          <span class="p-column-title">Status</span
+          ><p-tag
+            [value]="getValue(seller.accepted)"
+            [severity]="getSeverity(seller.accepted)"
           ></p-tag>
+        </td>
+        <td>
+          <button class="btn btn-outline-danger" (click)="downloadFile(seller.document)">
+            <i class="fa-solid fa-file"></i>
+          </button>
         </td>
         <td style="text-align: center">
           <button
@@ -125,11 +224,11 @@
         </div>
         <div class="col-md-6">
           <label for="fistName">First Name</label>
-          {{ selectedSeller?.name }}
+          {{ selectedSeller?.firstName }}
         </div>
         <div class="col-md-6">
           <label for="lastName">Last Name</label>
-          {{ selectedSeller?.name }}
+          {{ selectedSeller?.lastName }}
         </div>
         <div class="col-md-6">
           <label for="date">Date Requested</label>
@@ -138,8 +237,8 @@
         <div class="col-md-6">
           <label for="status">Status of Request</label>
           <p-tag
-            [value]="getValue(selectedSeller.status)"
-            [severity]="getSeverity(selectedSeller.status)"
+            [value]="getValue(selectedSeller.accepted)"
+            [severity]="getSeverity(selectedSeller.accepted)"
           ></p-tag>
         </div>
         <div class="col-sm-6 offset-sm-4">
@@ -187,7 +286,11 @@
           >
             <div class="text-danger">Please provide Reason</div>
           </ng-container>
-          <button class="btn btn-outline-success m-2" type="submit" [disabled]="rejectionForm.invalid">
+          <button
+            class="btn btn-outline-success m-2"
+            type="submit"
+            [disabled]="rejectionForm.invalid"
+          >
             Submit
           </button>
         </form>

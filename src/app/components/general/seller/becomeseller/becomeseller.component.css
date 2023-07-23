@@ -1,71 +1,45 @@
-section{
+section {
   height: 90.4vh;
 }
-aside{
-  position: relative;
-}
-.icon{
-  width: 20px;
-  height: 22px;
-}
-.heading{
-  font-size: 50px;
+.heading {
+  font-size: 45px;
   color: red;
 }
 .form_img {
   width: 500px;
   aspect-ratio: 16/9;
 }
-.card{
-  width:300px;
-  margin: 10px;
-}
-.card_img {
-  height: 100px;
-}
-.map_img{
+.map_img {
+ position: absolute;
+ top:45%;
+ right:0;
   width: 300px;
   aspect-ratio: 16/9;
 }
-.position {
-  position: absolute;
-  left:14%;
-  top:80%;
-}
-.map_position{
-  position: absolute;
-  bottom: -50%;
-  left:50%;
-}
-.button_group{
+.button_group {
   display: flex;
   justify-content: space-between;
 }
-p{
-  font-family: 'Times New Roman', Times, serif;
+p {
+  font-family: "Times New Roman", Times, serif;
   /* font-weight: 700; */
 }
-.business_name{
-  font-size:20px;
-  font-weight: 700;
-}
-.more_details{
-  font-size:12px;
-}
-
 /* .form-select{
   color: rgb(100, 100, 100);
   background-color: transparent;
   border: 2px solid rgb(200, 200, 200);
   border-radius: 20px;
 } */
-.inputGroup,.document {
-  font-family: 'Times New Roman', Times, serif;
+.inputGroup,
+.document {
+  font-family: "Times New Roman", Times, serif;
   margin: 1em 0 1em 0;
   position: relative;
 }
 
-.inputGroup input, .inputGroup select,.document input{
+.inputGroup input,
+.inputGroup select,
+.document input {
   font-size: 100%;
   padding: 0.8em;
   outline: none;
@@ -75,7 +49,7 @@ p{
   width: 100%;
 }
 
-.inputGroup label{
+.inputGroup label {
   font-size: 100%;
   position: absolute;
   left: 0;
@@ -86,14 +60,14 @@ p{
   color: rgb(100, 100, 100);
 }
 
-.inputGroup :is(input:focus, input:valid,select:focus,select:valid)~label {
-  transform: translateY(-50%) scale(.9);
+.inputGroup :is(input:focus, input:valid, select:focus, select:valid) ~ label {
+  transform: translateY(-50%) scale(0.9);
   margin: 0em;
   margin-left: 1.3em;
   padding: 0.4em;
-  background-color: #E6F0EB;
+  background-color: #fff;
 }
-.document label{
+.document label {
   font-size: 100%;
   position: absolute;
   left: 0;
@@ -102,11 +76,11 @@ p{
   pointer-events: none;
   transition: all 0.3s ease;
   color: rgb(100, 100, 100);
-  transform: translateY(-50%) scale(.9);
+  transform: translateY(-50%) scale(0.9);
   margin: 0em;
   margin-left: 1.3em;
   padding: 0.4em;
-  background-color: #E6F0EB;
+  background-color: #fff;
 }
 
 /* .inputGroup :is(input:focus, input:valid) {
@@ -118,19 +92,7 @@ p{
 }
 
 /* cards  */
-.card_info {
-  width: fit-content;
-  border-radius: 30px;
-  background: #fff;
-}
-
-.info {
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 33px;
-  width: 85px;
-}
-.requested-img{
+.requested-img {
   margin: 20% 0 0 0;
   height: 350px;
   aspect-ratio: 16/9;

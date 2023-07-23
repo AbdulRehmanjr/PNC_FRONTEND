@@ -184,6 +184,7 @@
                   required=""
                   autocomplete="off"
                   formControlName="picture"
+                  (change)="pictureSelected($event)"
                 />
                 <label for="profile">Select Profile Picture</label>
                 <ng-container
@@ -203,6 +204,7 @@
                   required=""
                   autocomplete="off"
                   formControlName="document"
+                  (change)="documentSelected($event)"
                 />
                 <label for="document">Select document</label>
                 <ng-container
@@ -211,67 +213,32 @@
                     businessForm.get('document').invalid
                   "
                 >
-                  <small class="text-danger"
-                    >Please provide  document.</small
-                  >
+                  <small class="text-danger">Please provide document.</small>
                 </ng-container>
               </div>
               <div class="button_group">
                 <button class="btn btn-danger" (click)="changeTab(-1)">
                   Previous
                 </button>
-                <button class="btn btn-danger" type="submit">Submit</button>
+                <button class="btn btn-danger" type="submit" (click)="onSubmit()">Submit</button>
               </div>
             </p-tabPanel>
           </p-tabView>
         </form>
       </div>
       <div class="d-none d-md-block col-md-6">
-        <aside class="row">
+        <div class="row">
           <ng-container *ngIf="activeIndex == 0">
             <img
               src="assets/seller/city.png"
               alt="city image"
               class="form_img"
             />
-            <div class="card rounded-3 bg-white d-flex flex-row position">
-              <img
-                class="card_img"
-                src="assets/seller/card_business.png"
-                alt="card_img"
-              />
-              <div class="container_detail">
-                <p class="business_name m-0">
-                  <i class="fa-solid fa-suitcase"></i>
-                  {{
-                    businessForm.get("businessName").value
-                      ? businessForm.get("businessName").value
-                      : "Business Name"
-                  }}
-                </p>
-                <p class="more_detail m-0">
-                  <i class="fa-solid fa-list-check"></i>
-                  {{
-                    businessForm.get("category").value
-                      ? businessForm.get("category").value
-                      : "Business Category"
-                  }}
-                </p>
-                <p class="more_detail address m-0">
-                  <i class="fa-solid fa-location-dot"></i>
-                  {{
-                    businessForm.get("address").value
-                      ? businessForm.get("address").value
-                      : "Business Address"
-                  }}
-                </p>
-              </div>
-            </div>
             <img
-              src="assets/seller/map.svg"
-              class="map_img map_position"
-              alt="map_serach"
-            />
+            src="assets/seller/map.svg"
+            class="map_img"
+            alt="map_serach"
+          />
           </ng-container>
           <ng-container *ngIf="activeIndex == 1">
             <img
@@ -279,44 +246,25 @@
               alt="city image"
               class="form_img"
             />
-            <div class="card rounded-3 d-flex flex-row position">
-              <!-- <label class="avatar"></label> -->
-              <img
-                class="card_img"
-                src="assets/seller/user_info.png"
-                alt="card_img"
-              />
-              <div class="container_detail mt-3">
-                <p class="more_details">
-                  <i class="fa-solid fa-user"></i>
-                  {{
-                    businessForm.get("firstName").value
-                      ? businessForm.get("firstName").value
-                      : "First Name"
-                  }}
-                  {{
-                    businessForm.get("lastName").value
-                      ? businessForm.get("lastName").value
-                      : "Last Name"
-                  }}
-                </p>
-                <p class="more_details">
-                  <i class="fa-solid fa-envelope"></i>
-                  {{
-                    businessForm.get("email").value
-                      ? businessForm.get("email").value
-                      : "example@gmail.com"
-                  }}
-                </p>
-              </div>
-            </div>
             <img
               src="assets/seller/info_card.svg"
-              class="map_img map_position"
-              alt="map_serach"
+              class="map_img"
+              alt="card"
             />
           </ng-container>
-        </aside>
+          <ng-container *ngIf="activeIndex == 2">
+            <img
+              src="assets/seller/city.png"
+              alt="city image"
+              class="form_img"
+            />
+            <img
+              src="assets/seller/files.png"
+              class="map_img"
+              alt="person"
+            />
+          </ng-container>
+        </div>
       </div>
     </div>
   </ng-template>

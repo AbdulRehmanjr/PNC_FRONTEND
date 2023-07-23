@@ -1,103 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Sellerrequest } from 'src/app/class/sellerrequest';
+import { SellerrequestService } from 'src/app/service/sellerrequest.service';
 
 @Component({
   selector: 'app-sellerrequests',
   templateUrl: './sellerrequests.component.html',
   styleUrls: ['./sellerrequests.component.css'],
 })
-export class SellerrequestsComponent implements OnInit{
+export class SellerrequestsComponent implements OnInit {
 
-  rejectionForm:FormGroup
-  isAccepted:boolean
-  requestDialog: boolean = false
-  actionDialog:boolean = false
-  selectedSeller: ISeller
-  sellers: ISeller[] = [
-    {
-      picture: 'https://picsum.photos/200/300?random=1',
-      name: 'Seller 1',
-      status: true,
-      requestedDate: '2023-07-01',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=2',
-      name: 'Seller 2',
-      status: false,
-      requestedDate: '2023-06-30',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-    {
-      picture: 'https://picsum.photos/200/300?random=10',
-      name: 'Seller 10',
-      status: true,
-      requestedDate: '2023-07-05',
-    },
-  ];
+  rejectionForm: FormGroup;
+  isAccepted: boolean;
+  requestDialog: boolean = false;
+  actionDialog: boolean = false;
+  selectedSeller: Sellerrequest;
+  requests:Sellerrequest[]
 
-  constructor(private fb:FormBuilder){}
+  constructor(
+    private fb: FormBuilder,
+    private srService: SellerrequestService
+  ) {}
 
-  ngOnInit(){
-    this.createForm()
+  ngOnInit() {
+    this.fetchRequests()
+    this.createForm();
   }
 
-  createForm(){
+  createForm() {
     this.rejectionForm = this.fb.group({
-      rejection : new FormControl('',[Validators.required])
-    })
+      rejection: new FormControl('', [Validators.required]),
+    });
   }
 
   getValue(value: boolean) {
@@ -118,27 +56,32 @@ export class SellerrequestsComponent implements OnInit{
     }
   }
 
-  showRequestDialog(seller:ISeller){
-    this.selectedSeller = seller
-    this.requestDialog = true
+  fetchRequests(){
+    this.srService.getAllRequests().subscribe({
+      next: (response: Sellerrequest[]) => {
+        console.log(response)
+        this.requests = response
+      },
+      error: (err: any) => console.log(err),
+      complete: () => {}
+    })
   }
 
-  hideRequestDialog(){
-    this.requestDialog = false
-  }
-
-  showActionDialog(status:boolean){
-    this.actionDialog = true
-  }
-
-  requestAction(){
+  downloadFile(file:string){
 
   }
-}
+  showRequestDialog(seller: Sellerrequest) {
+    this.selectedSeller = seller;
+    this.requestDialog = true;
+  }
 
-interface ISeller {
-  picture: string;
-  name: string;
-  status: boolean;
-  requestedDate: string;
+  hideRequestDialog() {
+    this.requestDialog = false;
+  }
+
+  showActionDialog(status: boolean) {
+    this.actionDialog = true;
+  }
+
+  requestAction() {}
 }

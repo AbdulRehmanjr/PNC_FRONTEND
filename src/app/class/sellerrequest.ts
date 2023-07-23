@@ -4,9 +4,11 @@ export class Sellerrequest {
   lastName:string
   email:string
   picture:string
-  phone:string
+  number:string
   businessName:string
   address:string
+  requestedDate:string
   category:string
   document:string
+  accepted:boolean
 }

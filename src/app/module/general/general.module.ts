@@ -66,10 +66,10 @@ const routes: Route[] = [
       { path: '', component: DashboardComponent },
       { path: 'category-detail', component: CategoryDetailComponent },
       { path: 'about-us', component: AboutUsComponent },
-      { path:'start-business',component:StartBusinessComponent}
+      { path:'start-business',component:StartBusinessComponent},
+      {path:'become-seller',component:BecomesellerComponent}
     ],
   },
-  { path: 'become-seller', component: BecomesellerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },

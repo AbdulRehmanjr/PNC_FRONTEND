@@ -9,6 +9,7 @@ import { FileUploadEvent } from 'primeng/fileupload';
 import { Category } from 'src/app/class/category';
 import { Sellerrequest } from 'src/app/class/sellerrequest';
 import { CategoryService } from 'src/app/service/category.service';
+import { SellerrequestService } from 'src/app/service/sellerrequest.service';
 
 @Component({
   selector: 'app-becomeseller',
@@ -28,7 +29,8 @@ export class BecomesellerComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private sellerrequest:SellerrequestService,
   ) {}
 
   ngOnInit(): void {
@@ -62,25 +64,32 @@ export class BecomesellerComponent implements OnInit {
     this.activeIndex = this.activeIndex + index;
   }
 
-  profileFile(event:Event){
+  pictureSelected(event:Event){
     this.picture = event.target['files'][0]
   }
 
-  documentFile(event:Event){
+  documentSelected(event:Event){
     this.document = event.target['files'][0]
   }
 
   onSubmit(){
-
+    console.log('clicked ')
+    if(this.businessForm.invalid)
+      return
     let request = new Sellerrequest()
     request.firstName = this.businessForm.get('firstName').value
     request.lastName = this.businessForm.get('lastName').value
     request.businessName = this.businessForm.get('businessName').value
     request.category = this.businessForm.get('category').value
     request.email = this.businessForm.get('email').value
-    request.phone = this.businessForm.get('phone').value
+    request.number = this.businessForm.get('phone').value
     request.address = this.businessForm.get('address').value
 
+    this.sellerrequest.createRequest(request,this.picture,this.document).subscribe({
+      next: (response: Sellerrequest) => {},
+      error: (err: any) => console.log(err),
+      complete: () => {}
+    })
 
   }
 }
