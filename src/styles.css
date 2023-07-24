@@ -54,8 +54,9 @@ a,.nav-link{
   height: 88.4vh;
 }
 
+
 /** ng prime componets style overriding */
-p-tabview-title{
+.p-tabview-title{
   font-family: 'Times New Roman', Times, serif;
   font-weight: 700;
   text-transform: capitalize;
@@ -92,7 +93,7 @@ p-tabview-title{
 }
 
 .p-datatable {
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
 }
 
 .p-datatable .p-datatable-header {

@@ -45,3 +45,20 @@
   width: 50px;
   height: 50px;
 }
+.btn-add{
+  width: 150px;
+  height: 40px;
+  color:#fff;
+  font-size:1rem;
+  font-weight: 700;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  box-shadow: 5px 5px 5px rgba(224, 7, 7, 0.5);
+}
+.btn-add:hover{
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
+}
+

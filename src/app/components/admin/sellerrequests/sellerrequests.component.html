@@ -37,16 +37,10 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th pSortableColumn="requestId" style="width: 5rem">
+        <th pSortableColumn="requestId" style="width: 1rem">
           <div class="d-flex flex-row">
             Id
             <p-sortIcon field="requestId"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="requestId"
-              display="menu"
-              class="ml-auto"
-            ></p-columnFilter>
           </div>
         </th>
         <th style="width: 6rem">
@@ -139,7 +133,7 @@
         </th>
         <th pSortableColumn="requestedDate" style="width: 5rem">
           <div class="d-flex flex-row">
-            Date Requested
+            Date
             <p-sortIcon field="requestedDate"></p-sortIcon>
             <p-columnFilter
               type="text"
@@ -185,9 +179,9 @@
           ></p-tag>
         </td>
         <td>
-          <button class="btn btn-outline-danger" (click)="downloadFile(seller.document)">
+          <a class="btn btn-outline-danger" href="{{seller.document}}" download>
             <i class="fa-solid fa-file"></i>
-          </button>
+          </a>
         </td>
         <td style="text-align: center">
           <button

@@ -44,7 +44,10 @@
             >
               <img class="icon" src="assets/admin/mail.png" alt="icon" />
               <span class="mx-2"> Requests</span>
-              <p-badge severity="danger" value="2"></p-badge>
+              <ng-container *ngIf="requestsPending">
+                <p-badge severity="danger" value="{{requestsPending}}"></p-badge>
+              </ng-container>
+
             </a>
           </li>
           <li class="nav-item">

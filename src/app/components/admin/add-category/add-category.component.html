@@ -1,7 +1,7 @@
 <section id="add-categories" class="mx-auto w-50">
   <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
-      <button (click)="displayDialog()">Add New</button>
+      <button class="btn-add" (click)="displayDialog()"><i class="fa-solid fa-circle-plus"></i>Add New</button>
     </ng-template>
   </p-toolbar>
   <p-table
@@ -106,7 +106,7 @@
             <small class="text-danger">Please provide picture.</small>
           </ng-container>
         </div>
-        <button class="btn btn-outline-danger" [disabled]="categoryForm.invalid">
+        <button class="btn-add" [disabled]="categoryForm.invalid">
           Submit
         </button>
       </form>
