@@ -2,12 +2,23 @@
   <ng-container *ngIf="isRequested; else noRequest">
     <div class="row">
       <div class="col-sm-12 col-md-6">
-        <h1 class="heading">Hello ! Lets start your Business</h1>
-        <p>Your Request has been forwarded to Administration.</p>
-        <p>Thanks for your patience.</p>
-        <button class="btn btn-outline-success">
-          SomeThing will be added later here
+        <h1 class="heading">PNC Business Requests</h1>
+        <p class="request-para">
+          Your Request has been forwarded to Administration.
+        </p>
+        <p class="request-para">Thanks for your patience.</p>
+        <button class="btn btn-outline-danger" routerLink="/home">
+          Home
         </button>
+        <div class="row mt-5">
+          <div class="col-6">
+            <img class="waiting-img" src="assets/seller/waiting.png" alt="waiting" >
+          </div>
+          <div class="col-6 d-block">
+            <p class="request-para">If you have any questions, please contact our support team.</p>
+            <a class="d-block btn-contact text-center" href="mailto:support@example.com"><i class="fa-solid fa-envelope"></i> Contact Support</a>
+          </div>
+        </div>
       </div>
       <div class="d-none d-md-block col-md-6">
         <img
@@ -220,7 +231,13 @@
                 <button class="btn btn-danger" (click)="changeTab(-1)">
                   Previous
                 </button>
-                <button class="btn btn-danger" type="submit" (click)="onSubmit()">Submit</button>
+                <button
+                  class="btn btn-danger"
+                  type="submit"
+                  (click)="onSubmit()"
+                >
+                  Submit
+                </button>
               </div>
             </p-tabPanel>
           </p-tabView>
@@ -234,11 +251,7 @@
               alt="city image"
               class="form_img"
             />
-            <img
-            src="assets/seller/map.svg"
-            class="map_img"
-            alt="map_serach"
-          />
+            <img src="assets/seller/map.svg" class="map_img" alt="map_serach" />
           </ng-container>
           <ng-container *ngIf="activeIndex == 1">
             <img
@@ -246,11 +259,7 @@
               alt="city image"
               class="form_img"
             />
-            <img
-              src="assets/seller/info_card.svg"
-              class="map_img"
-              alt="card"
-            />
+            <img src="assets/seller/info_card.svg" class="map_img" alt="card" />
           </ng-container>
           <ng-container *ngIf="activeIndex == 2">
             <img
@@ -258,11 +267,7 @@
               alt="city image"
               class="form_img"
             />
-            <img
-              src="assets/seller/files.png"
-              class="map_img"
-              alt="person"
-            />
+            <img src="assets/seller/files.png" class="map_img" alt="person" />
           </ng-container>
         </div>
       </div>

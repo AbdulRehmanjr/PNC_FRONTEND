@@ -217,19 +217,33 @@
           />
         </div>
         <div class="col-md-6">
-          <label for="fistName">First Name</label>
-          {{ selectedSeller?.firstName }}
+          <label for="fistName">Full Name</label>
+          {{ selectedSeller?.firstName }} {{ selectedSeller?.lastName }}
         </div>
         <div class="col-md-6">
-          <label for="lastName">Last Name</label>
-          {{ selectedSeller?.lastName }}
+          <label for="address">
+            Address
+          </label>
+          {{selectedSeller?.address}}
         </div>
         <div class="col-md-6">
-          <label for="date">Date Requested</label>
+          <label for="businessName">
+            Business Name
+          </label>
+          {{selectedSeller?.businessName}}
+        </div>
+        <div class="col-md-6">
+          <label for="number">
+            Phone No.
+          </label>
+          {{selectedSeller?.number}}
+        </div>
+        <div class="col-md-6">
+          <label for="date">Date: </label>
           {{ selectedSeller?.requestedDate }}
         </div>
         <div class="col-md-6">
-          <label for="status">Status of Request</label>
+          <label for="status">Status of Request: </label>
           <p-tag
             [value]="getValue(selectedSeller.accepted)"
             [severity]="getSeverity(selectedSeller.accepted)"
@@ -245,7 +259,7 @@
           </button>
           <button
             class="btn btn-outline-danger mx-2"
-            (click)="showActionDialog((isAccepted = false))"
+            (click)="showActionDialog()"
           >
             <i class="fa-solid fa-circle-xmark"></i>
             Reject
@@ -262,7 +276,7 @@
   >
     <ng-template pTemplate="body">
       <div class="mb-3">
-        <form [formGroup]="rejectionForm" (ngSubmit)="requestAction()">
+        <form [formGroup]="rejectionForm" (ngSubmit)="rejectRequest()">
           <label for="exampleFormControlTextarea1" class="form-label"
             >Enter the Reason of Rejection</label
           >

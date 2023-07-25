@@ -11,4 +11,6 @@ export class Sellerrequest {
   category:string
   document:string
   accepted:boolean
+  userId:number
+  response:string
 }

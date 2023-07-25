@@ -79,9 +79,21 @@ export class SellerrequestsComponent implements OnInit {
     this.requestDialog = false;
   }
 
-  showActionDialog(status: boolean) {
-    this.actionDialog = true;
+  showActionDialog() {
+    this.actionDialog = true
   }
 
-  requestAction() {}
+  requestAction() {
+
+  }
+
+  rejectRequest(){
+    const message = this.rejectionForm.get('rejection').value
+
+    this.srService.rejectRequest(message,this.selectedSeller.requestId).subscribe({
+      next: (response: any) => {},
+      error: (err: any) => console.log(err),
+      complete: () => {}
+    })
+  }
 }

@@ -12,19 +12,32 @@ export class SellerrequestService {
   constructor(private http: HttpClient) {}
 
   createRequest(sellerInfo: Sellerrequest, picture: File, document: File) {
-    let formData = new FormData()
-    formData.append('request', JSON.stringify(sellerInfo))
-    formData.append('document', document)
-    formData.append('picture', picture)
+    let formData = new FormData();
+    formData.append('request', JSON.stringify(sellerInfo));
+    formData.append('document', document);
+    formData.append('picture', picture);
 
-    return this.http.post(`${this.url}/create`, formData, { observe: 'body' })
+    return this.http.post(`${this.url}/create`, formData, { observe: 'body' });
   }
 
   getAllRequests() {
-    return this.http.get(`${this.url}/all`, { observe: 'body' })
+    return this.http.get(`${this.url}/all`, { observe: 'body' });
   }
 
-  getRequestsCounting(){
-    return this.http.get(`${this.url}/pending`,{ observe: 'body' })
+  getRequestsCounting() {
+    return this.http.get(`${this.url}/pending`, { observe: 'body' });
+  }
+
+  getRequestCheck(id: string) {
+    return this.http.get(`${this.url}/check-requested/${id}`, {
+      observe: 'body',
+      responseType: 'text',
+    });
+  }
+
+  rejectRequest(message: string, sellerId: number) {
+    return this.http.post(`${this.url}/reject/${sellerId}`, message, {
+      observe: 'body',
+    });
   }
 }
