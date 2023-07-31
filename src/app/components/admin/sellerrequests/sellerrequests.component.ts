@@ -14,13 +14,12 @@ import { SellerrequestService } from 'src/app/service/sellerrequest.service';
   styleUrls: ['./sellerrequests.component.css'],
 })
 export class SellerrequestsComponent implements OnInit {
-
   rejectionForm: FormGroup;
   isAccepted: boolean;
-  requestDialog: boolean = false;
+  detailDialog: boolean = false;
   actionDialog: boolean = false;
   selectedSeller: Sellerrequest;
-  requests:Sellerrequest[]
+  requests: Sellerrequest[];
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +27,7 @@ export class SellerrequestsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchRequests()
+    this.fetchRequests();
     this.createForm();
   }
 
@@ -38,62 +37,83 @@ export class SellerrequestsComponent implements OnInit {
     });
   }
 
-  getValue(value: boolean) {
-    switch (value) {
-      case true:
-        return 'Accepted';
-      case false:
-        return 'Pending';
+  getValue(accept: boolean, reject: boolean) {
+
+    if (accept === true && reject === false) {
+      return 'Accepted';
+    } else if (accept === false && reject == true) {
+      return 'Rejected';
+    } else if (accept === false && reject === false) {
+      return 'Pending';
     }
+    return ""
   }
 
-  getSeverity(status: boolean) {
-    switch (status) {
-      case true:
-        return 'success';
-      case false:
-        return 'danger';
+  getSeverity(accept: boolean, reject: boolean) {
+    if (accept === true && reject === false) {
+      return 'success';
+    } else if (accept === false && reject == true) {
+      return 'danger';
+    } else if (accept === false && reject === false) {
+      return 'warning';
     }
+    return ""
   }
 
-  fetchRequests(){
+  fetchRequests() {
     this.srService.getAllRequests().subscribe({
       next: (response: Sellerrequest[]) => {
-        console.log(response)
-        this.requests = response
+        this.requests = response;
       },
       error: (err: any) => console.log(err),
-      complete: () => {}
-    })
+      complete: () => {},
+    });
   }
 
-  downloadFile(file:string){
-
-  }
   showRequestDialog(seller: Sellerrequest) {
     this.selectedSeller = seller;
-    this.requestDialog = true;
+    this.detailDialog = true;
   }
 
   hideRequestDialog() {
-    this.requestDialog = false;
+    this.detailDialog = false;
   }
 
   showActionDialog() {
-    this.actionDialog = true
+    this.actionDialog = true;
   }
 
-  requestAction() {
-
-  }
-
-  rejectRequest(){
-    const message = this.rejectionForm.get('rejection').value
-
-    this.srService.rejectRequest(message,this.selectedSeller.requestId).subscribe({
-      next: (response: any) => {},
+  /**
+   * The acceptRequest function accepts a request and updates the detailDialog property to false when
+   * the request is completed.
+   */
+  acceptRequest() {
+    this.srService.acceptRequest(this.selectedSeller.requestId).subscribe({
+      next: (_response: any) => {},
       error: (err: any) => console.log(err),
-      complete: () => {}
+      complete: () => {
+        this.detailDialog = false
+      }
     })
+  }
+
+  /**
+   * The `rejectRequest` function sends a rejection message to the server and updates the UI
+   * accordingly.
+   */
+  rejectRequest() {
+    const message = this.rejectionForm.get('rejection').value;
+
+    this.srService
+      .rejectRequest(message, this.selectedSeller.requestId)
+      .subscribe({
+        next: (_response: any) => {},
+        error: (err: any) => console.log(err),
+        complete: () => {
+          this.detailDialog = false;
+          this.actionDialog = false;
+          this.fetchRequests()
+        },
+      });
   }
 }

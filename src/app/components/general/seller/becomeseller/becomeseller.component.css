@@ -1,5 +1,5 @@
 section {
-  height: 90.4vh;
+  height: 100%;
 }
 .heading {
   font-size: 45px;
@@ -99,25 +99,26 @@ p {
 }
 
 .request-para{
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .waiting-img{
   width: 100%;
 }
-.btn-contact{
-  width: 200px;
+.btn-home{
+  width: fit-content;
   height: 40px;
   color:#fff;
-  font-size:1.4rem;
-  font-weight: 700;
+  font-size:1rem;
+  font-weight: 500;
   background-color: rgb(224, 7, 7);
   border:none;
   outline: none;
-  box-shadow: 7px 7px 5px rgba(224, 7, 7, 0.5);
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(224, 7, 7, 0.5);
 }
-.btn-contact:hover{
+.btn-home:hover{
   background-color: #fff;
   color: #E00707;
   border: 1px solid #E00707;

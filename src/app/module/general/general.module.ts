@@ -22,6 +22,7 @@ import { MessageService } from 'primeng/api';
 import { TabViewModule } from 'primeng/tabview';
 import { SkeletonModule } from 'primeng/skeleton';
 import { FileUploadModule } from 'primeng/fileupload';
+import { DialogModule } from 'primeng/dialog';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -39,6 +40,7 @@ import { TeamComponent } from '../../components/general/team/team.component';
 import { PlatformComponent } from '../../components/general/platform/platform.component';
 import { AboutUsComponent } from '../../components/general/about-us/about-us.component';
 import { StartBusinessComponent } from '../../components/general/seller/start-business/start-business.component';
+
 
 const LOGINPROVIDER = {
   provide: 'SocialAuthServiceConfig',
@@ -93,6 +95,7 @@ const routes: Route[] = [
     StartBusinessComponent,
   ],
   imports: [
+    DialogModule,
     FileUploadModule,
     SkeletonModule,
     TabViewModule,

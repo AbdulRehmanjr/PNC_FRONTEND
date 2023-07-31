@@ -97,7 +97,7 @@
         </th>
         <th pSortableColumn="number" style="width: 5rem">
           <div class="d-flex flex-row">
-            Mobile Number
+            Phone
             <p-sortIcon field="number"></p-sortIcon>
             <p-columnFilter
               type="text"
@@ -172,10 +172,9 @@
         <td>{{ seller.address }}</td>
         <td>{{ seller.requestedDate | date : "MM/dd/yyyy" }}</td>
         <td>
-          <span class="p-column-title">Status</span
-          ><p-tag
-            [value]="getValue(seller.accepted)"
-            [severity]="getSeverity(seller.accepted)"
+          <p-tag
+            [value]="getValue(seller.accepted,seller.rejected)"
+            [severity]="getSeverity(seller.accepted,seller.rejected)"
           ></p-tag>
         </td>
         <td>
@@ -186,11 +185,11 @@
         <td style="text-align: center">
           <button
             type="button"
-            class="btn btn-outline-success"
+            class="btn-action"
             (click)="showRequestDialog(seller)"
           >
-            <i class="fa-solid fa-circle-check" style="color: #00ff11"></i>
-            Accept
+            <i class="fa-solid fa-circle-check"></i>
+
           </button>
         </td>
       </tr>
@@ -204,7 +203,7 @@
   <p-dialog
     header="Request Details"
     [modal]="true"
-    [(visible)]="requestDialog"
+    [(visible)]="detailDialog"
     styleClass="w-50"
   >
     <ng-template pTemplate="body">
@@ -236,7 +235,7 @@
           <label for="number">
             Phone No.
           </label>
-          {{selectedSeller?.number}}
+          {{selectedSeller?.phone}}
         </div>
         <div class="col-md-6">
           <label for="date">Date: </label>
@@ -245,26 +244,36 @@
         <div class="col-md-6">
           <label for="status">Status of Request: </label>
           <p-tag
-            [value]="getValue(selectedSeller.accepted)"
-            [severity]="getSeverity(selectedSeller.accepted)"
-          ></p-tag>
+          [value]="getValue(selectedSeller?.accepted,selectedSeller?.rejected)"
+          [severity]="getSeverity(selectedSeller?.accepted,selectedSeller?.rejected)"
+        ></p-tag>
         </div>
-        <div class="col-sm-6 offset-sm-4">
-          <button
-            class="btn btn-outline-success mx-2"
-            (click)="requestAction()"
-          >
-            <i class="fas fa-circle-check"></i>
-            Accept
-          </button>
-          <button
-            class="btn btn-outline-danger mx-2"
-            (click)="showActionDialog()"
-          >
-            <i class="fa-solid fa-circle-xmark"></i>
-            Reject
-          </button>
-        </div>
+        <ng-container *ngIf="selectedSeller?.accepted==false && selectedSeller?.rejected == false; else done">
+          <div class="col-sm-6 offset-sm-4">
+            <button
+              class="btn btn-outline-success mx-2"
+              (click)="acceptRequest()"
+            >
+              <i class="fas fa-circle-check"></i>
+              Accept
+            </button>
+            <button
+              class="btn btn-outline-danger mx-2"
+              (click)="showActionDialog()"
+            >
+              <i class="fa-solid fa-circle-xmark"></i>
+              Reject
+            </button>
+          </div>
+        </ng-container>
+        <ng-template #done>
+          <div class="row d-flex justify-content-center">
+            <button class="btn btn-success w-25">
+              {{selectedSeller?.accepted==true && selectedSeller?.rejected == false ? "Accepted":"Rejected"}}
+            </button>
+          </div>
+
+        </ng-template>
       </div>
     </ng-template>
   </p-dialog>
@@ -295,7 +304,7 @@
             <div class="text-danger">Please provide Reason</div>
           </ng-container>
           <button
-            class="btn btn-outline-success m-2"
+            class="btn btn-success m-4"
             type="submit"
             [disabled]="rejectionForm.invalid"
           >

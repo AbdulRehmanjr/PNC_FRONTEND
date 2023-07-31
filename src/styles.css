@@ -138,10 +138,23 @@ a,.nav-link{
 }
 
 .p-datatable .p-datatable-thead>tr>th {
-  background-color: #EAF3EE;
+  background-color: #f8f9fa;
+  font-size: 13px;
+    border: 1px solid #dee2e6;
+    border-width: 0 0 1px 0;
+    font-weight: 700;
+    color: #000;
 }
 
 .p-avatar.p-avatar-xl{
   width: 6rem;
   height: 6rem;
+}
+
+.p-icon{
+  width: 0.7rem;
+  height: 0.7rem;
+}
+.p-column-filter-menu-button{
+  height: auto;
 }

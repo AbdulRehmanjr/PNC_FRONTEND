@@ -12,6 +12,7 @@ export class AddCategoryComponent {
 
   categories:Category[]
   showDialog:boolean = false
+  editDialog:boolean = false
   categoryForm:FormGroup
   file:File
 
@@ -62,4 +63,15 @@ export class AddCategoryComponent {
       }
     )
   }
+
+  editCategory(category:Category){
+    this.editDialog = true
+
+    this.categoryForm.patchValue({
+      name : category.categoryName,
+      picture : category.picture
+    })
+
+  }
 }
+

@@ -37,24 +37,12 @@
           <div class="d-flex flex-row">
             Id
             <p-sortIcon field="categoryId"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="categoryId"
-              display="menu"
-              class="ml-auto"
-            ></p-columnFilter>
           </div>
         </th>
         <th pSortableColumn="cateoryName" style="width: 5rem">
           <div class="d-flex flex-row">
             Name
             <p-sortIcon field="categoryName"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="categoryName"
-              display="menu"
-              class="ml-auto"
-            ></p-columnFilter>
           </div>
         </th>
         <th style="width: 6rem">
@@ -75,7 +63,7 @@
           <img class="picture" src="{{ category.picture }}" />
         </td>
         <td style="text-align: center">
-          <button type="button" class="btn btn-outline-success">
+          <button type="button" class="btn btn-outline-success" (click)="editCategory(category)">
             <i class="fa-solid fa-circle-check" style="color: #00ff11"></i>
             Edit
           </button>
@@ -89,6 +77,31 @@
     </ng-template>
   </p-table>
   <p-dialog header="Add Category" [(visible)]="showDialog" [style]="{width: '50vw'}">
+    <ng-template pTemplate="body">
+      <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+        <div class="inputGroup">
+          <input type="text" required="" autocomplete="off" formControlName="name">
+          <label for="name">Enter Category Name</label>
+          <ng-container
+            *ngIf="categoryForm.get('name').touched && categoryForm.get('name').invalid">
+            <small class="text-danger">Please provide category name.</small>
+          </ng-container>
+        </div>
+        <div class="inputGroup">
+          <input type="file" required="" autocomplete="off" formControlName="picture" (change)="selectFile($event)">
+          <ng-container
+            *ngIf="categoryForm.get('picture').touched && categoryForm.get('picture').invalid">
+            <small class="text-danger">Please provide picture.</small>
+          </ng-container>
+        </div>
+        <button class="btn-add" [disabled]="categoryForm.invalid">
+          Submit
+        </button>
+      </form>
+    </ng-template>
+  </p-dialog>
+
+  <p-dialog header="Edit Category" [(visible)]="editDialog" [style]="{width: '50vw'}">
     <ng-template pTemplate="body">
       <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
         <div class="inputGroup">

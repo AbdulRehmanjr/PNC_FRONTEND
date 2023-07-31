@@ -1,33 +1,249 @@
 <section class="container-fluid">
   <ng-container *ngIf="isRequested; else noRequest">
     <div class="row">
-      <div class="col-sm-12 col-md-6">
-        <h1 class="heading">PNC Business Requests</h1>
-        <p class="request-para">
-          Your Request has been forwarded to Administration.
-        </p>
-        <p class="request-para">Thanks for your patience.</p>
-        <button class="btn btn-outline-danger" routerLink="/home">
-          Home
-        </button>
-        <div class="row mt-5">
-          <div class="col-6">
-            <img class="waiting-img" src="assets/seller/waiting.png" alt="waiting" >
-          </div>
-          <div class="col-6 d-block">
-            <p class="request-para">If you have any questions, please contact our support team.</p>
-            <a class="d-block btn-contact text-center" href="mailto:support@example.com"><i class="fa-solid fa-envelope"></i> Contact Support</a>
-          </div>
-        </div>
-      </div>
-      <div class="d-none d-md-block col-md-6">
+      <ng-container *ngIf="status === 'pending'; else response">
+        <article
+          class="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center"
+        >
+          <h1 class="heading">PNC Business Requests</h1>
+          <p class="request-para">Thank you for submitting your request.</p>
+          <p class="request-para">
+            Our team is currently processing your inquiry, and we will get back
+            to you as soon as possible. In the meantime, feel free to explore
+            more of our website to discover exciting features and offerings.
+          </p>
+          <p class="request-para">
+            If you have any urgent concerns, please don't hesitate to contact
+            our customer support team at
+            <a class="fw-bold" href="mailto:support@example.com"
+              >Contact Support</a
+            >. We value your interest and look forward to assisting you!
+          </p>
+          <button class="btn-home" routerLink="/home">
+            <i class="fa-solid fa-house"></i> Home
+          </button>
+        </article>
+      </ng-container>
+      <ng-template #response>
+        <ng-container *ngIf="status === false; else accepted">
+          <article
+            class="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center"
+          >
+            <h1 class="heading">PNC Business Requests</h1>
+            <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">
+                Sorry, given Information violate policy!
+              </h4>
+              <p>{{ request?.remarks }}</p>
+              <hr />
+              <p class="mb-0">Try Again</p>
+              <button class="btn btn-danger" (click)="reSend()">
+                Send Again
+              </button>
+            </div>
+          </article>
+        </ng-container>
+        <ng-template #accepted>
+          <article
+            class="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center"
+          >
+            <h1 class="heading">PNC Business Requests</h1>
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Congratulations!</h4>
+              <p>{{ request?.remarks }}</p>
+            </div>
+          </article>
+        </ng-template>
+      </ng-template>
+      <article class="d-none d-md-block col-md-6">
         <img
           class="requested-img"
           src="assets/admin/waiting_person.png"
           alt="person waiting"
         />
-      </div>
+      </article>
     </div>
+    <p-dialog
+      header="Header"
+      [(visible)]="reSendDialog"
+      [style]="{ width: '50vw' }"
+    >
+      <ng-template pTemplate="header">
+        <h1 class="text-xl font-bold">Request Review</h1>
+      </ng-template>
+      <ng-template pTemplate="body">
+        <!-- your-component.component.html -->
+
+        <form [formGroup]="businessForm" (ngSubmit)="onSubmit()">
+          <!-- Business Info Section -->
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="businessName"
+            />
+            <label for="name">Enter Business Name</label>
+            <small
+              *ngIf="
+                businessForm.get('businessName').touched &&
+                businessForm.get('businessName').invalid
+              "
+              class="text-danger"
+              >Please provide business name.</small
+            >
+          </div>
+          <div class="inputGroup">
+            <select formControlName="category" required aria-autocomplete="off">
+              <option
+                [value]="category.categoryName"
+                *ngFor="let category of categories"
+              >
+                {{ category.categoryName }}
+              </option>
+            </select>
+            <label>Select a Category</label>
+            <small
+              *ngIf="
+                businessForm.get('category').touched &&
+                businessForm.get('category').invalid
+              "
+              class="text-danger"
+              >Please provide business category.</small
+            >
+          </div>
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="address"
+            />
+            <label for="address">Enter Business Address</label>
+            <small
+              *ngIf="
+                businessForm.get('address').touched &&
+                businessForm.get('address').invalid
+              "
+              class="text-danger"
+              >Please provide business address.</small
+            >
+          </div>
+
+          <!-- Personal Info Section -->
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="firstName"
+            />
+            <label for="fistName">Enter First Name</label>
+            <small
+              *ngIf="
+                businessForm.get('firstName').touched &&
+                businessForm.get('firstName').invalid
+              "
+              class="text-danger"
+              >Please provide first name.</small
+            >
+          </div>
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="lastName"
+            />
+            <label for="lastName">Enter Last Name</label>
+            <small
+              *ngIf="
+                businessForm.get('lastName').touched &&
+                businessForm.get('lastName').invalid
+              "
+              class="text-danger"
+              >Please provide last name.</small
+            >
+          </div>
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="email"
+            />
+            <label for="email">Enter Business Email</label>
+            <small
+              *ngIf="
+                businessForm.get('email').touched &&
+                businessForm.get('email').invalid
+              "
+              class="text-danger"
+              >Please provide business email.</small
+            >
+          </div>
+          <div class="inputGroup">
+            <input
+              type="text"
+              required
+              autocomplete="off"
+              formControlName="phone"
+            />
+            <label for="phone">Enter Business Phone</label>
+            <small
+              *ngIf="
+                businessForm.get('phone').touched &&
+                businessForm.get('phone').invalid
+              "
+              class="text-danger"
+              >Please provide business phone.</small
+            >
+          </div>
+
+          <!-- Documents Section -->
+          <div class="document">
+            <input
+              type="file"
+              required
+              autocomplete="off"
+              formControlName="picture"
+              (change)="pictureSelected($event)"
+            />
+            <label for="profile">Select Profile Picture</label>
+            <small
+              *ngIf="
+                businessForm.get('picture').touched &&
+                businessForm.get('picture').invalid
+              "
+              class="text-danger"
+              >Please provide profile picture.</small
+            >
+          </div>
+          <div class="document">
+            <input
+              type="file"
+              required
+              autocomplete="off"
+              formControlName="document"
+              (change)="documentSelected($event)"
+            />
+            <label for="document">Select Document</label>
+            <small
+              *ngIf="
+                businessForm.get('document').touched &&
+                businessForm.get('document').invalid
+              "
+              class="text-danger"
+              >Please provide document.</small
+            >
+          </div>
+
+        </form>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <button class="btn btn-danger" (click)="submitResend()">Submit</button>
+      </ng-template>
+    </p-dialog>
   </ng-container>
   <ng-template #noRequest>
     <div class="row">

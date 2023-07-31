@@ -4,13 +4,14 @@ export class Sellerrequest {
   lastName:string
   email:string
   picture:string
-  number:string
+  phone:string
   businessName:string
   address:string
   requestedDate:string
   category:string
   document:string
   accepted:boolean
-  userId:number
-  response:string
+  rejected:boolean
+  userId:string
+  remarks:string
 }

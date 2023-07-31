@@ -10,3 +10,20 @@ label{
   height: 150px;
   aspect-ratio: 16/9;
 }
+.btn-action{
+  width: fit-content;
+  height: 40px;
+  color:#fff;
+  font-size:1rem;
+  font-weight: 500;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(224, 7, 7, 0.5);
+}
+.btn-action:hover{
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
+}
