@@ -94,11 +94,19 @@ export class SellerrequestService {
     });
   }
 
+  /**
+   * The acceptRequest function sends a POST request to the specified URL with the requestId as a
+   * parameter.
+   * @param {number} requestId - The `requestId` parameter is a number that represents the unique
+   * identifier of the request that needs to be accepted.
+   * @returns The `acceptRequest` function is returning an HTTP POST request to the specified URL with
+   * the request ID as a parameter. The request is being observed for the response body.
+   */
   acceptRequest(requestId: number) {
     return this.http.post(
       `${this.url}/accepted/${requestId}`,
       {},
-      { observe: 'body' }
+      { observe: 'body',responseType: 'json' }
     );
   }
 }
