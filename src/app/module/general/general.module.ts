@@ -40,6 +40,7 @@ import { TeamComponent } from '../../components/general/team/team.component';
 import { PlatformComponent } from '../../components/general/platform/platform.component';
 import { AboutUsComponent } from '../../components/general/about-us/about-us.component';
 import { StartBusinessComponent } from '../../components/general/seller/start-business/start-business.component';
+import { ContactUsComponent } from '../../components/general/contact-us/contact-us.component';
 
 
 const LOGINPROVIDER = {
@@ -68,6 +69,7 @@ const routes: Route[] = [
       { path: '', component: DashboardComponent },
       { path: 'category-detail', component: CategoryDetailComponent },
       { path: 'about-us', component: AboutUsComponent },
+      {path: 'contact-us', component:ContactUsComponent},
       { path:'start-business',component:StartBusinessComponent},
       {path:'become-seller',component:BecomesellerComponent}
     ],
@@ -93,6 +95,7 @@ const routes: Route[] = [
     PlatformComponent,
     AboutUsComponent,
     StartBusinessComponent,
+    ContactUsComponent,
   ],
   imports: [
     DialogModule,
