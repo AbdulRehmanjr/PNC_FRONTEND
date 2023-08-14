@@ -14,8 +14,9 @@ aside{
   color: #000;
 }
 a{
+  font-size: 14px;
   font-family: 'Times New Roman', Times, serif;
-  font-weight: 600;
+  font-weight: 400;
 }
 :is(a,.nav-link):hover,.nav-pills .nav-link.active{
   background-color: #c7e3ff;
@@ -25,7 +26,9 @@ a{
   margin:10px;
 }
 .icon{
-  margin:1px 2px;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
+}
+.sidebar-link{
+  padding:10px 0px 4px 8px;
 }

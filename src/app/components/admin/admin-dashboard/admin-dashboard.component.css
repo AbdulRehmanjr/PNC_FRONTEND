@@ -1,36 +1,56 @@
-section{
-  background-color: rgb(96, 108, 136);
-  height: 100%;
+.main-section{
+  background-color: #ECE7EB;
 }
 .icons{
   font-size:30px;
   padding: 10px;
 }
-.card-custom{
+/* cards */
+.card-count{
+  color:#fff;
+  font-size: 20px;
+  font-weight: 500;
+}
+.card-title{
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.card i {
+  color:#fff;
+}
+.card-custom-sm{
   height: 100px;
 }
-.flip-card {
-  background-color: transparent;
-  width: 190px;
-  height: 254px;
-  perspective: 1000px;
-  font-family: sans-serif;
+.card-user{
+  background-color: #7DA0FA;
+}
+.card-seller{
+  background-color: #57B657;
+}
+.card-revenue{
+  background-color: #44AEE2;
+}
+.card-month{
+  background-color: #6CB2EB;
+}
+.card-custom-lg{
+  height: 300px;
 }
 
-.title {
-  font-size: 1.5em;
-  font-weight: 900;
-  text-align: center;
-  margin: 0;
+.card-lg-title{
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+}
+.card-lg-des{
+  color: #000;
+  text-align: justify;
 }
 .card:hover{
-  box-shadow: 5px 5px 5px black;
+  box-shadow: 2px 2px 5px #000;
 }
 a:hover{
   cursor: pointer;
-}
-.action-title{
-  font-size: 20px;
-  font-weight: 900;
-  font-family: 'Times New Roman', Times, serif
 }

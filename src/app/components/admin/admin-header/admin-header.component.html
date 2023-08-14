@@ -1,9 +1,66 @@
 <header class="bg-white">
   <nav class="navbar navbar-expand-lg navbar-light p-0" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <a href="/!" class="navbar-brand align-items-center link-body-emphasis text-decoration-none">
-        <img  src="assets/pnc.png" alt="logo image" width="50" height="50">
-      </a>
+      <div class="image-section">
+        <a href="/!" class="navbar-brand align-items-center link-body-emphasis text-decoration-none">
+          <img  src="assets/pnc.png" alt="logo image" width="50" height="50">
+        </a>
+      </div>
+      <div class="header-left">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item dropdown notifications">
+            <a class="nav-link dropdown-toggle" href="!#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown requests">
+            <a class="nav-link dropdown-toggle" href="!#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-envelope-circle-check"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="!#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle d-flex flex-row" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="name-section">
+              <p class="name">{{user.firstName}}{{user.lastName}}</p>
+              <small>{{user.role.roleName}}</small>
+            </div>
+            <img [src]="user.photoUri" alt="mdo" width="40" height="40" class="rounded-circle mt-1">
+          </a>
+          <ul class="dropdown-menu text-small" style="left: unset;right: 0;">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
       <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive"> <span class="navbar-toggler-icon"></span></button>
     </div>
   </nav>
