@@ -104,7 +104,7 @@ export class SellerrequestService {
    */
   acceptRequest(requestId: number) {
     return this.http.post(
-      `${this.url}/accepted/${requestId}`,
+      `${this.url}/accept/${requestId}`,
       {},
       { observe: 'body',responseType: 'json' }
     );

@@ -36,19 +36,87 @@
   background-color: #6CB2EB;
 }
 .card-custom-lg{
-  height: 300px;
+  height: 160px;
 }
 
 .card-lg-title{
-  font-size: 30px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
   font-family: 'Times New Roman', Times, serif;
 }
 .card-lg-des{
   color: #000;
   text-align: justify;
 }
+.card-lg-des-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-lg-des-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.card-lg-des-list li:last-child {
+  margin-bottom: 0;
+}
+
+.card-lg-des-list .accept{
+  color: green;
+}
+.card-lg-des-list .reject{
+  color: red;
+}
+.card-lg-des-list .pending{
+  color: orange;
+}
+.card-lg-des-list .accept::before {
+  content: '✔'; /* Unicode checkmark for Accept */
+  position: absolute;
+  left: 0;
+  color: green;
+}
+
+.card-lg-des-list .reject::before {
+  content: '✖'; /* Unicode cross for Reject */
+  position: absolute;
+  left: 0;
+  color: red;
+}
+
+.card-lg-des-list .pending::before {
+  content: '⌛'; /* Unicode hourglass for Pending */
+  position: absolute;
+  left: 0;
+  color: orange;
+}
+
+
+.card-lg-des-list .service::before {
+  content: '🔧'; /* Unicode for Service (Wrench for representation) */
+  position: absolute;
+  left: 0;
+}
+
+.card-lg-des-list .restaurants::before {
+  content: '🍴'; /* Unicode for Restaurants (Fork and Knife) */
+  position: absolute;
+  left: 0;
+}
+
+.card-lg-des-list .automobile::before {
+  content: '🚗'; /* Unicode for Automobile (Car) */
+  position: absolute;
+  left: 0;
+}
+
 .card:hover{
+  transform: translateY(-5px);
   box-shadow: 2px 2px 5px #000;
 }
 a:hover{

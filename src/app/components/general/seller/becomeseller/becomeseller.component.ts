@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { last } from 'rxjs';
 import { Category } from 'src/app/class/category';
 import { Sellerrequest } from 'src/app/class/sellerrequest';
 import { CategoryService } from 'src/app/service/category.service';
@@ -29,6 +30,7 @@ export class BecomesellerComponent implements OnInit {
   document: File;
   userId: string;
   request: Sellerrequest;
+  remarks: Remarks;
 
   constructor(
     private fb: FormBuilder,
@@ -39,6 +41,7 @@ export class BecomesellerComponent implements OnInit {
   ngOnInit(): void {
     this.userId = JSON.parse(localStorage.getItem('user'))['userId'];
     this.fetchRequestByUserId();
+    this.fetchCategories()
     this.createForm();
   }
 
@@ -96,20 +99,18 @@ export class BecomesellerComponent implements OnInit {
       next: (response: Sellerrequest) => {
         this.request = response;
         this.isRequested = true;
-
-        /**
-         * * Accepted , Rejected or Pending
-         */
-        if (response.accepted === true && response.rejected === false) {
+        if (response.accepted) {
           this.status = true;
-        } else if (response.accepted === false && response.rejected === true) {
+        } else if (response.rejected) {
           this.status = false;
-        } else if (response.accepted === false && response.rejected === false) {
+        } else {
           this.status = 'pending';
         }
       },
       error: (err: any) => console.log(err),
-      complete: () => this.fetchCategories(),
+      complete: () => {
+        if (this.request?.remarks) this.parseRemarks(this.request?.remarks);
+      },
     });
   }
 
@@ -199,4 +200,38 @@ export class BecomesellerComponent implements OnInit {
         complete: () => {},
       });
   }
+
+  /**
+   * The function `parseRemarks` takes a string parameter `remark` and extracts specific information
+   * from it to populate properties of an object called `remarks`.
+   * @param {string} remark - The `remark` parameter is a string that contains information about a
+   * person or a business.
+   */
+  parseRemarks(remark: string) {
+    const idMatch = remark.match(/Id\s*:\s*(\d+)/);
+    const firstNameMatch = remark.match(/First Name\s*:\s*(\w+)/);
+    const lastNameMatch = remark.match(/Last Name\s*:\s*(\w+)/);
+    const businessCategoryMatch = remark.match(/Business Category\s*:\s*(\w+)/);
+    const businessNameMatch = remark.match(/Business Name\s*:\s*([\w\s&]+)(?=\s*has been approved)/);
+
+    let values = new Remarks()
+
+    values.id = idMatch ? idMatch[1] : '';
+    values.firstName = firstNameMatch ? firstNameMatch[1] : '';
+    values.lastName = lastNameMatch ? lastNameMatch[1] : '';
+    values.businessCategory = businessCategoryMatch
+      ? businessCategoryMatch[1]
+      : '';
+    values.businessName = businessNameMatch ? businessNameMatch[1] : '';
+
+    this.remarks = values
+  }
+}
+
+class Remarks {
+  id: string
+  firstName: string
+  lastName: string
+  businessCategory: string
+  businessName: string
 }

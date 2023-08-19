@@ -1,38 +1,55 @@
 <section id="login">
   <p-toast></p-toast>
-  <div class="m-auto mt-5 form-container">
-    <p class="title">Login</p>
-    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="input-group">
-        <label for="username">Email</label>
-        <input type="text" name="email" formControlName="email">
-        <div *ngIf="loginForm.get('email').invalid && loginForm.get('email').touched">
-          <small class="text-danger">Please provide valid email.</small>
-        </div>
-      </div>
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" formControlName="password">
-        <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
-          <small class="text-danger">Please provide password.</small>
-        </div>
-        <div class="forgot">
-          <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
-        </div>
-      </div>
-      <button class="sign" type="submit">Sign in</button>
-    </form>
-    <div class="social-message">
-      <div class="line"></div>
-      <p class="message">Login with social accounts</p>
-      <div class="line"></div>
+  <div class="row">
+    <div class="d-none d-md-flex col-md-6">
+      <img class="login-image" src="assets/login-page.png" alt="login page" />
     </div>
-    <div class="social-icons">
-      <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
-
+    <div class="m-5 col-sm-12 col-md-6 form-container">
+      <p class="title">Login</p>
+      <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="input-group">
+          <label for="username">Email</label>
+          <input type="text" name="email" formControlName="email" />
+          <div
+            *ngIf="
+              loginForm.get('email').invalid && loginForm.get('email').touched
+            "
+          >
+            <small class="text-danger">Please provide valid email.</small>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" formControlName="password" />
+          <div
+            *ngIf="
+              loginForm.get('password').invalid &&
+              loginForm.get('password').touched
+            "
+          >
+            <small class="text-danger">Please provide password.</small>
+          </div>
+          <div class="forgot">
+            <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+          </div>
+        </div>
+        <button class="sign" type="submit">Sign in</button>
+      </form>
+      <div class="social-message">
+        <div class="line"></div>
+        <p class="message">Login with social accounts</p>
+        <div class="line"></div>
+      </div>
+      <div class="social-icons">
+        <asl-google-signin-button
+          type="icon"
+          size="medium"
+        ></asl-google-signin-button>
+      </div>
+      <p class="signup">
+        Don't have an account?
+        <a rel="noopener noreferrer" routerLink="/signup">Sign up</a>
+      </p>
     </div>
-    <p class="signup">Don't have an account?
-      <a rel="noopener noreferrer" routerLink="/signup">Sign up</a>
-    </p>
   </div>
 </section>
