@@ -123,3 +123,7 @@ p {
   color: #E00707;
   border: 1px solid #E00707;
 }
+
+.remarks-list{
+  list-style-type: none;
+}

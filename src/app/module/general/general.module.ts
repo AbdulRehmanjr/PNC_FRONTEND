@@ -41,6 +41,7 @@ import { PlatformComponent } from '../../components/general/platform/platform.co
 import { AboutUsComponent } from '../../components/general/about-us/about-us.component';
 import { StartBusinessComponent } from '../../components/general/seller/start-business/start-business.component';
 import { ContactUsComponent } from '../../components/general/contact-us/contact-us.component';
+import { SubscriptionCardsComponent } from '../../components/general/subscription-cards/subscription-cards.component';
 
 
 const LOGINPROVIDER = {
@@ -69,9 +70,10 @@ const routes: Route[] = [
       { path: '', component: DashboardComponent },
       { path: 'category-detail', component: CategoryDetailComponent },
       { path: 'about-us', component: AboutUsComponent },
-      {path: 'contact-us', component:ContactUsComponent},
-      { path:'start-business',component:StartBusinessComponent},
-      {path:'become-seller',component:BecomesellerComponent}
+      { path: 'contact-us', component:ContactUsComponent},
+      { path: 'start-business',component:StartBusinessComponent},
+      { path: 'become-seller',component:BecomesellerComponent},
+      { path: 'subscription-cards',component:SubscriptionCardsComponent}
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -96,6 +98,7 @@ const routes: Route[] = [
     AboutUsComponent,
     StartBusinessComponent,
     ContactUsComponent,
+    SubscriptionCardsComponent,
   ],
   imports: [
     DialogModule,

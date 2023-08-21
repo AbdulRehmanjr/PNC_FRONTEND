@@ -49,15 +49,17 @@
             <div class="alert alert-success" role="alert">
                 <h4 class="alert-heading">Congratulations!</h4>
                 <p>Your request to become a seller has been approved by Administration.</p>
-                <ul>
+                <ul class="remarks-list">
                     <li><strong>ID:</strong> {{ remarks?.id }}</li>
-                    <li><strong>Name:</strong> {{ remarks?.firstName }} {{ remarks?.lastName }}</li>
+                    <li><strong>Name:</strong> {{ remarks?.firstName}} {{ remarks?.lastName }}</li>
                     <li><strong>Business Category:</strong> {{ remarks?.businessCategory }}</li>
                     <li><strong>Business Name:</strong> {{ remarks?.businessName }}</li>
                 </ul>
+                <hr>
+                <p >Want to explore more features? Subscribe now!</p>
+                <button class="btn-home" routerLink="/home/subscription-cards">Go to Subscription Page</button>
             </div>
         </article>
-
         </ng-template>
       </ng-template>
       <article class="d-none d-md-block col-md-6">
