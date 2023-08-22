@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Sellerrequest } from 'src/app/class/sellerrequest';
-import { SellerrequestService } from 'src/app/service/sellerrequest.service';
+import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';
 
 @Component({
   selector: 'app-sellerrequests',

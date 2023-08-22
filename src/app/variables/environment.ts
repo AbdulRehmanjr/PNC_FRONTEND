@@ -4,5 +4,6 @@ export const environment = {
   login:'token',
   user:'user',
   category:'category',
-  sellerrequest:'sellerrequest'
+  sellerrequest:'sellerrequest',
+  subscription:'checkout'
 } as const

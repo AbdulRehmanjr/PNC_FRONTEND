@@ -9,7 +9,7 @@ import { last } from 'rxjs';
 import { Category } from 'src/app/class/category';
 import { Sellerrequest } from 'src/app/class/sellerrequest';
 import { CategoryService } from 'src/app/service/category.service';
-import { SellerrequestService } from 'src/app/service/sellerrequest.service';
+import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';
 
 @Component({
   selector: 'general-becomeseller',

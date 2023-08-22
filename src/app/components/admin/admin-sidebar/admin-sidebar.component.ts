@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SellerrequestService } from 'src/app/service/sellerrequest.service';
+import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';
 
 @Component({
   selector: 'admin-admin-sidebar',
