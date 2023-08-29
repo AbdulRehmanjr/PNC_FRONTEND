@@ -9,6 +9,7 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToolbarModule } from 'primeng/toolbar';
 import { BadgeModule } from 'primeng/badge';
+import { ChartModule } from 'primeng/chart';
 
 //* compoenents
 import { AdminComponent } from './admin.component';
@@ -38,6 +39,7 @@ const routes:Routes = [
     AddCategoryComponent
   ],
   imports: [
+    ChartModule,
     BadgeModule,
     ToolbarModule,
     ReactiveFormsModule,

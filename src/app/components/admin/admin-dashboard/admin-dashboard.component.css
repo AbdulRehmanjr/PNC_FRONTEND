@@ -38,6 +38,9 @@
 .card-custom-lg{
   height: 160px;
 }
+.card-report-lg{
+  height: 400px;
+}
 
 .card-lg-title{
   font-size: 20px;

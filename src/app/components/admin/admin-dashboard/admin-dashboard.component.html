@@ -5,8 +5,8 @@
         <div class="row">
           <div class="col-8">
             <div class="container-details">
-              <p class="card-title m-0" >Users</p>
-              <p class="card-count m-0">50000 </p>
+              <p class="card-title m-0">Users</p>
+              <p class="card-count m-0">50000</p>
             </div>
           </div>
           <div class="col-4">
@@ -21,11 +21,11 @@
           <div class="col-8">
             <div class="container-details">
               <p class="card-title m-0">Sellers</p>
-              <h5 class="card-count m-0">50000 </h5>
+              <h5 class="card-count m-0">50000</h5>
             </div>
           </div>
           <div class="col-4">
-            <i class="fa-solid fa-people-line icons" ></i>
+            <i class="fa-solid fa-people-line icons"></i>
           </div>
         </div>
       </div>
@@ -62,51 +62,76 @@
     </div>
   </section>
   <section class="row m-2">
-
-      <div class="col-md-4">
-        <a class="card card-cover card-custom-lg rounded-3" routerLink="/admin-dashboard/requests">
-          <div class="row">
-            <div class="col-6">
-              <div class="card-container">
-                <p class="card-lg-title">
-                  Seller Requests
-                </p>
-                <ul class="card-lg-des-list">
-                  <li class="accept">Accept</li>
-                  <li class="reject">Reject</li>
-                  <li class="pending">Pending</li>
-              </ul>
+    <div class="col-md-8">
+      <div class="row my-3">
+        <div class="col-md-6">
+          <a
+            class="card card-cover card-custom-lg rounded-3"
+            routerLink="/admin-dashboard/requests"
+          >
+            <div class="row">
+              <div class="col-6">
+                <div class="card-container">
+                  <p class="card-lg-title">Seller Requests</p>
+                  <ul class="card-lg-des-list">
+                    <li class="accept">Accept</li>
+                    <li class="reject">Reject</li>
+                    <li class="pending">Pending</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-6">
+                <img
+                  class="card-img"
+                  src="assets/admin/mail.png"
+                  alt="request"
+                />
               </div>
             </div>
-            <div class="col-6">
-              <img class="card-img" src="assets/admin/mail.png" alt="request">
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4">
-        <a class="card card-cover card-custom-lg rounded-4" routerLink="/admin-dashboard/category">
-          <div class="row">
-            <div class="col-6">
-              <div class="card-container">
-                <p class="card-lg-title py-2">
-                  Categories
-                </p>
-                <ul class="card-lg-des-list">
-                  <li class="service">Service</li>
-                  <li class="restaurants">Restaurants</li>
-                  <li class="automobile">Automobile</li>
-              </ul>
-
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a
+            class="card card-cover card-custom-lg rounded-4"
+            routerLink="/admin-dashboard/category"
+          >
+            <div class="row">
+              <div class="col-6">
+                <div class="card-container">
+                  <p class="card-lg-title py-2">Categories</p>
+                  <ul class="card-lg-des-list">
+                    <li class="service">Service</li>
+                    <li class="restaurants">Restaurants</li>
+                    <li class="automobile">Automobile</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-6">
+                <img
+                  class="card-img"
+                  src="assets/admin/category.png"
+                  alt="category"
+                />
               </div>
             </div>
-            <div class="col-6">
-              <img class="card-img" src="assets/admin/category.png" alt="category">
-            </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </div>
+      <div class="row my-3">
+        <div class="col-md-6">
+          <a class="card card-cover card-report-lg rounded-4">
+            <h6 class="card-lg-title m-2">Subscription Report</h6>
+            <p-chart  type="pie" [data]="subsData" [options]="subsOption"></p-chart>
+          </a>
+        </div>
+      </div>
+    </div>
 
+    <div class="col-md-4">
+      <a class="card card-cover card-report-lg rounded-4">
+        <h6 class="card-lg-title m-2">User Report</h6>
+        <p-chart  type="doughnut" [data]="userData" [options]="userOptions" [ariaSetSize]="400"></p-chart>
+      </a>
+    </div>
   </section>
-
 </section>
