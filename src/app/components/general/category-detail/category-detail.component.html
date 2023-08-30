@@ -1,3 +1,5 @@
+<head><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
 <div class="row">
   <aside class="col-md-2 bg-white rounded-3 mt-2 mx-2">
     <div class="section_filter">
@@ -121,16 +123,25 @@
     </div>
   </aside>
   <section class="col-md-9 rounded-4 mt-2 mx-5">
-    <h1 class="fw-bold">Category Heading</h1>
+    <h1 class="fw-bold centered-heading aesthetic-heading">Category Heading</h1>
 
     <ng-container *ngFor="let category of categories">
-      <a href="!#" class="card rounded-5  my-3">
+      <a href="!#" class="my-card rounded-5  my-3">
         <div class="row my-2">
           <div class="col-4">
-            <img src="assets/intro/house.jpg" class="img-fluid rounded-4 item_image" alt="category detail image">
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img src="assets/pnc.png" alt="Image" class="card-image">
+                </div>
+                <div class="card-back">
+                  <img src="assets/placeholder.png" alt="Image" class="card-image">
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-8">
-            <h2 class="item_title">Business Name</h2>
+            <h3 class="item_title aesthetic-heading">Business Name</h3>
 
             <div class="chip_container">
               <p-chip label="Action" class="mx-2"></p-chip>
@@ -145,6 +156,9 @@
             </div>
             <div class="detal_container">
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque atque autem exercitationem, porro corporis voluptate incidunt saepe. Dolor porro quod architecto quisquam quas. Omnis impedit nisi iste, similique saepe aperiam voluptatem praesentium adipisci culpa assumenda laborum esse hic expedita libero sapiente, possimus veritatis iure fugit?</p>
+            </div>
+            <div class="add-to-cart">
+              <button class="add-to-cart-button">Add to cart</button>
             </div>
 
           </div>
