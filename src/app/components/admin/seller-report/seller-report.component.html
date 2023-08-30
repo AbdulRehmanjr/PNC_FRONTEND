@@ -48,11 +48,16 @@
         <th pSortableColumn="category.categoryName" style="width: 5rem">
           Category<p-sortIcon field="category.categoryName"></p-sortIcon>
         </th>
+        <th pSortableColumn="isActive" style="width: 5rem">
+          Status<p-sortIcon field="isActive"></p-sortIcon>
+        </th>
         <th pSortableColumn="email" style="width: 5rem">
-          Email<p-sortIcon field="email"></p-sortIcon>
+          Email
+          <p-sortIcon field="email"></p-sortIcon>
         </th>
         <th pSortableColumn="address" style="width: 5rem">
-          Address<p-sortIcon field="address"></p-sortIcon>
+          Address
+          <p-sortIcon field="address"></p-sortIcon>
         </th>
         <th style="width: 2rem">Action</th>
       </tr>
@@ -65,17 +70,22 @@
         <td>{{ seller.firstName | uppercase }}</td>
         <td>{{ seller.lastName | uppercase }}</td>
         <td>{{ seller.category?.categoryName }}</td>
+        <td>
+          <p-tag
+            [value]="getValue(seller.isActive)"
+            [severity]="getSeverity(seller.isActive)"
+          ></p-tag>
+        </td>
         <td>{{ seller.email }}</td>
-        <td>{{ seller.address }}</td>
-        <!-- <td style="text-align: center">
+        <td>{{ seller.address | uppercase }}</td>
+        <td style="text-align: center">
           <button
             type="button"
-            class="btn-action"
-            (click)="showRequestDialog(seller)"
+            class="btn btn-danger"
           >
-            <i class="fa-solid fa-circle-check"></i>
+          <i class="fa-solid fa-pen-to-square"></i>
           </button>
-        </td> -->
+        </td>
       </tr>
     </ng-template>
 
