@@ -1,0 +1,42 @@
+header{
+  box-shadow: 0px 1px 5px rgb(131, 131, 131);
+}
+.header-left{
+  display: flex;
+  align-items: center;
+}
+.name-section{
+  display: flex;
+  flex-direction: column;
+  padding: 5px 8px;
+  margin: 0px 5px;
+}
+.name-section .name{
+  padding: 0;
+  margin: 0;
+}
+.nav-item{
+  margin: 0 5px;
+}
+.notifications{
+  background-color: #F7E5EA;
+  border: none;
+  border-radius: 50%;
+}
+.requests{
+  background-color: #E7F5EF;
+  border: none;
+  border-radius: 50%;
+}
+.nav-link i{
+  font-size: 22px;
+}
+.fa-bell{
+  color: #f02c5a;
+}
+.fa-envelope-circle-check{
+  color: #65D099;
+}
+.dropdown-toggle::after{
+display: none;
+}

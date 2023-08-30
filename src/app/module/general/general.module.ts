@@ -23,6 +23,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { SkeletonModule } from 'primeng/skeleton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 import { SharedModule } from '../shared/shared.module';
 
@@ -42,6 +43,7 @@ import { AboutUsComponent } from '../../components/general/about-us/about-us.com
 import { StartBusinessComponent } from '../../components/general/seller/start-business/start-business.component';
 import { ContactUsComponent } from '../../components/general/contact-us/contact-us.component';
 import { SubscriptionCardsComponent } from '../../components/general/subscription-cards/subscription-cards.component';
+import { CommunicationComponent } from '../../components/general/communication/communication.component';
 
 
 const LOGINPROVIDER = {
@@ -73,7 +75,8 @@ const routes: Route[] = [
       { path: 'contact-us', component:ContactUsComponent},
       { path: 'start-business',component:StartBusinessComponent},
       { path: 'become-seller',component:BecomesellerComponent},
-      { path: 'subscription-cards',component:SubscriptionCardsComponent}
+      { path: 'subscription-cards',component:SubscriptionCardsComponent},
+      {path:'messages',component:CommunicationComponent}
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -99,8 +102,10 @@ const routes: Route[] = [
     StartBusinessComponent,
     ContactUsComponent,
     SubscriptionCardsComponent,
+    CommunicationComponent,
   ],
   imports: [
+    VirtualScrollerModule,
     DialogModule,
     FileUploadModule,
     SkeletonModule,

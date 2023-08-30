@@ -1,0 +1,143 @@
+<section class="container-fluid main-section">
+  <section class="row p-4">
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-cover card-custom-sm card-seller rounded-3 p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="container-details">
+              <p class="card-title m-0">Sellers</p>
+              <h5 class="card-count m-0">{{seller.firstName | uppercase}}{{seller.lastName | uppercase}}</h5>
+            </div>
+          </div>
+          <div class="col-4">
+            <i class="fa-solid fa-user icons"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-cover card-custom-sm card-user rounded-3 p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="container-details">
+              <p class="card-title m-0">Rank</p>
+              <p class="card-count m-0">{{seller.sellerType}}</p>
+            </div>
+          </div>
+          <div class="col-4">
+            <i class="fa-solid fa-ranking-star icons"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-cover card-custom-sm card-revenue rounded-3 p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="container-details">
+              <p class="card-title m-0">Limit</p>
+              <h5 class="card-count m-0">{{seller.maxProducts}} products</h5>
+            </div>
+          </div>
+          <div class="col-4">
+            <i class="fa-brands fa-maxcdn icons"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card card-cover card-custom-sm card-month rounded-3 p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="container-details">
+              <p class="card-title m-0">Current</p>
+              <h5 class="card-count m-0">{{seller.currentProducts}} products</h5>
+            </div>
+          </div>
+          <div class="col-4">
+            <i class="fa-brands fa-product-hunt icons"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="row m-2">
+    <div class="col-md-8">
+      <div class="row py-3">
+        <div class="col-md-6">
+          <a
+            class="card card-cover card-custom-lg rounded-3"
+            routerLink="/seller-dashboard/messages"
+          >
+            <div class="row">
+              <div class="col-6">
+                <div class="card-container">
+                  <p class="card-lg-title">Messages</p>
+                  <ul class="card-lg-des-list">
+                    <li class="accept">Read</li>
+                    <li class="pending">Un Read</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-6">
+                <img
+                  class="card-img"
+                  src="assets/sellerdashboard/messages.png"
+                  alt="request"
+                />
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a
+            class="card card-cover card-custom-lg rounded-4"
+            routerLink="/admin-dashboard/category"
+          >
+            <div class="row">
+              <div class="col-6">
+                <div class="card-container">
+                  <p class="card-lg-title py-2">Inventory</p>
+                  <ul class="card-lg-des-list">
+                    <li class="service">Service</li>
+                    <li class="restaurants">Restaurants</li>
+                    <li class="automobile">Automobile</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-6">
+                <img
+                  class="card-img"
+                  src="assets/sellerdashboard/item.png"
+                  alt="category"
+                />
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="row py-3">
+        <div class="col-md-6">
+          <a class="card card-cover card-report-lg rounded-4">
+            <h6 class="card-lg-title m-2">Subscription Report</h6>
+            <p-chart  type="pie" [data]="subsData" [options]="subsOption"></p-chart>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a class="card card-cover card-report-lg rounded-4">
+            <h6 class="card-lg-title m-2">Active Sellers</h6>
+            <p-chart  type="pie" [data]="activeData" [options]="activeOptions"></p-chart>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row my-4">
+        <a class="card card-cover card-report-lg rounded-4">
+          <h6 class="card-lg-title m-2">Order Report</h6>
+          <p-chart  type="doughnut" [data]="orderData" [options]="orderOptions" [ariaSetSize]="400"></p-chart>
+        </a>
+      </div>
+    </div>
+  </section>
+</section>
