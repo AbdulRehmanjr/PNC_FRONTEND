@@ -1,0 +1,88 @@
+<section id="seller-repot">
+  <p-table
+    #dt
+    [value]="sellers"
+    dataKey="sellerId"
+    [responsive]="true"
+    [rowHover]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} sellers"
+    [filterDelay]="0"
+    [globalFilterFields]="[
+      'firstName',
+      'lastName',
+      'email',
+      'address',
+      'category.categoryName'
+    ]"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        List of Sellers
+        <span class="p-input-icon-left">
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal($event.target['value'], 'contains')"
+            placeholder="Global Search"
+          />
+        </span>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="sellerId" style="width: 1rem">
+          Id<p-sortIcon field="sellerId"></p-sortIcon>
+        </th>
+        <th style="width: 6rem">Picture</th>
+        <th pSortableColumn="firstName" style="width: 5rem">
+          First Name<p-sortIcon field="firstName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="lastName" style="width: 5rem">
+          Last Name<p-sortIcon field="lastName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="category.categoryName" style="width: 5rem">
+          Category<p-sortIcon field="category.categoryName"></p-sortIcon>
+        </th>
+        <th pSortableColumn="email" style="width: 5rem">
+          Email<p-sortIcon field="email"></p-sortIcon>
+        </th>
+        <th pSortableColumn="address" style="width: 5rem">
+          Address<p-sortIcon field="address"></p-sortIcon>
+        </th>
+        <th style="width: 2rem">Action</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-seller>
+      <tr class="p-selectable-row">
+        <td>{{ seller.sellerId }}</td>
+        <td><img class="picture" src="{{ seller.picture }}" /></td>
+        <td>{{ seller.firstName | uppercase }}</td>
+        <td>{{ seller.lastName | uppercase }}</td>
+        <td>{{ seller.category?.categoryName }}</td>
+        <td>{{ seller.email }}</td>
+        <td>{{ seller.address }}</td>
+        <!-- <td style="text-align: center">
+          <button
+            type="button"
+            class="btn-action"
+            (click)="showRequestDialog(seller)"
+          >
+            <i class="fa-solid fa-circle-check"></i>
+          </button>
+        </td> -->
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No sellers found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>

@@ -63,7 +63,7 @@
   </section>
   <section class="row m-2">
     <div class="col-md-8">
-      <div class="row my-3">
+      <div class="row py-3">
         <div class="col-md-6">
           <a
             class="card card-cover card-custom-lg rounded-3"
@@ -117,21 +117,29 @@
           </a>
         </div>
       </div>
-      <div class="row my-3">
+      <div class="row py-3">
         <div class="col-md-6">
           <a class="card card-cover card-report-lg rounded-4">
             <h6 class="card-lg-title m-2">Subscription Report</h6>
             <p-chart  type="pie" [data]="subsData" [options]="subsOption"></p-chart>
           </a>
         </div>
+        <div class="col-md-6">
+          <a class="card card-cover card-report-lg rounded-4">
+            <h6 class="card-lg-title m-2">Active Sellers</h6>
+            <p-chart  type="pie" [data]="activeData" [options]="activeOptions"></p-chart>
+          </a>
+        </div>
+
       </div>
     </div>
-
     <div class="col-md-4">
-      <a class="card card-cover card-report-lg rounded-4">
-        <h6 class="card-lg-title m-2">User Report</h6>
-        <p-chart  type="doughnut" [data]="userData" [options]="userOptions" [ariaSetSize]="400"></p-chart>
-      </a>
+      <div class="row my-4">
+        <a class="card card-cover card-report-lg rounded-4">
+          <h6 class="card-lg-title m-2">User Report</h6>
+          <p-chart  type="doughnut" [data]="userData" [options]="userOptions" [ariaSetSize]="400"></p-chart>
+        </a>
+      </div>
     </div>
   </section>
 </section>

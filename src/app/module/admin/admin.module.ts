@@ -19,6 +19,8 @@ import { AdminDashboardComponent } from '../../components/admin/admin-dashboard/
 import { SellerrequestsComponent } from '../../components/admin/sellerrequests/sellerrequests.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryComponent } from '../../components/admin/add-category/add-category.component';
+import { SellerReportComponent } from '../../components/admin/seller-report/seller-report.component';
+
 
 
 
@@ -26,7 +28,8 @@ const routes:Routes = [
   {path:'admin-dashboard',component:AdminComponent,children:[
     {path:'',component:AdminDashboardComponent},
     {path:'requests',component:SellerrequestsComponent},
-    {path:'category',component:AddCategoryComponent}
+    {path:'category',component:AddCategoryComponent},
+    {path:'report',component:SellerReportComponent}
   ]}
 ]
 @NgModule({
@@ -36,7 +39,8 @@ const routes:Routes = [
     AdminSidebarComponent,
     AdminDashboardComponent,
     SellerrequestsComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    SellerReportComponent,
   ],
   imports: [
     ChartModule,

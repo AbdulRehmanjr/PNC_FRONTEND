@@ -1,6 +1,10 @@
 .btn-group{
   height: 30px;
 }
+.sticky-aside{
+  position: sticky;
+  top:0px;
+}
 button i {
   font-size: 10px;
 }
