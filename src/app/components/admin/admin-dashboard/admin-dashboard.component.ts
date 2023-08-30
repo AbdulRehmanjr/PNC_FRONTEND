@@ -10,10 +10,13 @@ export class AdminDashboardComponent {
   userOptions: any;
   subsData: any;
   subsOption: any;
+  activeData:any
+  activeOptions:any
 
   ngOnInit() {
     this.userReportGraph()
     this.subscriptionGraph()
+    this.sellerReportGraph()
   }
 
   userReportGraph() {
@@ -74,6 +77,36 @@ export class AdminDashboardComponent {
           labels: {
             usePointStyle: true,
             color: "#000",
+          },
+        },
+      },
+    };
+  }
+
+  sellerReportGraph(){
+    this.activeData = {
+      labels: ['Active', 'Blocked'],
+      datasets: [
+        {
+          data: [70,30],
+          backgroundColor: [
+            '#2196F3',
+            '#9E9E9E',
+          ],
+          hoverBackgroundColor: [
+            '#2196F3',
+            '#9E9E9E',
+          ],
+        },
+      ],
+    };
+
+    this.activeOptions = {
+      cutout: '60%',
+      plugins: {
+        legend: {
+          labels: {
+            color: '#000',
           },
         },
       },
