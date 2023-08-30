@@ -6,9 +6,8 @@ import { GeneralModule } from './module/general/general.module';
 import { UserModule } from './module/user/user.module';
 
 
-import { CategoryDetailComponent } from './components/general/category-detail/category-detail.component';
 import { AdminModule } from './module/admin/admin.module';
-import { AdminComponent } from './module/admin/admin.component';
+import { SellerModule } from './module/seller/seller.module';
 
 
 const routes:Route[] =[
@@ -21,6 +20,7 @@ const routes:Route[] =[
     AdminModule,
     UserModule,
     GeneralModule,
+    SellerModule,
     RouterModule.forRoot(routes),
     CommonModule
   ],

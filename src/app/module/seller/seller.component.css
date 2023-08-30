@@ -1,0 +1,10 @@
+.sticky-container {
+  position: relative;  /* Create a context for the sticky element */
+  height: 100vh;      /* Full viewport height */
+}
+
+.sticky-sidebar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0px;                 /* Adjust according to your header's height */
+}
