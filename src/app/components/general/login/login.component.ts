@@ -68,8 +68,10 @@ export class LoginComponent implements OnInit {
 
     this.loginService.generateToken(login).subscribe({
       next: (data: any) => {
-
-        this.loginService.setToken(data.token)
+        let token = new Token()
+        token.token = data.token
+        token.provider = "PNC"
+        this.loginService.setToken(token)
 
         this.loginService.currentUser(login).subscribe(
           {
@@ -104,12 +106,11 @@ export class LoginComponent implements OnInit {
       case "ADMIN":
         this.router.navigate(['/home'])
         break
-      case "USER":
+      case "SELLER":
         this.router.navigate(['/home'])
         break
       default:
-        this.router.navigate(['/login'])
-        break
+        this.router.navigate(['/home'])
     }
   }
 }

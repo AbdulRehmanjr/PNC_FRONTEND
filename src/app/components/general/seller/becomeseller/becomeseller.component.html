@@ -44,6 +44,17 @@
           </article>
         </ng-container>
         <ng-template #accepted>
+         <ng-container *ngIf="isActive == true else pendingPayment">
+          <article class="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="heading">PNC Business Requests</h1>
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Congratulations!</h4>
+                <p>Your payment is successfully received. Please log out and login again.</p>
+                <button class="btn-home" routerLink="/login">Go to Login Page</button>
+            </div>
+        </article>
+         </ng-container>
+         <ng-template #pendingPayment>
           <article class="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
             <h1 class="heading">PNC Business Requests</h1>
             <div class="alert alert-success" role="alert">
@@ -60,6 +71,7 @@
                 <button class="btn-home" routerLink="/home/subscription-cards">Go to Subscription Page</button>
             </div>
         </article>
+         </ng-template>
         </ng-template>
       </ng-template>
       <article class="d-none d-md-block col-md-6">

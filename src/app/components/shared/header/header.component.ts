@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   user:any
   isLogged:boolean = false
+  role:string= ''
   constructor(private router:Router){}
   ngOnInit(): void {
     this.fetchFromStorage()
@@ -24,6 +25,7 @@ export class HeaderComponent implements OnInit {
     if(this.user!=null || this.user!=undefined)
       this.isLogged =true
 
+      this.role = this.user['role']['roleName']
   }
 
   logOut() {

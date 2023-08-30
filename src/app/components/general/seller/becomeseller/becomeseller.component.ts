@@ -7,8 +7,10 @@ import {
 } from '@angular/forms';
 import { last } from 'rxjs';
 import { Category } from 'src/app/class/category';
+import { Seller } from 'src/app/class/seller';
 import { Sellerrequest } from 'src/app/class/sellerrequest';
 import { CategoryService } from 'src/app/service/category.service';
+import { SellerService } from 'src/app/service/seller/seller.service';
 import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';
 
 @Component({
@@ -19,7 +21,6 @@ import { SellerrequestService } from 'src/app/service/seller/sellerrequest.servi
 export class BecomesellerComponent implements OnInit {
   businessForm: FormGroup;
   activeIndex: number = 0;
-  cities: any;
   selectedOption: string;
   showOptions: boolean = false;
   reSendDialog: boolean = false;
@@ -31,11 +32,13 @@ export class BecomesellerComponent implements OnInit {
   userId: string;
   request: Sellerrequest;
   remarks: Remarks;
+  isActive:boolean = false
 
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
-    private srService: SellerrequestService
+    private srService: SellerrequestService,
+    private sellerService:SellerService
   ) {}
 
   ngOnInit(): void {
@@ -109,6 +112,12 @@ export class BecomesellerComponent implements OnInit {
       },
       error: (err: any) => console.log(err),
       complete: () => {
+        if(this.status==true)
+          this.sellerService.getSellerByEmail(JSON.parse(localStorage.getItem('user'))['userEmail']).subscribe({
+            next: (response: Seller) => this.isActive = response.isActive,
+            error: (err: any) => console.log(err),
+            complete: () => {}
+          })
         if (this.request?.remarks) this.parseRemarks(this.request?.remarks);
       },
     });
