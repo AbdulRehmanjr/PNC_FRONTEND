@@ -26,7 +26,7 @@ import { InventoryComponent } from '../../components/seller/inventory/inventory.
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { ProgressBarModule } from 'primeng/progressbar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -50,6 +50,7 @@ const routes: Routes = [
     InventoryComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     RatingModule,
     ToolbarModule,
     ToastModule,

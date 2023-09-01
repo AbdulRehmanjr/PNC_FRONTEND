@@ -102,7 +102,7 @@
             pRipple
             icon="pi pi-pencil"
             class="p-button-rounded p-button-success mr-2"
-            (click)="editProduct(product)"
+            (click)="openEdit(product)"
           ></button>
           <button
             pButton
@@ -130,85 +130,157 @@
 >
   <ng-template pTemplate="content">
     <div class="container">
-      <div class="form-group">
-        <label for="name">Image</label>
-        <p-fileUpload
-          name="demo[]"
-          url="https://www.primefaces.org/cdn/api/upload.php"
-          (onUpload)="onUpload($event)"
-          [multiple]="true"
-          accept="image/*"
-          [maxFileSize]="1000000"
+      <form [formGroup]="productForm">
+        <!-- Image Upload -->
+        <div class="form-group">
+          <label for="name">Image</label>
+          <p-fileUpload
+            name="demo[]"
+            (onSelect)="onUpload($event)"
+            (onRemove)="onRemove($event)"
+            (onClear)="onClear()"
+            [multiple]="true"
+            accept="image/*"
+            [maxFileSize]="1000000">
+          </p-fileUpload>
+        </div>
 
-        >
-          <ng-template pTemplate="content">
-            <ul *ngIf="uploadedFiles.length">
-              <li *ngFor="let file of uploadedFiles">
-                {{ file.name }} - {{ file.size }} bytes
-              </li>
-            </ul>
-          </ng-template>
-        </p-fileUpload>
-        <small class="text-danger" *ngIf="submitted && !product.name"
-          >Name is required.</small
-        >
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required autofocus />
-        <small class="text-danger" *ngIf="submitted && !product.name"
-          >Name is required.</small
-        >
-      </div>
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" formControlName="name" class="form-control" id="name" />
+          <small class="text-danger" *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)">Name is required.</small>
+        </div>
 
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea
-          id="description"
-          class="form-control"
-          required
-          rows="3"
-        ></textarea>
-      </div>
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea formControlName="description" id="description" class="form-control" rows="3"></textarea>
+          <small class="text-danger" *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">Description is required.</small>
+        </div>
 
-      <div class="form-group">
-        <label for="inventoryStatus">Inventory Status</label>
-        <select class="form-control" id="inventoryStatus">
-          <option *ngFor="let status of statuses" [value]="status">
-            {{ status.label }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="categoryDropdown">Category</label>
-        <select id="categoryDropdown" class="form-control" name="category">
-          <option *ngFor="let category of categories" [value]="category.value">
-            {{ category.label }}
-          </option>
-        </select>
-      </div>
+        <!-- Inventory Status -->
+        <div class="form-group">
+          <label for="inventoryStatus">Inventory Status</label>
+          <select formControlName="inventoryStatus" class="form-control" id="inventoryStatus">
+            <option *ngFor="let status of statuses" [value]="status.value">{{ status.label }}</option>
+          </select>
+        </div>
 
+        <!-- Category -->
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select formControlName="category" class="form-control" id="category">
+            <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
+          </select>
+        </div>
 
-      <div class="row">
-        <div class="form-group col-md-6">
+        <!-- Price -->
+        <div class="form-group">
           <label for="price">Price</label>
-          <input type="number" class="form-control" id="price" />
+          <input formControlName="price" type="number" class="form-control" id="price" />
+          <small class="text-danger" *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)">Price is required.</small>
         </div>
-        <div class="form-group col-md-6">
+
+        <!-- Quantity -->
+        <div class="form-group">
           <label for="quantity">Quantity</label>
-          <input type="number" class="form-control" id="quantity" />
+          <input formControlName="quantity" type="number" class="form-control" id="quantity" />
+          <small class="text-danger" *ngIf="f['quantity'].invalid && (f['quantity'].dirty || f['quantity'].touched)">Quantity is required.</small>
         </div>
-      </div>
+
+      </form>
     </div>
+
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="d-flex justify-content-betweenmt-3">
       <button class="btn btn-secondary mr-2" (click)="hideDialog()">
         Cancel
       </button>
-      <button class="btn btn-primary" (click)="saveProduct()">Save</button>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="this.productForm.invalid">Submit</button>
     </div>
   </ng-template>
 </p-dialog>
+<p-dialog
+  [(visible)]="editDialog"
+  [style]="{ width: '450px' }"
+  header="Edit Product"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <div class="container">
+      <form [formGroup]="productForm">
+        <!-- Image Upload -->
+        <div class="form-group">
+          <label for="name">Image</label>
+          <p-fileUpload
+            name="demo[]"
+            (onSelect)="onUpload($event)"
+            (onRemove)="onRemove($event)"
+            (onClear)="onClear()"
+            [multiple]="true"
+            accept="image/*"
+            [maxFileSize]="1000000">
+          </p-fileUpload>
+        </div>
 
+        <!-- Product Name -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" formControlName="name" class="form-control" id="name" />
+          <small class="text-danger" *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)">Name is required.</small>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea formControlName="description" id="description" class="form-control" rows="3"></textarea>
+          <small class="text-danger" *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">Description is required.</small>
+        </div>
+
+        <!-- Inventory Status -->
+        <div class="form-group">
+          <label for="inventoryStatus">Inventory Status</label>
+          <select formControlName="inventoryStatus" class="form-control" id="inventoryStatus">
+            <option *ngFor="let status of statuses" [value]="status.value">{{ status.label }}</option>
+          </select>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select formControlName="category" class="form-control" id="category">
+            <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
+          </select>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input formControlName="price" type="number" class="form-control" id="price" />
+          <small class="text-danger" *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)">Price is required.</small>
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input formControlName="quantity" type="number" class="form-control" id="quantity" />
+          <small class="text-danger" *ngIf="f['quantity'].invalid && (f['quantity'].dirty || f['quantity'].touched)">Quantity is required.</small>
+        </div>
+
+      </form>
+    </div>
+
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <div class="d-flex justify-content-betweenmt-3">
+      <button class="btn btn-secondary mr-2" (click)="hideDialog()">
+        Cancel
+      </button>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="this.productForm.invalid">Submit</button>
+    </div>
+  </ng-template>
+</p-dialog>
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
