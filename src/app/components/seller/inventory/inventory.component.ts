@@ -275,9 +275,9 @@ export class InventoryComponent {
       category: product.category,
       price: product.price,
       quantity: product.quantity,
-      // populate files here if needed
     });
     console.log(product)
+    console.log(this.productForm)
     this.editDialog = true;
   }
 
@@ -375,6 +375,9 @@ export class InventoryComponent {
   onSubmit() {
     if (this.productForm.invalid) return;
     console.log('submit called');
+  }
+  updateSubmit(){
+    if(this.productForm.invalid) return;
   }
 }
 
