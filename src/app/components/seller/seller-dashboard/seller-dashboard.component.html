@@ -6,7 +6,7 @@
           <div class="col-8">
             <div class="container-details">
               <p class="card-title m-0">Sellers</p>
-              <h5 class="card-count m-0">{{seller.firstName | uppercase}}{{seller.lastName | uppercase}}</h5>
+              <h5 class="card-count m-0">{{seller?.firstName | uppercase}}{{seller?.lastName | uppercase}}</h5>
             </div>
           </div>
           <div class="col-4">
@@ -21,7 +21,7 @@
           <div class="col-8">
             <div class="container-details">
               <p class="card-title m-0">Rank</p>
-              <p class="card-count m-0">{{seller.sellerType}}</p>
+              <p class="card-count m-0">{{seller?.sellerType}}</p>
             </div>
           </div>
           <div class="col-4">
@@ -36,7 +36,7 @@
           <div class="col-8">
             <div class="container-details">
               <p class="card-title m-0">Limit</p>
-              <h5 class="card-count m-0">{{seller.maxProducts}} products</h5>
+              <h5 class="card-count m-0">{{seller?.maxProducts}} products</h5>
             </div>
           </div>
           <div class="col-4">
@@ -51,7 +51,7 @@
           <div class="col-8">
             <div class="container-details">
               <p class="card-title m-0">Current</p>
-              <h5 class="card-count m-0">{{seller.currentProducts}} products</h5>
+              <h5 class="card-count m-0">{{seller?.currentProducts}} products</h5>
             </div>
           </div>
           <div class="col-4">
@@ -92,7 +92,7 @@
         <div class="col-md-6">
           <a
             class="card card-cover card-custom-lg rounded-4"
-            routerLink="/admin-dashboard/category"
+            routerLink="/seller-dashboard/inventory"
           >
             <div class="row">
               <div class="col-6">

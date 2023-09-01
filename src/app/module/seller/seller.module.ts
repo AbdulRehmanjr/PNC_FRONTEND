@@ -8,13 +8,14 @@ import { BadgeModule } from 'primeng/badge';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { SliderModule } from 'primeng/slider';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
-import { ToastModule } from 'primeng/toast';
 import { FileUploadModule } from 'primeng/fileupload';
 import { RatingModule } from 'primeng/rating';
+import { TagModule } from 'primeng/tag';
+import { DropdownModule } from 'primeng/dropdown';
+import { AvatarModule } from 'primeng/avatar';
 
 import { ConfirmationService } from 'primeng/api';
 
@@ -23,10 +24,11 @@ import { SellerDashboardComponent } from '../../components/seller/seller-dashboa
 import { SellerHeaderComponent } from '../../components/seller/seller-header/seller-header.component';
 import { CommunicationComponent } from 'src/app/components/general/communication/communication.component';
 import { InventoryComponent } from '../../components/seller/inventory/inventory.component';
-import { TagModule } from 'primeng/tag';
-import { DropdownModule } from 'primeng/dropdown';
-import { ProgressBarModule } from 'primeng/progressbar';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from '../../components/seller/profile/profile.component';
+import { CapitalizePipe } from 'src/app/pipe/capitalize.pipe';
+
 
 
 const routes: Routes = [
@@ -35,31 +37,32 @@ const routes: Routes = [
     component: SellerComponent,
     children: [
       { path: '', component: SellerDashboardComponent },
-      {path:'messages',component:CommunicationComponent},
-      {path:'inventory',component:InventoryComponent}
+      { path:'messages',component:CommunicationComponent},
+      { path:'inventory',component:InventoryComponent},
+      { path:'profile',component:ProfileComponent}
   ],
   },
 ];
 
 @NgModule({
   declarations: [
+    CapitalizePipe,
     SellerComponent,
     SellerSideBarComponent,
     SellerDashboardComponent,
     SellerHeaderComponent,
     InventoryComponent,
+    ProfileComponent,
   ],
   imports: [
     ReactiveFormsModule,
     RatingModule,
     ToolbarModule,
-    ToastModule,
     FileUploadModule,
     DialogModule,
     ConfirmDialogModule,
     FormsModule,
-    SliderModule,
-    ProgressBarModule,
+    AvatarModule,
     TagModule,
     DropdownModule,
     MultiSelectModule,
