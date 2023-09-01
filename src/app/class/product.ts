@@ -1,3 +1,6 @@
+import { Category } from "./category";
+import { Seller } from "./seller";
+
 export class Product {
   productId: string;
   code: string;
@@ -5,8 +8,9 @@ export class Product {
   description: string;
   image: string[];
   price: number;
-  category: string;
+  category: Category;
   quantity: number;
   inventoryStatus: string;
   rating: number;
+  seller:Seller
 }

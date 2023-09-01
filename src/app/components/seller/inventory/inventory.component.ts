@@ -6,6 +6,11 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Category } from 'src/app/class/category';
+import { Product } from 'src/app/class/product';
+import { Seller } from 'src/app/class/seller';
+import { CategoryService } from 'src/app/service/category.service';
+import { ProductService } from 'src/app/service/inventory/product.service';
 
 @Component({
   selector: 'app-inventory',
@@ -17,208 +22,35 @@ export class InventoryComponent {
   uploadedFiles: any[] = [];
   productDialog: boolean = false;
   editDialog: boolean = false;
-  products: Product[] = [
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'OUTOFSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'OUTOFSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'OUTOFSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'OUTOFSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'LOWSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'LOWSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-    {
-      id: '1000',
-      code: 'f230fh0g3',
-      name: 'Bamboo Watch',
-      description: 'Product Description',
-      image: 'bamboo-watch.jpg',
-      price: 65,
-      category: 'Accessories',
-      quantity: 24,
-      inventoryStatus: 'INSTOCK',
-      rating: 5,
-    },
-  ];
-  product!: Product;
+  products: Product[];
+  product: Product;
   selectedProducts!: Product[] | null;
   submitted: boolean = false;
-  categories = [
-    { label: 'Accessories', value: 'Accessories' },
-    { label: 'Clothing', value: 'Clothing' },
-    { label: 'Electronics', value: 'Electronics' },
-    { label: 'Fitness', value: 'Fitness' },
-  ];
+  categories: Category[];
   statuses = [
     { label: 'INSTOCK', value: 'instock' },
     { label: 'LOWSTOCK', value: 'lowstock' },
     { label: 'OUTOFSTOCK', value: 'outofstock' },
   ];
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductService,
+    private categorySerivce: CategoryService
+  ) {}
 
   ngOnInit() {
+    this.getCategories();
+    this.fetchProductsBySellerId();
     this.createForm();
   }
 
+  getCategories() {
+    this.categorySerivce.getAllCategories().subscribe({
+      next: (response: Category[]) => (this.categories = response),
+      error: (err: any) => console.log(err),
+      complete: () => {},
+    });
+  }
   createForm() {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -262,7 +94,6 @@ export class InventoryComponent {
   }
 
   openNew() {
-    //this.product = {};
     this.submitted = false;
     this.productDialog = true;
   }
@@ -272,12 +103,10 @@ export class InventoryComponent {
       name: product.name,
       description: product.description,
       inventoryStatus: product.inventoryStatus,
-      category: product.category,
+      category: product.category.categoryId,
       price: product.price,
       quantity: product.quantity,
     });
-    console.log(product)
-    console.log(this.productForm)
     this.editDialog = true;
   }
 
@@ -299,97 +128,61 @@ export class InventoryComponent {
     this.productDialog = true;
   }
 
-  deleteProduct(product: Product) {
-    // this.confirmationService.confirm({
-    //     message: 'Are you sure you want to delete ' + product.name + '?',
-    //     header: 'Confirm',
-    //     icon: 'pi pi-exclamation-triangle',
-    //     accept: () => {
-    //         this.products = this.products.filter((val) => val.id !== product.id);
-    //         this.product = {};
-    //         this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-    //     }
-    // });
-  }
-
   hideDialog() {
     this.productDialog = false;
     this.submitted = false;
   }
 
-  saveProduct() {
-    this.submitted = true;
-
-    if (this.product.name?.trim()) {
-      if (this.product.id) {
-        this.products[this.findIndexById(this.product.id)] = this.product;
-        //  this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-      } else {
-        this.product.id = this.createId();
-        this.product.image = 'product-placeholder.svg';
-        this.products.push(this.product);
-        //   this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
-      }
-
-      this.products = [...this.products];
-      this.productDialog = false;
-      // this.product = {};
-    }
-  }
-
-  findIndexById(id: string): number {
-    let index = -1;
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  }
-
-  createId(): string {
-    let id = '';
-    var chars =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < 5; i++) {
-      id += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return id;
-  }
-
   getSeverity(status: string) {
     switch (status) {
-      case 'INSTOCK':
+      case 'instock':
         return 'success';
-      case 'LOWSTOCK':
+      case 'lowstock':
         return 'warning';
-      case 'OUTOFSTOCK':
+      case 'outofstock':
         return 'danger';
       default:
         return '';
     }
   }
 
+  fetchProductsBySellerId() {
+    const id = JSON.parse(localStorage.getItem('seller'))['sellerId'];
+    this.productService.getProductsBySellerId(id).subscribe({
+      next: (response: Product[]) => (this.products = response),
+      error: (err: any) => console.log(err),
+      complete: () => {},
+    });
+  }
   onSubmit() {
     if (this.productForm.invalid) return;
-    console.log('submit called');
-  }
-  updateSubmit(){
-    if(this.productForm.invalid) return;
-  }
-}
 
-interface Product {
-  id: string;
-  code: string;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-  category: string;
-  quantity: number;
-  inventoryStatus: string;
-  rating: number;
+    let product = new Product();
+    product.name = this.f['name'].value;
+    product.description = this.f['description'].value;
+    product.price = this.f['price'].value;
+    product.quantity = this.f['quantity'].value;
+    product.inventoryStatus = this.f['inventoryStatus'].value;
+
+    let category = new Category();
+    category.categoryId = this.f['category'].value;
+    product.category = category;
+
+    let seller = new Seller();
+    seller.sellerId = JSON.parse(localStorage.getItem('seller'))['sellerId'];
+    product.seller = seller;
+
+    this.productService.saveProduct(product, this.uploadedFiles).subscribe({
+      next: (response: Product) => {},
+      error: (err: any) => console.log(err),
+      complete: () => {
+        this.productDialog = false
+        this.fetchProductsBySellerId()
+      },
+    });
+  }
+
+  updateSubmit() {
+    if (this.productForm.invalid) return;
+  }
 }

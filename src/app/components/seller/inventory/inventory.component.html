@@ -1,5 +1,4 @@
-<div class="card">
-  <p-toast></p-toast>
+<div class="card" style="width: 62rem">
   <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
       <button
@@ -19,10 +18,11 @@
     [rows]="10"
     [paginator]="true"
     [globalFilterFields]="[
+      'productId',
       'name',
-      'country.name',
-      'representative.name',
-      'status'
+      'category.categoryName',
+      'code',
+      'inventoryStatus'
     ]"
     [rowHover]="true"
     dataKey="id"
@@ -44,17 +44,20 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr class="text-center">
-        <th pSortableColumn="name" style="width: 9rem">
+        <th pSortableColumn="productId" style="width: 3rem">
+          Id <p-sortIcon field="productId"></p-sortIcon>
+        </th>
+        <th pSortableColumn="name" style="width: 7rem">
           Name <p-sortIcon field="name"></p-sortIcon>
         </th>
-        <th>Image</th>
-        <th pSortableColumn="code">
+        <th style="width: 4rem">Image</th>
+        <th pSortableColumn="code" style="width: 4rem">
           Code <p-sortIcon field="code"></p-sortIcon>
         </th>
-        <th pSortableColumn="price">
+        <th pSortableColumn="price" style="width: 5rem">
           Price <p-sortIcon field="price"></p-sortIcon>
         </th>
-        <th pSortableColumn="category" style="width: 8rem">
+        <th pSortableColumn="category" style="width: 7rem">
           Category <p-sortIcon field="category"></p-sortIcon>
         </th>
         <th pSortableColumn="rating" style="width: 7rem">
@@ -71,21 +74,19 @@
     </ng-template>
     <ng-template pTemplate="body" let-product>
       <tr>
+        <td>{{ product.productId }}</td>
         <td>{{ product.name }}</td>
         <td>
           <img
-            [src]="
-              'https://primefaces.org/cdn/primeng/images/demo/product/' +
-              product.image
-            "
+            [src]="product.images[0]"
             [alt]="product.name"
             width="50"
             class="shadow-4"
           />
         </td>
-        <td>{{product.code}}</td>
+        <td>{{ product.code }}</td>
         <td>{{ product.price | currency : "USD" }}</td>
-        <td>{{ product.category }}</td>
+        <td>{{ product.category.categoryName }}</td>
         <td>
           <p-rating
             [(ngModel)]="product.rating"
@@ -102,19 +103,14 @@
         </td>
         <td>
           <button
-            pButton
-            pRipple
-            icon="pi pi-pencil"
-            class="p-button-rounded p-button-success mr-2"
+            class="btn btn-success rounded-circle mr-2"
             (click)="openEdit(product)"
-          ></button>
-          <button
-            pButton
-            pRipple
-            icon="pi pi-trash"
-            class="p-button-rounded p-button-warning"
-            (click)="deleteProduct(product)"
-          ></button>
+          >
+            <i class="fa-solid fa-pen-to-square"></i>
+          </button>
+          <button class="btn btn-danger rounded-circle">
+            <i class="fa-solid fa-trash"></i>
+          </button>
         </td>
       </tr>
     </ng-template>
@@ -145,29 +141,57 @@
             (onClear)="onClear()"
             [multiple]="true"
             accept="image/*"
-            [maxFileSize]="1000000">
+            [maxFileSize]="1000000"
+          >
           </p-fileUpload>
         </div>
 
         <!-- Product Name -->
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" formControlName="name" class="form-control" id="name" />
-          <small class="text-danger" *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)">Name is required.</small>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            id="name"
+          />
+          <small
+            class="text-danger"
+            *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+            >Name is required.</small
+          >
         </div>
 
         <!-- Description -->
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea formControlName="description" id="description" class="form-control" rows="3"></textarea>
-          <small class="text-danger" *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">Description is required.</small>
+          <textarea
+            formControlName="description"
+            id="description"
+            class="form-control"
+            rows="3"
+          ></textarea>
+          <small
+            class="text-danger"
+            *ngIf="
+              f['description'].invalid &&
+              (f['description'].dirty || f['description'].touched)
+            "
+            >Description is required.</small
+          >
         </div>
 
         <!-- Inventory Status -->
         <div class="form-group">
           <label for="inventoryStatus">Inventory Status</label>
-          <select formControlName="inventoryStatus" class="form-control" id="inventoryStatus">
-            <option *ngFor="let status of statuses" [value]="status.value">{{ status.label }}</option>
+          <select
+            formControlName="inventoryStatus"
+            class="form-control"
+            id="inventoryStatus"
+          >
+            <option *ngFor="let status of statuses" [value]="status.value">
+              {{ status.label }}
+            </option>
           </select>
         </div>
 
@@ -175,34 +199,67 @@
         <div class="form-group">
           <label for="category">Category</label>
           <select formControlName="category" class="form-control" id="category">
-            <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
+            <option
+              *ngFor="let category of categories"
+              [value]="category.categoryId"
+            >
+              {{ category.categoryName }}
+            </option>
           </select>
         </div>
 
         <!-- Price -->
         <div class="form-group">
           <label for="price">Price</label>
-          <input formControlName="price" type="number" class="form-control" id="price" />
-          <small class="text-danger" *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)">Price is required.</small>
+          <input
+            formControlName="price"
+            type="number"
+            class="form-control"
+            id="price"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              f['price'].invalid && (f['price'].dirty || f['price'].touched)
+            "
+            >Price is required.</small
+          >
         </div>
 
         <!-- Quantity -->
         <div class="form-group">
           <label for="quantity">Quantity</label>
-          <input formControlName="quantity" type="number" class="form-control" id="quantity" />
-          <small class="text-danger" *ngIf="f['quantity'].invalid && (f['quantity'].dirty || f['quantity'].touched)">Quantity is required.</small>
+          <input
+            formControlName="quantity"
+            type="number"
+            class="form-control"
+            id="quantity"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              f['quantity'].invalid &&
+              (f['quantity'].dirty || f['quantity'].touched)
+            "
+            >Quantity is required.</small
+          >
         </div>
-
       </form>
     </div>
-
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="d-flex justify-content-betweenmt-3">
       <button class="btn btn-secondary mr-2" (click)="hideDialog()">
         Cancel
       </button>
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="this.productForm.invalid">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="onSubmit()"
+        [disabled]="this.productForm.invalid"
+      >
+        Submit
+      </button>
     </div>
   </ng-template>
 </p-dialog>
@@ -226,29 +283,57 @@
             (onClear)="onClear()"
             [multiple]="true"
             accept="image/*"
-            [maxFileSize]="1000000">
+            [maxFileSize]="1000000"
+          >
           </p-fileUpload>
         </div>
 
         <!-- Product Name -->
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" formControlName="name" class="form-control" id="name" />
-          <small class="text-danger" *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)">Name is required.</small>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control"
+            id="name"
+          />
+          <small
+            class="text-danger"
+            *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)"
+            >Name is required.</small
+          >
         </div>
 
         <!-- Description -->
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea formControlName="description" id="description" class="form-control" rows="3"></textarea>
-          <small class="text-danger" *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)">Description is required.</small>
+          <textarea
+            formControlName="description"
+            id="description"
+            class="form-control"
+            rows="3"
+          ></textarea>
+          <small
+            class="text-danger"
+            *ngIf="
+              f['description'].invalid &&
+              (f['description'].dirty || f['description'].touched)
+            "
+            >Description is required.</small
+          >
         </div>
 
         <!-- Inventory Status -->
         <div class="form-group">
           <label for="category">Investory Status</label>
-          <select formControlName="inventoryStatus" class="form-control" id="inventoryStatus">
-            <option *ngFor="let status of statuses" [value]="status.value">{{ status.label }}</option>
+          <select
+            formControlName="inventoryStatus"
+            class="form-control"
+            id="inventoryStatus"
+          >
+            <option *ngFor="let status of statuses" [value]="status.value">
+              {{ status.label }}
+            </option>
           </select>
         </div>
 
@@ -256,34 +341,67 @@
         <div class="form-group">
           <label for="category">Category</label>
           <select formControlName="category" class="form-control" id="category">
-            <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
+            <option
+              *ngFor="let category of categories"
+              [value]="category.categoryId"
+            >
+              {{ category.categoryName }}
+            </option>
           </select>
         </div>
 
         <!-- Price -->
         <div class="form-group">
           <label for="price">Price</label>
-          <input formControlName="price" type="number" class="form-control" id="price" />
-          <small class="text-danger" *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)">Price is required.</small>
+          <input
+            formControlName="price"
+            type="number"
+            class="form-control"
+            id="price"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              f['price'].invalid && (f['price'].dirty || f['price'].touched)
+            "
+            >Price is required.</small
+          >
         </div>
 
         <!-- Quantity -->
         <div class="form-group">
           <label for="quantity">Quantity</label>
-          <input formControlName="quantity" type="number" class="form-control" id="quantity" />
-          <small class="text-danger" *ngIf="f['quantity'].invalid && (f['quantity'].dirty || f['quantity'].touched)">Quantity is required.</small>
+          <input
+            formControlName="quantity"
+            type="number"
+            class="form-control"
+            id="quantity"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+              f['quantity'].invalid &&
+              (f['quantity'].dirty || f['quantity'].touched)
+            "
+            >Quantity is required.</small
+          >
         </div>
-
       </form>
     </div>
-
   </ng-template>
   <ng-template pTemplate="footer">
     <div class="d-flex justify-content-betweenmt-3">
       <button class="btn btn-secondary mr-2" (click)="hideDialog()">
         Cancel
       </button>
-      <button type="submit" class="btn btn-primary" (click)="updateSubmit()" [disabled]="this.productForm.invalid">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="updateSubmit()"
+        [disabled]="this.productForm.invalid"
+      >
+        Submit
+      </button>
     </div>
   </ng-template>
 </p-dialog>

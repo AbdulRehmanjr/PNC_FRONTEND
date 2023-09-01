@@ -11,6 +11,7 @@ import { SharedModule } from './module/shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerInterceptor } from './interceptor/spinner.interceptor';
 import { RequestInterceptor } from './interceptor/request.interceptor';
+import { CapitalizePipe } from './pipe/capitalize.pipe';
 
 @NgModule({
   declarations: [AppComponent],

@@ -76,7 +76,7 @@ const routes: Route[] = [
       { path: 'start-business',component:StartBusinessComponent},
       { path: 'become-seller',component:BecomesellerComponent},
       { path: 'subscription-cards',component:SubscriptionCardsComponent},
-      {path:'messages',component:CommunicationComponent}
+      { path:'messages',component:CommunicationComponent}
     ],
   },
   { path: 'login', component: LoginComponent },

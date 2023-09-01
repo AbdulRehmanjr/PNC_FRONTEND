@@ -6,5 +6,6 @@ export const environment = {
   category:'category',
   sellerrequest:'sellerrequest',
   seller:'seller',
-  subscription:'checkout'
+  subscription:'checkout',
+  product:'product'
 } as const

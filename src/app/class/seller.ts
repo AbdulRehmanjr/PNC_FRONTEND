@@ -7,7 +7,7 @@ export class Seller {
   email: string;
   picture: string;
   address: string;
-  password: string;
+  phone:string;
   category: Category;
   isActive: boolean
   sellerType: string
