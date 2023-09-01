@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { UploadEvent } from 'primeng/fileupload';
+import {
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-inventory',
@@ -7,8 +13,10 @@ import { UploadEvent } from 'primeng/fileupload';
   styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent {
+  productForm: FormGroup;
   uploadedFiles: any[] = [];
   productDialog: boolean = false;
+  editDialog: boolean = false;
   products: Product[] = [
     {
       id: '1000',
@@ -194,33 +202,83 @@ export class InventoryComponent {
   product!: Product;
   selectedProducts!: Product[] | null;
   submitted: boolean = false;
-  statuses!: any[];
   categories = [
     { label: 'Accessories', value: 'Accessories' },
     { label: 'Clothing', value: 'Clothing' },
     { label: 'Electronics', value: 'Electronics' },
-    { label: 'Fitness', value: 'Fitness' }
+    { label: 'Fitness', value: 'Fitness' },
   ];
-  constructor() {}
+  statuses = [
+    { label: 'INSTOCK', value: 'instock' },
+    { label: 'LOWSTOCK', value: 'lowstock' },
+    { label: 'OUTOFSTOCK', value: 'outofstock' },
+  ];
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.statuses = [
-      { label: 'INSTOCK', value: 'instock' },
-      { label: 'LOWSTOCK', value: 'lowstock' },
-      { label: 'OUTOFSTOCK', value: 'outofstock' },
-    ];
+    this.createForm();
   }
-  onUpload(event: UploadEvent) {
+
+  createForm() {
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      inventoryStatus: ['', Validators.required],
+      category: ['', Validators.required],
+      price: [null, Validators.required],
+      quantity: [null, Validators.required],
+    });
+  }
+  get f() {
+    return this.productForm.controls;
+  }
+
+  arrayMinLengthValidator(minLength = 1): ValidatorFn {
+    return (array: FormArray): { [key: string]: any } | null => {
+      const length = array.length;
+      return length < minLength
+        ? { arrayMinLength: { length, requiredLength: minLength } }
+        : null;
+    };
+  }
+
+  onUpload(event: any) {
     for (let file of event['files']) {
       this.uploadedFiles.push(file);
     }
-
-
   }
+
+  onRemove(event: any) {
+    const index = this.uploadedFiles.findIndex(
+      (file) => file.name === event.file.name
+    );
+    if (index !== -1) {
+      this.uploadedFiles = this.uploadedFiles.splice(index, 1);
+    }
+  }
+
+  onClear() {
+    this.uploadedFiles = [];
+  }
+
   openNew() {
     //this.product = {};
     this.submitted = false;
     this.productDialog = true;
+  }
+
+  openEdit(product: Product) {
+    this.productForm.patchValue({
+      name: product.name,
+      description: product.description,
+      inventoryStatus: product.inventoryStatus,
+      category: product.category,
+      price: product.price,
+      quantity: product.quantity,
+      // populate files here if needed
+    });
+    console.log(product)
+    this.editDialog = true;
   }
 
   deleteSelectedProducts() {
@@ -312,6 +370,11 @@ export class InventoryComponent {
       default:
         return '';
     }
+  }
+
+  onSubmit() {
+    if (this.productForm.invalid) return;
+    console.log('submit called');
   }
 }
 
