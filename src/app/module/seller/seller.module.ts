@@ -14,6 +14,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ToastModule } from 'primeng/toast';
 import { FileUploadModule } from 'primeng/fileupload';
+import { RatingModule } from 'primeng/rating';
 
 import { ConfirmationService } from 'primeng/api';
 
@@ -49,6 +50,7 @@ const routes: Routes = [
     InventoryComponent,
   ],
   imports: [
+    RatingModule,
     ToolbarModule,
     ToastModule,
     FileUploadModule,

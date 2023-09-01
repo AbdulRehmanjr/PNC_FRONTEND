@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UploadEvent } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-inventory',
@@ -6,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent {
+  uploadedFiles: any[] = [];
   productDialog: boolean = false;
-
   products: Product[] = [
     {
       id: '1000',
@@ -30,7 +31,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'OUTOFSTOCK',
       rating: 5,
     },
     {
@@ -42,7 +43,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'OUTOFSTOCK',
       rating: 5,
     },
     {
@@ -54,7 +55,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'OUTOFSTOCK',
       rating: 5,
     },
     {
@@ -66,7 +67,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'OUTOFSTOCK',
       rating: 5,
     },
     {
@@ -78,7 +79,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'LOWSTOCK',
       rating: 5,
     },
     {
@@ -90,7 +91,7 @@ export class InventoryComponent {
       price: 65,
       category: 'Accessories',
       quantity: 24,
-      inventoryStatus: 'INSTOCK',
+      inventoryStatus: 'LOWSTOCK',
       rating: 5,
     },
     {
@@ -190,26 +191,32 @@ export class InventoryComponent {
       rating: 5,
     },
   ];
-
   product!: Product;
-
   selectedProducts!: Product[] | null;
-
   submitted: boolean = false;
-
   statuses!: any[];
-
+  categories = [
+    { label: 'Accessories', value: 'Accessories' },
+    { label: 'Clothing', value: 'Clothing' },
+    { label: 'Electronics', value: 'Electronics' },
+    { label: 'Fitness', value: 'Fitness' }
+  ];
   constructor() {}
 
   ngOnInit() {
-
     this.statuses = [
       { label: 'INSTOCK', value: 'instock' },
       { label: 'LOWSTOCK', value: 'lowstock' },
       { label: 'OUTOFSTOCK', value: 'outofstock' },
     ];
   }
+  onUpload(event: UploadEvent) {
+    for (let file of event['files']) {
+      this.uploadedFiles.push(file);
+    }
 
+
+  }
   openNew() {
     //this.product = {};
     this.submitted = false;
