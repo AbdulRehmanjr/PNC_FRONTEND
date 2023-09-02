@@ -164,7 +164,7 @@ a:hover{
   text-align: center;
   font-size: 2.5em;
   color: #333; /* Darker text color for elegance */
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  background: linear-gradient(135deg, #d65757, #f3abab);
   padding: 20px 40px;
   margin-bottom: 30px;
   border-radius: 15px;
@@ -224,13 +224,15 @@ h1, h2, h3 {
 .add-to-cart-button {
   
   display: inline-block; 
-  padding: 10px 20px;
-  background-color: #0073bb;
-  color: white;
-  border: none;
-  border-radius: 11px !important;
-  font-size: 16px;
-  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  color:#fff;
+  font-size:1.4rem;
+  font-weight: 700;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  box-shadow: 10px 10px 5px rgba(224, 7, 7, 0.5);
   transition: background-color 0.3s ease;
 }
 .icon-container {
@@ -247,7 +249,9 @@ h1, h2, h3 {
 }
 
 .add-to-cart-button:hover {
-  background-color: #0366a3;
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
   transform: scale(1.05);
 }
 
@@ -257,18 +261,21 @@ h1, h2, h3 {
 }
 .apply-filters-button {
   display: block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #0073bb;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  color:#fff;
+  font-size:1.4rem;
+  font-weight: 700;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  box-shadow: 10px 10px 5px rgba(224, 7, 7, 0.5);
   transition: background-color 0.3s ease;
 }
 
 .apply-filters-button:hover {
-  background-color: #025e98;
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
   transform: scale(1.05);
 }
