@@ -1,4 +1,6 @@
-.btn-group{
+body {
+  font-family: 'Yelp Regular', Arial, sans-serif;
+}.btn-group{
   height: 30px;
 }
 .sticky-aside{
@@ -80,8 +82,18 @@ aspect-ratio: 16/9;
   text-decoration: none;
   
 }
+p {
+  font-family: Arial, sans-serif; /* You can use a more common font for body text */
+  font-size: 16px;
+  line-height: 1.5;
+}
+a{
+  color: #0073bb; 
+  text-decoration: none;
+}
 a:hover{
     box-shadow: 5px 6px 5px rgba(0,0,0,0.4);
+    /* text-decoration: underline; */
 }
 .card {
   width: 300px;
@@ -110,11 +122,11 @@ a:hover{
 }
 
 .card-front {
-  background-color: #6A2C70;
-  color: #fff;
+  background-color: #fff; /* White background */
+  color: #333; /* Text color */
   display: flex;
   align-items: center;
-  border: 10px solid #6A2C70;
+  border: 10px solid #fff; /* White border */
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -122,16 +134,17 @@ a:hover{
 }
 
 .card-back {
-  background-color: #915c96;
-  color: #fff;
+  background-color: #fff; /* White background */
+  color: #333; /* Text color */
   display: flex;
   align-items: center;
-  border: 10px solid #915c96;
+  border: 10px solid #fff; /* White border */
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
   transform: rotateY(180deg);
 }
+
 .my-card {
   
   width: 300px;
@@ -139,27 +152,34 @@ a:hover{
   perspective: 1000px;
 }
 .centered-heading {
-  text-align: center; 
-  height: 100px; /* adjust this value based on your needs */
-  line-height: 100px; /* makes the text vertically centered */
+  text-align: center;
+  margin: 50px 0; /* Add some vertical spacing */
+  background-color: #ffdddd;
+  line-height: 100px;
 }
+
 .aesthetic-heading {
   font-family: 'Playfair Display', serif;
-  font-weight: 700; 
+  font-weight: 700;
   text-align: center;
   font-size: 2.5em;
-  color: #555;
-  background: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 100%);
+  color: #333; /* Darker text color for elegance */
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
   padding: 20px 40px;
   margin-bottom: 30px;
   border-radius: 15px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   letter-spacing: 1.5px;
-
-  background: linear-gradient(135deg, #e49aa7, #acc3e7);
-  color: #333;
-  
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  max-height: fit-content;
 }
+
+.aesthetic-heading:hover {
+  background: linear-gradient(135deg, #e1e1e1, #f7f7f7); /* Reverse gradient on hover */
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
 
 .card-image {
   max-width: 100%;
@@ -172,28 +192,83 @@ a:hover{
   perspective: 1000px;
   overflow: hidden; /* This ensures content doesn't overflow outside the card */
 }
+
+
+
+h1, h2, h3 {
+  font-family: 'Yelp Regular', Arial, sans-serif;
+  font-weight: bold;
+}
+.section_filter {
+  margin: 10px 0; /* Increase vertical margin for spacing */
+  padding: 10px 0; /* Increase padding for more breathing space */
+  border-bottom: 2px solid #dcdcdc; /* Light gray border */
+  background-color: #f5f5f5; /* Light gray background */
+  border-radius: 5px; /* Slightly round the corners */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.heading_filter {
+  font-family: 'Helvetica Neue', Arial, sans-serif; 
+  font-size: 18px; /* Slightly larger font size */
+  color: #0073bb; 
+  font-weight: 700;
+}
 .add-to-cart {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Align content to the right */
   align-items: center;
   margin-top: 20px;
 }
 
 .add-to-cart-button {
-  background-color: #4caf50;
+  
+  display: inline-block; 
+  padding: 10px 20px;
+  background-color: #0073bb;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 11px !important;
   font-size: 16px;
-  font-family: 'Helvetica', sans-serif; /* Change to your preferred font */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.icon-container {
+  display: inline-block;
+  width: 24px; /* Set the width of the icon container */
+  height: 24px; /* Set the height of the icon container */
+  margin-right: 10px; /* Adjust spacing between the icon and text */
+}
+
+.cart-icon {
+  width: 100%; /* Make the icon image fill the container */
+  height: 100%; /* Make the icon image fill the container */
+  object-fit: contain; /* Scale the icon image within the container */
 }
 
 .add-to-cart-button:hover {
-  background-color: #45a049;
+  background-color: #0366a3;
+  transform: scale(1.05);
+}
+
+.apply-filters-button {
+  display: block;
+  margin-top: 10px; /* Optional: Add some spacing between the checkboxes and the button */
+}
+.apply-filters-button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #0073bb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-filters-button:hover {
+  background-color: #025e98;
   transform: scale(1.05);
 }
