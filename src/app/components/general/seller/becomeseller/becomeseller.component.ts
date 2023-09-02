@@ -6,9 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { last } from 'rxjs';
-import { Category } from 'src/app/class/category';
-import { Seller } from 'src/app/class/seller';
-import { Sellerrequest } from 'src/app/class/sellerrequest';
+import { Category } from 'src/app/class/seller/category';
+import { Seller } from 'src/app/class/seller/seller';
+import { Sellerrequest } from 'src/app/class/seller/sellerrequest';
 import { CategoryService } from 'src/app/service/category.service';
 import { SellerService } from 'src/app/service/seller/seller.service';
 import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';

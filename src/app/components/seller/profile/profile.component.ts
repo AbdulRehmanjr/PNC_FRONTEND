@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterModule, Routes } from '@angular/router';
-import { Chatuserlist } from 'src/app/class/chatuserlist';
-import { Seller } from 'src/app/class/seller';
+import { Chatuserlist } from 'src/app/class/communication/chatuserlist';
+import { Seller } from 'src/app/class/seller/seller';
 import { ChatuserlistService } from 'src/app/service/communication/chatuserlist.service';
 import { SellerService } from 'src/app/service/seller/seller.service';
 

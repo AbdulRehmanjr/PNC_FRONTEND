@@ -6,9 +6,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { Category } from 'src/app/class/category';
-import { Product } from 'src/app/class/product';
-import { Seller } from 'src/app/class/seller';
+import { Category } from 'src/app/class/seller/category';
+import { Product } from 'src/app/class/inventory/product';
+import { Seller } from 'src/app/class/seller/seller';
 import { CategoryService } from 'src/app/service/category.service';
 import { ProductService } from 'src/app/service/inventory/product.service';
 

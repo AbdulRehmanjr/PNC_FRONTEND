@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as $ from 'jquery';
-import { User } from 'src/app/class/user';
+import { User } from 'src/app/class/user/user';
 @Component({
   selector: 'shared-header',
   templateUrl: './header.component.html',

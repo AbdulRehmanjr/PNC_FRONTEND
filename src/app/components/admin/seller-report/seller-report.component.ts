@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Seller } from 'src/app/class/seller';
-import { Sellerrequest } from 'src/app/class/sellerrequest';
+import { Seller } from 'src/app/class/seller/seller';
+import { Sellerrequest } from 'src/app/class/seller/sellerrequest';
 import { SellerService } from 'src/app/service/seller/seller.service';
 
 @Component({

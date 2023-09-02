@@ -8,5 +8,7 @@ export const environment = {
   seller:'seller',
   subscription:'checkout',
   product:'product',
-  chatlist:'chatlist'
+  chatlist:'chatlist',
+  socket:'ws',
+  message:'message'
 } as const

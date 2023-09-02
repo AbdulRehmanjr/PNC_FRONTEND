@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Chatuserlist } from 'src/app/class/chatuserlist';
+import { Chatuserlist } from 'src/app/class/communication/chatuserlist';
 import { environment } from 'src/app/variables/environment';
 
 @Injectable({

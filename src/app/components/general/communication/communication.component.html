@@ -26,11 +26,20 @@
                     <ul class="list-unstyled mb-0">
                       <ng-container *ngFor="let user of chatList">
                         <li class="p-2 border-bottom">
-                          <a href="#!" class="d-flex justify-content-between">
+                          <a
+                            (click)="selectUser(user)"
+                            class="d-flex justify-content-between"
+                            [ngStyle]="{
+                              background:
+                                selectedUserEmail === user.sendToEmail
+                                  ? '#f0f0f0'
+                                  : 'none'
+                            }"
+                          >
                             <div class="d-flex flex-row">
                               <div>
                                 <p-avatar
-                                  image="{{user.sendToPic}}"
+                                  image="{{ user.sendToPic }}"
                                   styleClass="mx-2"
                                   size="large"
                                   shape="circle"
@@ -70,168 +79,66 @@
                   class="pt-3 pe-3 messages-box"
                   style="position: relative; height: 400px"
                 >
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-1 rounded-3"
-                        style="background-color: #f5f6f7"
-                      >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
-                      </p>
-                      <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
-                        12:00 PM | Aug 13
-                      </p>
+                  <ng-container *ngFor="let message of oldMessages">
+                    <div
+                      [ngClass]="{
+                        'd-flex flex-row justify-content-start':
+                          message.type == 'RECEIVER',
+                        'd-flex flex-row justify-content-end':
+                          message.type == 'SENDER'
+                      }"
+                    >
+                      <p-avatar
+                        image="{{ selectedUserPic }}"
+                        styleClass="mx-2"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div>
+                        <p
+                          class="small p-2 ms-3 mb-1 rounded-3"
+                          style="background-color: #f5f6f7"
+                        >
+                          {{message.content}}
+                        </p>
+                        <p
+                          class="small ms-3 mb-3 rounded-3 text-muted float-end"
+                        >
+                          {{message.Date}} | Aug 13
+                        </p>
+                      </div>
                     </div>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                      >
-                        Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      </p>
-                      <p class="small me-3 mb-3 rounded-3 text-muted">
-                        12:00 PM | Aug 13
-                      </p>
+                  </ng-container>
+                  <ng-container *ngFor="let message of messages">
+                    <div
+                      [ngClass]="{
+                        'd-flex flex-row justify-content-start':
+                          message.type == 'RECEIVER',
+                        'd-flex flex-row justify-content-end':
+                          message.type == 'SENDER'
+                      }"
+                    >
+                      <p-avatar
+                        image="{{ selectedUserPic }}"
+                        styleClass="mx-2"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div>
+                        <p
+                          class="small p-2 ms-3 mb-1 rounded-3"
+                          style="background-color: #f5f6f7"
+                        >
+                          {{message.content}}
+                        </p>
+                        <p
+                          class="small ms-3 mb-3 rounded-3 text-muted float-end"
+                        >
+                          {{message.Date}} | Aug 13
+                        </p>
+                      </div>
                     </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-1 rounded-3"
-                        style="background-color: #f5f6f7"
-                      >
-                        Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur.
-                      </p>
-                      <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                      >
-                        Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                      <p class="small me-3 mb-3 rounded-3 text-muted">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-1 rounded-3"
-                        style="background-color: #f5f6f7"
-                      >
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et
-                        quasi architecto beatae vitae dicta sunt explicabo.
-                      </p>
-                      <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                      >
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                        aut odit aut fugit, sed quia consequuntur magni dolores
-                        eos qui ratione voluptatem sequi nesciunt.
-                      </p>
-                      <p class="small me-3 mb-3 rounded-3 text-muted">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-start">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                    <div>
-                      <p
-                        class="small p-2 ms-3 mb-1 rounded-3"
-                        style="background-color: #f5f6f7"
-                      >
-                        Neque porro quisquam est, qui dolorem ipsum quia dolor
-                        sit amet, consectetur, adipisci velit, sed quia non
-                        numquam eius modi tempora incidunt ut labore et dolore
-                        magnam aliquam quaerat voluptatem.
-                      </p>
-                      <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row justify-content-end">
-                    <div>
-                      <p
-                        class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary"
-                      >
-                        Ut enim ad minima veniam, quis nostrum exercitationem
-                        ullam corporis suscipit laboriosam, nisi ut aliquid ex
-                        ea commodi consequatur?
-                      </p>
-                      <p class="small me-3 mb-3 rounded-3 text-muted">
-                        12:00 PM | Aug 13
-                      </p>
-                    </div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                      alt="avatar 1"
-                      style="width: 45px; height: 100%"
-                    />
-                  </div>
+                  </ng-container>
                 </div>
 
                 <div
@@ -242,16 +149,20 @@
                     alt="avatar 3"
                     style="width: 40px; height: 100%"
                   />
-                  <input
+                  <textarea
                     type="text"
+                    #message
+                    cols="1"
+                    rows="1"
                     class="form-control form-control-lg"
                     id="exampleFormControlInput2"
                     placeholder="Type message"
-                  />
+                    (keydown.enter)="sendMessage($event, message)"
+                  ></textarea>
                   <a class="ms-1 text-muted" href="#!"
                     ><i class="fas fa-paperclip"></i
                   ></a>
-                  <a class="ms-3" href="#!"
+                  <a class="ms-3" (click)="sendMessage($event, message)"
                     ><i class="fas fa-paper-plane"></i
                   ></a>
                 </div>

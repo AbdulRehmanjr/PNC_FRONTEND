@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Paymentrequest } from 'src/app/class/paymentrequest';
+import { Paymentrequest } from 'src/app/class/stripe/paymentrequest';
 import { environment } from 'src/app/variables/environment';
 
 @Injectable({
