@@ -44,6 +44,7 @@ import { StartBusinessComponent } from '../../components/general/seller/start-bu
 import { ContactUsComponent } from '../../components/general/contact-us/contact-us.component';
 import { SubscriptionCardsComponent } from '../../components/general/subscription-cards/subscription-cards.component';
 import { CommunicationComponent } from '../../components/general/communication/communication.component';
+import { ProfileComponent } from 'src/app/components/seller/profile/profile.component';
 
 
 const LOGINPROVIDER = {
@@ -76,7 +77,8 @@ const routes: Route[] = [
       { path: 'start-business',component:StartBusinessComponent},
       { path: 'become-seller',component:BecomesellerComponent},
       { path: 'subscription-cards',component:SubscriptionCardsComponent},
-      { path:'messages',component:CommunicationComponent}
+      { path:'messages',component:CommunicationComponent},
+      { path:'profile/:sellerId',component:ProfileComponent}
     ],
   },
   { path: 'login', component: LoginComponent },
