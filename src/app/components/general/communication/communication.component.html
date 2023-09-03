@@ -80,64 +80,66 @@
                   style="position: relative; height: 400px"
                 >
                   <ng-container *ngFor="let message of oldMessages">
-                    <div
-                      [ngClass]="{
-                        'd-flex flex-row justify-content-start':
-                          message.type == 'RECEIVER',
-                        'd-flex flex-row justify-content-end':
-                          message.type == 'SENDER'
-                      }"
-                    >
-                      <p-avatar
+                    <div [ngClass]="{
+                      'd-flex flex-row': true,
+                      'justify-content-start': message.type == 'RECEIVER',
+                      'justify-content-end': message.type == 'SENDER'
+                    }">
+                    <p-avatar
                         image="{{ selectedUserPic }}"
                         styleClass="mx-2"
                         size="large"
                         shape="circle"
-                      ></p-avatar>
-                      <div>
+                    ></p-avatar>
+                    <div>
                         <p
-                          class="small p-2 ms-3 mb-1 rounded-3"
-                          style="background-color: #f5f6f7"
+                            class="small p-2 ms-3 mb-1 rounded-3"
+                            [ngStyle]="{
+                                'background-color': message.type == 'RECEIVER' ? 'blue' : '#f0f0f0',
+                                'color': message.type == 'RECEIVER' ? 'white' : 'black'
+                            }"
                         >
-                          {{message.content}}
+                            {{message.content}}
                         </p>
                         <p
-                          class="small ms-3 mb-3 rounded-3 text-muted float-end"
+                            class="small ms-3 mb-3 rounded-3 text-muted float-end"
                         >
-                          {{message.Date}} | Aug 13
+                            {{message.Date}} | Aug 13
                         </p>
-                      </div>
                     </div>
+                </div>
+
                   </ng-container>
                   <ng-container *ngFor="let message of messages">
-                    <div
-                      [ngClass]="{
-                        'd-flex flex-row justify-content-start':
-                          message.type == 'RECEIVER',
-                        'd-flex flex-row justify-content-end':
-                          message.type == 'SENDER'
-                      }"
-                    >
-                      <p-avatar
+                    <div [ngClass]="{
+                      'd-flex flex-row': true,
+                      'justify-content-start': message.type == 'RECEIVER',
+                      'justify-content-end': message.type == 'SENDER'
+                    }">
+                    <p-avatar
                         image="{{ selectedUserPic }}"
                         styleClass="mx-2"
                         size="large"
                         shape="circle"
-                      ></p-avatar>
-                      <div>
+                    ></p-avatar>
+                    <div>
                         <p
-                          class="small p-2 ms-3 mb-1 rounded-3"
-                          style="background-color: #f5f6f7"
+                            class="small p-2 ms-3 mb-1 rounded-3"
+                            [ngStyle]="{
+                                'background-color': message.type == 'RECEIVER' ? 'blue' : '#f0f0f0',
+                                'color': message.type == 'RECEIVER' ? 'white' : 'black'
+                            }"
                         >
-                          {{message.content}}
+                            {{message.content}}
                         </p>
                         <p
-                          class="small ms-3 mb-3 rounded-3 text-muted float-end"
+                            class="small ms-3 mb-3 rounded-3 text-muted float-end"
                         >
-                          {{message.Date}} | Aug 13
+                            {{message.Date}} | Aug 13
                         </p>
-                      </div>
                     </div>
+                </div>
+
                   </ng-container>
                 </div>
 
