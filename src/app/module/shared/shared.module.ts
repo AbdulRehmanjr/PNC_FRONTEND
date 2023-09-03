@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/shared/header/header.component';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [
-
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     RouterModule,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Seller } from 'src/app/class/seller';
+import { Seller } from 'src/app/class/seller/seller';
 import { SellerService } from 'src/app/service/seller/seller.service';
 
 @Component({

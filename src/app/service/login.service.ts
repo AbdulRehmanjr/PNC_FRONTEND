@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../variables/environment';
 import { HttpClient } from '@angular/common/http';
-import { Login } from 'src/app/class/login';
-import { User } from 'src/app/class/user';
-import { Role } from '../class/role';
-import { Token } from '../class/token';
+import { Login } from 'src/app/class/jwt/login';
+import { User } from 'src/app/class/user/user';
+import { Role } from '../class/user/role';
+import { Token } from '../class/jwt/token';
 import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({

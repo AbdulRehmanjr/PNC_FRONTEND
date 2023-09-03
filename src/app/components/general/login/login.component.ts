@@ -3,8 +3,8 @@ import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Login } from 'src/app/class/login';
-import { Token } from 'src/app/class/token';
+import { Login } from 'src/app/class/jwt/login';
+import { Token } from 'src/app/class/jwt/token';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({

@@ -68,12 +68,17 @@
                   Seller
                 </button>
               </ng-container>
+              <ng-container *ngIf="role == 'ADMIN'">
+                <button class="btn btn-outline-danger" routerLink="/admin-dashboard">
+                  Admin
+                </button>
+              </ng-container>
               <ng-template #remaining>
                 <button class="btn btn-outline-danger" routerLink="start-business">
                   Start Business
                 </button>
-                <button class="btn btn-outline-danger" routerLink="/admin-dashboard">
-                  Admin
+                <button class="btn btn-outline-danger" routerLink="messages">
+                  <i class="fa-solid fa-message"></i>
                 </button>
               </ng-template>
             </div>

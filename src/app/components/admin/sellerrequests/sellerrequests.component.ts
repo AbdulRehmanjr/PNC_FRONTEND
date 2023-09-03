@@ -5,7 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Sellerrequest } from 'src/app/class/sellerrequest';
+import { Sellerrequest } from 'src/app/class/seller/sellerrequest';
 import { SellerrequestService } from 'src/app/service/seller/sellerrequest.service';
 
 @Component({
