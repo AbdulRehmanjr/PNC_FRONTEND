@@ -4,6 +4,39 @@
   <aside class="col-md-2 bg-white rounded-3 mt-2 mx-2 ">
     <div class="sticky-aside">
       <div class="section_filter">
+        <p class="heading_filter">Refine Your Search</p>
+        <div class="checkbox">
+          <input id="restaurantsCheckbox" class="checkbox__input" type="checkbox">
+          <label for="restaurantsCheckbox" class="checkbox__label">
+            <span class="checkbox__custom"></span>
+            Restaurants
+          </label>
+        </div>
+        <div class="checkbox">
+          <input id="cafesCheckbox" class="checkbox__input" type="checkbox">
+          <label for="cafesCheckbox" class="checkbox__label">
+            <span class="checkbox__custom"></span>
+            Cafes
+          </label>
+        </div>
+        <div class="checkbox">
+          <input id="barsCheckbox" class="checkbox__input" type="checkbox">
+          <label for="barsCheckbox" class="checkbox__label">
+            <span class="checkbox__custom"></span>
+            Bars
+          </label>
+        </div>
+        <div class="checkbox">
+          <input id="deliveryCheckbox" class="checkbox__input" type="checkbox">
+          <label for="deliveryCheckbox" class="checkbox__label">
+            <span class="checkbox__custom"></span>
+            Delivery
+          </label>
+          
+        </div>
+        <button id="applyFiltersButton" class="apply-filters-button">Apply Filters</button>
+      </div>
+      
         <p class="heading_filter">Filters</p>
         <div class="btn-group">
           <button type="button" class="btn btn-outline-secondary py-0">
@@ -122,7 +155,7 @@
         </div>
 
       </div>
-    </div>
+    
   </aside>
   <section class="col-md-9 rounded-4 mt-2 mx-5">
     <h1 class="fw-bold centered-heading aesthetic-heading">Category Heading</h1>
@@ -143,7 +176,7 @@
             </div>
           </div>
           <div class="col-8">
-            <h3 class="item_title aesthetic-heading">Business Name</h3>
+            <h3 class="item_title ">Business Name</h3>
 
             <div class="chip_container">
               <p-chip label="Action" class="mx-2"></p-chip>
@@ -160,8 +193,15 @@
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque atque autem exercitationem, porro corporis voluptate incidunt saepe. Dolor porro quod architecto quisquam quas. Omnis impedit nisi iste, similique saepe aperiam voluptatem praesentium adipisci culpa assumenda laborum esse hic expedita libero sapiente, possimus veritatis iure fugit?</p>
             </div>
             <div class="add-to-cart">
-              <button class="add-to-cart-button">Add to cart</button>
+              <button class="add-to-cart-button">
+                <span class="icon-container">
+                  <img src="assets/add-to-cart.png" alt="Cart Icon" class="cart-icon">
+                </span>
+                Add to Cart
+              </button>
             </div>
+            
+            
 
           </div>
         </div>
