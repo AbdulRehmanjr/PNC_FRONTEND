@@ -25,7 +25,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
 import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
-import { SocketIoConfig,SocketIoModule } from 'ngx-socket-io';
 import { SharedModule } from '../shared/shared.module';
 
 import { GeneralComponent } from './general.component';
@@ -46,15 +45,8 @@ import { ContactUsComponent } from '../../components/general/contact-us/contact-
 import { SubscriptionCardsComponent } from '../../components/general/subscription-cards/subscription-cards.component';
 import { CommunicationComponent } from '../../components/general/communication/communication.component';
 import { ProfileComponent } from 'src/app/components/seller/profile/profile.component';
-import { environment } from 'src/app/variables/environment';
 
 
-
-
-const socketConfig: SocketIoConfig = { url: `${environment.baseUrl}/${environment.socket}`, options: {
-  transports: ['polling'],
-  autoConnect:true,
-} };
 
 const LOGINPROVIDER = {
   provide: 'SocialAuthServiceConfig',
@@ -135,7 +127,6 @@ const routes: Route[] = [
     CommonModule,
     HttpClientModule,
     RouterModule.forChild(routes),
-    SocketIoModule.forRoot(socketConfig)
   ],
   providers: [LOGINPROVIDER, MessageService],
   exports: [RouterModule],

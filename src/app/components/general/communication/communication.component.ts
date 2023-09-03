@@ -26,6 +26,8 @@ export class CommunicationComponent {
   ngOnInit(){
     this.sender = JSON.parse(localStorage.getItem('user'))
     this.fetchUserChatList()
+    this.messageService.onConnect()
+    this.receiveMessages()
     this.connectionStatus()
   }
 
