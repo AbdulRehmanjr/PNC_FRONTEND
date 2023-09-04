@@ -6,10 +6,11 @@ export const environment = {
   category:'category',
   sellerrequest:'sellerrequest',
   seller:'seller',
-  subscription:'checkout',
+  checkout:'checkout',
   product:'product',
   chatlist:'chatlist',
   socket:'ws',
   message:'message',
-  cart:'cart'
+  cart:'cart',
+  order:'order'
 } as const

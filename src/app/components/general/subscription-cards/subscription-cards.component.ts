@@ -9,8 +9,6 @@ import { SubscriptionService } from 'src/app/service/stripe/subscription.service
 export class SubscriptionCardsComponent {
   displayDialog: boolean = false;
 
-  // constructor(private sellerService: SellerService,private stripeService:PaymentService) {
-  // }
   constructor(private subscription:SubscriptionService){}
 
   buySubscription(type: string) {

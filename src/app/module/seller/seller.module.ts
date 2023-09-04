@@ -28,6 +28,7 @@ import { InventoryComponent } from '../../components/seller/inventory/inventory.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from '../../components/seller/profile/profile.component';
 import { CapitalizePipe } from 'src/app/pipe/capitalize.pipe';
+import { OrderComponent } from '../../components/seller/order/order.component';
 
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
       { path: '', component: SellerDashboardComponent },
       { path:'messages',component:CommunicationComponent},
       { path:'inventory',component:InventoryComponent},
-      { path:'profile',component:ProfileComponent}
+      { path:'profile',component:ProfileComponent},
+      { path:'report',component:OrderComponent}
   ],
   },
 ];
@@ -53,6 +55,7 @@ const routes: Routes = [
     SellerHeaderComponent,
     InventoryComponent,
     ProfileComponent,
+    OrderComponent,
   ],
   imports: [
     ReactiveFormsModule,

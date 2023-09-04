@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Cart } from 'src/app/class/inventory/cart';
 import { Paymentrequest } from 'src/app/class/stripe/paymentrequest';
 import { environment } from 'src/app/variables/environment';
 
@@ -8,7 +9,7 @@ import { environment } from 'src/app/variables/environment';
 })
 export class SubscriptionService {
 
-  private url:string = `${environment.baseUrl}/${environment.subscription}`
+  private url:string = `${environment.baseUrl}/${environment.checkout}`
   constructor(private http:HttpClient) { }
 
   paymentConfirm(type:string,email:string){
@@ -22,4 +23,5 @@ export class SubscriptionService {
       responseType:'text'
     })
   }
+
 }

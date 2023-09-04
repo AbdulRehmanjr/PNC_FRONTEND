@@ -1,0 +1,75 @@
+<p-table
+  #dt
+  [value]="orders"
+  [rows]="10"
+  [paginator]="true"
+  [globalFilterFields]="[
+    'orderCode',
+    'amount',
+    'customerEmail',
+    'cart.cartItems.productName',
+    'cart.cartItems.productCode',
+    'cart.cartItems.sellerId'
+  ]"
+  [rowHover]="true"
+  dataKey="orderId"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [showCurrentPageReport]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex align-items-center justify-content-between">
+      <h5 class="m-0">Manage Orders</h5>
+      <span class="p-input-icon-left">
+        <input
+          pInputText
+          type="text"
+          (input)="dt.filterGlobal($event.target['value'], 'contains')"
+          placeholder="Search..."
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr class="text-center">
+      <th pSortableColumn="orderCode" style="width: 10rem">
+        Order Id <p-sortIcon field="orderCode"></p-sortIcon>
+      </th>
+      <th pSortableColumn="orderCode" style="width: 10rem">
+        Order Code <p-sortIcon field="orderCode"></p-sortIcon>
+      </th>
+      <th pSortableColumn="amount" style="width: 5rem">
+        Amount <p-sortIcon field="amount"></p-sortIcon>
+
+      </th>
+      <th pSortableColumn="customerEmail" style="width: 10rem">
+        Customer Email <p-sortIcon field="customerEmail"></p-sortIcon>
+      </th>
+      <th style="width: 7rem">Items</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-order>
+    <tr>
+      <td>{{order.orderId}}</td>
+      <td>{{ order.orderCode }}</td>
+      <td>{{ order.amount | currency : 'USD' }}</td>
+      <td>{{ order.customerEmail }}</td>
+      <td>
+        <ul class="item-list">
+          <li *ngFor="let item of order.cart.cartItems">
+            <b>Product Name:</b> {{ item.productName }}
+            <br />
+            <b>Product Code:</b> {{ item.productCode }}
+            <br />
+           <b> Seller ID:</b> {{ item.sellerId }}
+          </li>
+        </ul>
+      </td>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    <div class="flex align-items-center justify-content-between">
+      In total there are {{ orders ? orders.length : 0 }} orders.
+    </div>
+  </ng-template>
+</p-table>

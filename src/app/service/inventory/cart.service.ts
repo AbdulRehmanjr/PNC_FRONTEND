@@ -10,14 +10,14 @@ import { environment } from 'src/app/variables/environment';
   providedIn: 'root',
 })
 export class CartService {
-
-  #url:string = `${environment.baseUrl}/${environment.cart}`
+  #url: string = `${environment.baseUrl}/${environment.cart}`;
+  #payement: string = `${environment.baseUrl}/${environment.checkout}`;
   private cartCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private cart: Cart;
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.cart = JSON.parse(localStorage.getItem('cart')) || new Cart();
-    this.cart.userEmail = JSON.parse(localStorage.getItem('user'))['userEmail']
+    this.cart.userEmail = JSON.parse(localStorage.getItem('user'))['userEmail'];
     this.updateCartCount();
   }
 
@@ -83,8 +83,15 @@ export class CartService {
   // saveCart(){
   //   return this.http.post(`${this.#url}/save/${this.cart.userEmail}`,this.cart.cartItems,{observe:'body'})
   // }
-  saveCart(){
-    console.log(this.cart)
-    return this.http.post(`${this.#url}/save`,this.cart,{observe:'body'})
+  saveCart() {
+    console.log(this.cart);
+    return this.http.post(`${this.#url}/save`, this.cart, { observe: 'body' });
+  }
+
+  orderPayment() {
+    return this.http.post(`${this.#payement}/order`, this.cart, {
+      observe: 'body',
+      responseType: 'text',
+    });
   }
 }
