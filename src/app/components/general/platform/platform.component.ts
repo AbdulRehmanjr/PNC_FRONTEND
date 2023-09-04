@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./platform.component.css']
 })
 export class PlatformComponent {
-
 }

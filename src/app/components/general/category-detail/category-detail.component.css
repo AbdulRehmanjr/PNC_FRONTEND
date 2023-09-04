@@ -1,6 +1,4 @@
-body {
-  font-family: 'Yelp Regular', Arial, sans-serif;
-}.btn-group{
+.btn-group{
   height: 30px;
 }
 .sticky-aside{
@@ -80,15 +78,16 @@ aspect-ratio: 16/9;
   color:#000;
   font-weight: 800;
   text-decoration: none;
-  
+
 }
 p {
-  font-family: Arial, sans-serif; /* You can use a more common font for body text */
+  color: #000;
+  font-family: Arial, sans-serif; /*  can use a more common font for body text */
   font-size: 16px;
   line-height: 1.5;
 }
 a{
-  color: #0073bb; 
+  color: #0073bb;
   text-decoration: none;
 }
 a:hover{
@@ -126,7 +125,6 @@ a:hover{
   color: #333; /* Text color */
   display: flex;
   align-items: center;
-  border: 10px solid #fff; /* White border */
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -138,7 +136,6 @@ a:hover{
   color: #333; /* Text color */
   display: flex;
   align-items: center;
-  border: 10px solid #fff; /* White border */
   border-radius: 10px;
   justify-content: center;
   font-size: 24px;
@@ -146,7 +143,7 @@ a:hover{
 }
 
 .my-card {
-  
+
   width: 300px;
   height: 200px;
   perspective: 1000px;
@@ -164,22 +161,16 @@ a:hover{
   text-align: center;
   font-size: 2.5em;
   color: #333; /* Darker text color for elegance */
-  background: linear-gradient(135deg, #d65757, #f3abab);
+  background: linear-gradient(135deg, #e1e1e1, #f7f7f7); /* Reverse gradient on hover */
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
   padding: 20px 40px;
   margin-bottom: 30px;
   border-radius: 15px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   max-height: fit-content;
 }
-
-.aesthetic-heading:hover {
-  background: linear-gradient(135deg, #e1e1e1, #f7f7f7); /* Reverse gradient on hover */
-  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
-}
-
 
 .card-image {
   max-width: 100%;
@@ -209,50 +200,10 @@ h1, h2, h3 {
 }
 
 .heading_filter {
-  font-family: 'Helvetica Neue', Arial, sans-serif; 
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px; /* Slightly larger font size */
-  color: #0073bb; 
+  color: #0073bb;
   font-weight: 700;
-}
-.add-to-cart {
-  display: flex;
-  justify-content: flex-end; /* Align content to the right */
-  align-items: center;
-  margin-top: 20px;
-}
-
-.add-to-cart-button {
-  
-  display: inline-block; 
-  width: 200px;
-  height: 50px;
-  color:#fff;
-  font-size:1.4rem;
-  font-weight: 700;
-  background-color: rgb(224, 7, 7);
-  border:none;
-  outline: none;
-  box-shadow: 10px 10px 5px rgba(224, 7, 7, 0.5);
-  transition: background-color 0.3s ease;
-}
-.icon-container {
-  display: inline-block;
-  width: 24px; /* Set the width of the icon container */
-  height: 24px; /* Set the height of the icon container */
-  margin-right: 10px; /* Adjust spacing between the icon and text */
-}
-
-.cart-icon {
-  width: 100%; /* Make the icon image fill the container */
-  height: 100%; /* Make the icon image fill the container */
-  object-fit: contain; /* Scale the icon image within the container */
-}
-
-.add-to-cart-button:hover {
-  background-color: #fff;
-  color: #E00707;
-  border: 1px solid #E00707;
-  transform: scale(1.05);
 }
 
 .apply-filters-button {
@@ -278,4 +229,26 @@ h1, h2, h3 {
   color: #E00707;
   border: 1px solid #E00707;
   transform: scale(1.05);
+}
+.btn-cart{
+  width: 50px;
+  height: 50px;
+  color:#fff;
+  font-size:1.4rem;
+  font-weight: 700;
+  background-color: rgb(224, 7, 7);
+  border:none;
+  outline: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(224, 7, 7, 0.5);
+}
+.btn-cart:hover{
+  background-color: #fff;
+  color: #E00707;
+  border: 1px solid #E00707;
+  box-shadow: 5px 5px 5px rgba(224, 7, 7, 0.5);
+}
+
+.btn-cart i {
+  font-size: 1.4rem;
 }

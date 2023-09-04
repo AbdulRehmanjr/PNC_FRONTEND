@@ -45,6 +45,9 @@ import { ContactUsComponent } from '../../components/general/contact-us/contact-
 import { SubscriptionCardsComponent } from '../../components/general/subscription-cards/subscription-cards.component';
 import { CommunicationComponent } from '../../components/general/communication/communication.component';
 import { ProfileComponent } from 'src/app/components/seller/profile/profile.component';
+import { CartComponent } from '../../components/general/cart/cart.component';
+import { RatingModule } from 'primeng/rating';
+import { CartService } from 'src/app/service/inventory/cart.service';
 
 
 
@@ -72,14 +75,15 @@ const routes: Route[] = [
     component: GeneralComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'category-detail', component: CategoryDetailComponent },
+      { path: 'category-detail/:categoryName', component: CategoryDetailComponent },
       { path: 'about-us', component: AboutUsComponent },
       { path: 'contact-us', component:ContactUsComponent},
       { path: 'start-business',component:StartBusinessComponent},
       { path: 'become-seller',component:BecomesellerComponent},
       { path: 'subscription-cards',component:SubscriptionCardsComponent},
       { path:'messages',component:CommunicationComponent},
-      { path:'profile/:sellerId',component:ProfileComponent}
+      { path:'profile/:sellerId',component:ProfileComponent},
+      { path:'cart-details',component:CartComponent}
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -106,8 +110,10 @@ const routes: Route[] = [
     ContactUsComponent,
     SubscriptionCardsComponent,
     CommunicationComponent,
+    CartComponent,
   ],
   imports: [
+    RatingModule,
     VirtualScrollerModule,
     DialogModule,
     FileUploadModule,
@@ -128,7 +134,7 @@ const routes: Route[] = [
     HttpClientModule,
     RouterModule.forChild(routes),
   ],
-  providers: [LOGINPROVIDER, MessageService],
+  providers: [LOGINPROVIDER, MessageService,CartService],
   exports: [RouterModule],
 })
 export class GeneralModule {}

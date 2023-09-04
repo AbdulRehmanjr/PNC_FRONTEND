@@ -25,4 +25,8 @@ export class ProductService {
   getProductsBySellerId(sellerId:number){
     return this.http.get(`${this.#url}/seller/${sellerId}`,{observe:'body'})
   }
+
+  getProductsByCategoryName(categoryName:string){
+      return this.http.get(`${this.#url}/category/${categoryName}`,{observe:'body'})
+  }
 }
