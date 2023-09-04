@@ -10,5 +10,6 @@ export const environment = {
   product:'product',
   chatlist:'chatlist',
   socket:'ws',
-  message:'message'
+  message:'message',
+  cart:'cart'
 } as const

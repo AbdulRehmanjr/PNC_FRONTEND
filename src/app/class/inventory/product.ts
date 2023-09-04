@@ -2,11 +2,11 @@ import { Category } from "../seller/category";
 import { Seller } from "../seller/seller";
 
 export class Product {
-  productId: string;
+  productId: number;
   code: string;
   name: string;
   description: string;
-  image: string[];
+  images: string[];
   price: number;
   category: Category;
   quantity: number;
