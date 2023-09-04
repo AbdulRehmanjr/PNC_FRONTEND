@@ -48,6 +48,8 @@ import { ProfileComponent } from 'src/app/components/seller/profile/profile.comp
 import { CartComponent } from '../../components/general/cart/cart.component';
 import { RatingModule } from 'primeng/rating';
 import { CartService } from 'src/app/service/inventory/cart.service';
+import { OrderComponent } from '../../components/general/order/order.component';
+import { TableModule } from 'primeng/table';
 
 
 
@@ -83,7 +85,8 @@ const routes: Route[] = [
       { path: 'subscription-cards',component:SubscriptionCardsComponent},
       { path:'messages',component:CommunicationComponent},
       { path:'profile/:sellerId',component:ProfileComponent},
-      { path:'cart-details',component:CartComponent}
+      { path:'cart-details',component:CartComponent},
+      { path:'order-details',component:OrderComponent}
     ],
   },
   { path: 'login', component: LoginComponent },
@@ -111,8 +114,10 @@ const routes: Route[] = [
     SubscriptionCardsComponent,
     CommunicationComponent,
     CartComponent,
+    OrderComponent,
   ],
   imports: [
+    TableModule,
     RatingModule,
     VirtualScrollerModule,
     DialogModule,

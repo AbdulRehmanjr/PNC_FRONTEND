@@ -1,4 +1,3 @@
-import { Category } from "../seller/category"
 
 export class Cartitem {
   cartItemId:number

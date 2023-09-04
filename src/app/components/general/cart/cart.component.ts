@@ -60,8 +60,13 @@ export class CartComponent {
   }
 
   makeOrder(){
-    this.cartService.saveCart().subscribe({
-      next: (response: Cart) => console.log(response),
+    // this.cartService.saveCart().subscribe({
+    //   next: (response: Cart) => console.log(response),
+    //   error: (err: any) => console.log(err),
+    //   complete: () => {}
+    // })
+    this.cartService.orderPayment().subscribe({
+      next: (response: any) =>  window.location.href = response,
       error: (err: any) => console.log(err),
       complete: () => {}
     })
